@@ -1,0 +1,22 @@
+<view bindtap="close" class="weui-mask {{!show?'weui-mask_hidden':''}}" wx:if="{{mask}}"></view>
+<view bindtap="close" class="weui-dialog__wrp {{extClass}}" wx:if="{{show}}">
+    <view catchtap="stopEvent" class="weui-dialog">
+        <view class="weui-dialog__hd">
+            <view class="weui-dialog__title">
+                <text>{{title}}</text>
+                <view bindtap="close" class="close">
+                    <image mode="aspectFill" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAA/klEQVRIS73WsQrCMBCA4b+Lvpqgr+A7WFEcREFxEHRQEEd9CvHFHHSTkxRCTJqrPcyact+luVxSAGdgCCyAA3ajBNbApQBeQMfFngJ7A2cC7FychyAzYOsFbgv5gIQtBZExBzYGUAh8Eq4QCygKSGAfaQMlgRjyC1QLpJAmUBaoQ2QuV3UqIIfIfCqQGtAgMegG9JuUe1hdqcMeZl59pzq4WkSC3oGel4WsaKBpQVok7AjmKwkB8z1J9TSz6so1TTWU2pMcUO2JCoohWkAN/b0LN11BeESy90lboPbX/eOOHwvyBLouFVUvUrSSr9fKyb27lsBREUD7yQhYAdc3ML1aAsNXW38AAAAASUVORK5CYII="></image>
+                </view>
+            </view>
+        </view>
+        <view class="weui-dialog__bd">
+            <slot></slot>
+        </view>
+        <view class="weui-dialog__ft">
+            <block wx:if="{{buttons&&buttons.length}}">
+                <view bindtap="buttonTap" class="weui-dialog__btn {{item.className}} {{item.extClass}}" data-index="{{index}}" wx:for="{{buttons}}" wx:key="index">{{item.text}}</view>
+            </block>
+            <slot name="footer" wx:else></slot>
+        </view>
+    </view>
+</view>

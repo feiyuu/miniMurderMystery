@@ -36,7 +36,7 @@ Page({
         }
       ],
       ZhuChis:[
-        {TouXiang:'/static/image/bg4.jpg',NiCheng:'小酒',hot:'50'},
+        {TouXiang:'https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215',NiCheng:'小酒',hot:'50'},
         {TouXiang:'/static/image/bg4.jpg',NiCheng:'小酒',hot:'50'},
         {TouXiang:'/static/image/bg4.jpg',NiCheng:'小酒',hot:'50'},
         {TouXiang:'/static/image/bg4.jpg',NiCheng:'小酒',hot:'50'},

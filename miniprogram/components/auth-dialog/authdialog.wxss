@@ -1,0 +1,14 @@
+.auth-dialog .auth button::after {
+    border: none;
+    background-color: transparent;
+}
+
+.auth-dialog {
+    padding-top: 16rpx;
+    width: 580rpx;
+    background-color: #fff;
+}
+
+.auth-dialog .auth {
+    display: flex;
+}

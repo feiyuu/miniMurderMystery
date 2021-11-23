@@ -7,7 +7,7 @@ import {ReverseAESDecrypt} from '../util/DoCrypto.js';
 /**
  * api host
  */
-const API_SERVER_HOST = "https://api.laizutuan.com/clientapi";
+const API_SERVER_HOST = "";
 
 
 function enquene(request){

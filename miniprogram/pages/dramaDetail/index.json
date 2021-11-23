@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "组局详情",
+    "usingComponents": {
+        "starts": "/components/stars/stars",
+        "cialog": "/components/custom-dialog/dialog",
+        "authdialog": "/components/auth-dialog/authdialog",
+        "jiajiank": "/components/jiajiank/jiajiank",
+        "mp-navigation-bar": "../../components/navigation-bar/navigation-bar"
+    }
+}

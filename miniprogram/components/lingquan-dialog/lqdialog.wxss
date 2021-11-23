@@ -1,0 +1,57 @@
+.desc-sm {
+    color: #e44255;
+    font-size: 28rpx;
+}
+
+.desc-xz {
+    font-size: 24rpx;
+    color: #666;
+    font-weight: 300;
+}
+
+.desc-money {
+    color: #e44255;
+    font-size: 60rpx;
+}
+
+.desc-money-tag {
+    font-size: 26rpx;
+}
+
+.desc-money-sm {
+    color: #e44255;
+    font-size: 22rpx;
+}
+
+.desc-yxq {
+    font-weight: 300;
+    margin-left: -60rpx;
+    width: 500rpx;
+    height: 36rpx;
+    color: #666;
+    margin-top: 258rpx;
+    position: absolute;
+    font-size: 20rpx;
+}
+
+.desc-btn {
+    width: 589rpx;
+    position: absolute;
+    margin-top: 350rpx;
+    color: #e44255;
+    font-size: 30rpx;
+}
+
+.desc-btn-txt {
+    background-color: #f9e680;
+    padding: 13rpx 25rpx;
+    border-radius: 30rpx;
+}
+
+.title {
+    position: absolute;
+    width: 589rpx;
+    margin-top: 20rpx;
+    color: #f9e680;
+    font-weight: 300;
+}

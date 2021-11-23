@@ -1,0 +1,22 @@
+<view class="weui-mask {{!show?'weui-mask_hidden':''}}" wx:if="{{mask}}"></view>
+<view bindtap="close" class="weui-dialog__wrp {{extClass}}" wx:if="{{show}}">
+    <view catchtap="stopEvent" class="weui-dialog">
+        <view bindtap="close" class="weui-close" wx:if="{{hideClose}}">
+            <image mode="aspectFill" src="/assets/images/dialog-close.png"></image>
+        </view>
+        <view class="weui-dialog__hd" wx:if="{{title}}">
+            <view class="weui-dialog__title">{{title}}
+          <slot name="title"></slot>
+            </view>
+        </view>
+        <view class="weui-dialog__bd">
+            <slot></slot>
+        </view>
+        <view class="weui-dialog__ft" wx:if="{{footer}}">
+            <block wx:if="{{buttons&&buttons.length}}">
+                <view bindtap="buttonTap" class="weui-dialog__btn {{item.className}} {{item.extClass}}" data-index="{{index}}" wx:for="{{buttons}}">{{item.text}}</view>
+            </block>
+            <slot name="footer" wx:else></slot>
+        </view>
+    </view>
+</view>

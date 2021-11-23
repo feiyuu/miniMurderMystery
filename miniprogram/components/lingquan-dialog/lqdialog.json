@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "cialog": "../custom-dialog/dialog",
+        "authdialog": "/components/auth-dialog/authdialog",
+        "mp-navigation-bar": "../navigation-bar/navigation-bar"
+    }
+}

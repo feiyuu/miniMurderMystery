@@ -1,0 +1,3 @@
+<picker bindcancel="handleCancel" bindchange="handleValueChange" bindcolumnchange="handleColumnChange" mode="multiSelector" range="{{rangeValues}}" style="width:100%;height:100%" value="{{valueArray}}">
+    <slot></slot>
+</picker>

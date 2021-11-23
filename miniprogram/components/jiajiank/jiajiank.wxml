@@ -1,0 +1,13 @@
+<view style="display: flex;justify-content: center;color: #fff;" wx:if="{{custom}}">
+    <view class="stepper" style="background-color:{{backgroundColor}} ;width: 400rpx;height: 80rpx;border-radius: 12rpx;">
+        <text style="    margin-right: 82rpx;margin-left: 32rpx;font-size: 28rpx;">{{title}}</text>
+        <image bindtap="bindMinus" src="{{minusStatus!='disabled'?'/assets/images/jian_hui_cus.png':'/assets/images/jian_cus.png'}}" style="height:45rpx;width:45rpx;"></image>
+        <text style="width: 100rpx;">{{num}}</text>
+        <image bindtap="bindPlus" src="{{plusStatus!='disabled'?'/assets/images/jia_hui_cus.png':'/assets/images/jia_cus.png'}}" style="height:45rpx;width:45rpx;"></image>
+    </view>
+</view>
+<view class="stepper" wx:else>
+    <image bindtap="bindMinus" src="{{minusStatus=='disabled'?'/assets/images/i_hei_jian.png':'/assets/images/i_h_jian.png'}}" style="height:45rpx;width:45rpx;"></image>
+    <text>{{num}}人</text>
+    <image bindtap="bindPlus" src="{{plusStatus=='disabled'?'/assets/images/i_hei_jia.png':'/assets/images/i_h_jia.png'}}" style="height:45rpx;width:45rpx;"></image>
+</view>

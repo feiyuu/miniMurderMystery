@@ -1,0 +1,46 @@
+.star-box {
+    align-items: center;
+}
+
+.star-box,.star-box .stars {
+    display: flex;
+}
+
+.star-box .stars image {
+    width: 24rpx;
+    height: 24rpx;
+    margin-left: 6rpx;
+}
+
+.star-box .stars image:first-child {
+    margin-left: 0;
+}
+
+.star-box .score {
+    display: flex;
+    align-items: center;
+    margin-left: 12rpx;
+    color: var(--z_zt30);
+}
+
+.star-box .score .val {
+    font-size: 22rpx;
+}
+
+.star-box .score .unit {
+    margin-top: 5rpx;
+    margin-left: 4rpx;
+    font-size: 22rpx;
+}
+
+.star-box.ml8 {
+    padding-left: 8rpx;
+}
+
+.star-box.ml8 .unit,.star-box.ml8 .val {
+    font-size: 22rpx;
+}
+
+.star-box.sc {
+    justify-content: space-around;
+}

@@ -1,0 +1,15 @@
+.stepper {
+    height: 52rpx;
+    display: flex;
+    align-items: center;
+}
+
+.stepper input {
+    height: 52rpx;
+}
+
+.stepper input,.stepper text {
+    width: 70rpx;
+    text-align: center;
+    font-size: 22rpx;
+}

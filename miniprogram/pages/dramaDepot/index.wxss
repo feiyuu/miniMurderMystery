@@ -36,11 +36,11 @@
 }
 
 .loc-search .seach-box {
-    height: 52rpx;
+    height: 65rpx;
     background-color: var(--z_bg10);
     border-radius: 15rpx;
     overflow: hidden;
-    margin: 25rpx 24rpx 0;
+    margin: 35rpx 24rpx 0;
 }
 
 .filter-search {

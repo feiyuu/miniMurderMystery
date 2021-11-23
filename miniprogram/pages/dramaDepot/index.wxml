@@ -5,11 +5,11 @@
                 <text>剧本库</text>
             </view>
             <view class="seach-box">
-                <view style="display: flex; align-items: center;">
-                    <view bindtap="search" style="padding:0 20rpx;">
+                <view class="flex-hor">
+                    <view bindtap="search" style="padding:0 22rpx;line-height: 65rpx;">
                         <icon size="12" type="search"></icon>
                     </view>
-                    <input bindconfirm="search" bindinput="bindKeyInput" confirmType="search" placeholder="请输入剧本名称" style="padding:3px 20rpx;font-size: 26rpx;width: 588rpx;"></input>
+                    <input bindconfirm="search" bindinput="bindKeyInput" confirmType="search" placeholder="请输入剧本名称" style="font-size: 26rpx;width: 100%;height: 65rpx;line-height: 65rpx;"></input>
                 </view>
             </view>
         </view>
@@ -24,11 +24,30 @@
                 </view>
             </view>
             <view class="fs-section">
-                <view class="label">题材</view>
+                <view class="label">时长</view>
                 <view class="values">
-                    <text bindtap="filterCheck" class="all {{filterDatas.topic.cur===''?'cur':''}}" data-target="topic" data-value="">全部</text>
+                    <text bindtap="filterCheck" class="all {{filterDatas.duration.cur===''?'cur':''}}" data-target="duration" data-value="">全部</text>
                     <scroll-view bindscroll="scroll" class="checkes" scrollX="true">
-                        <text bindtap="filterCheck" class="text {{filterDatas.topic.cur===item.value?'cur':''}}" data-name="{{item.name}}" data-target="topic" data-value="{{item.value}}" wx:for="{{filterDatas.topic.conditions}}" wx:key="index">{{item.name}}</text>
+                        <text bindtap="filterCheck" class="text {{filterDatas.duration.cur===item.value?'cur':''}}" data-name="{{item.name}}" data-target="duration" data-value="{{item.value}}" wx:for="{{filterDatas.duration.conditions}}" wx:key="index">{{item.name}}</text>
+                    </scroll-view>
+                </view>
+            </view>
+            
+            <view class="fs-section">
+                <view class="label">背景</view>
+                <view class="values">
+                    <text bindtap="filterCheck" class="all {{filterDatas.background.cur===''?'cur':''}}" data-target="background" data-value="">全部</text>
+                    <scroll-view bindscroll="scroll" class="checkes" scrollX="true">
+                        <text bindtap="filterCheck" class="text {{filterDatas.background.cur===item.value?'cur':''}}" data-name="{{item.name}}" data-target="background" data-value="{{item.value}}" wx:for="{{filterDatas.background.conditions}}" wx:key="index">{{item.name}}</text>
+                    </scroll-view>
+                </view>
+            </view>
+            <view class="fs-section">
+                <view class="label">主题</view>
+                <view class="values">
+                    <text bindtap="filterCheck" class="all {{filterDatas.theme.cur===''?'cur':''}}" data-target="theme" data-value="">全部</text>
+                    <scroll-view bindscroll="scroll" class="checkes" scrollX="true">
+                        <text bindtap="filterCheck" class="text {{filterDatas.theme.cur===item.value?'cur':''}}" data-name="{{item.name}}" data-target="theme" data-value="{{item.value}}" wx:for="{{filterDatas.theme.conditions}}" wx:key="index">{{item.name}}</text>
                     </scroll-view>
                 </view>
             </view>
@@ -66,9 +85,6 @@
             <view bindtap="jubenDetail" class="movie" data-jbid="{{item.jbId}}">
                 <view class="img-cover">
                     <image mode="aspectFill" src="{{tools.imageMogr(item.FengMian,'0/w/200')}}" style="border-radius:12rpx;"></image>
-                    <view style="position: absolute;top:15rpx;left:24rpx;" wx:if="{{item.TuiJian==1}}">
-                        <image src="/img/tb/{{tubiao}}/jul_tuijian.png" style="width:42px;height:16px"></image>
-                    </view>
                     <view style="position: absolute;top:18rpx;left:162rpx;" wx:if="{{item.Xin==1}}">
                         <image src="/assets/images/xin.png" style="width:16px;height:16px"></image>
                     </view>
@@ -83,7 +99,7 @@
                             <view class="tags">
                                 <text class="bqys">{{tools.trans3(item.BiaoQian)}}</text>
                                 <text style="font-size:18px" wx:if="{{item.BiaoQian}}"> · </text>
-                                <text>{{tools.trans2(item.TiCai)}}/{{item.BeiJing}}</text>
+                                <text>{{tools.trans2(item.theme)}}/{{item.background}}</text>
                             </view>
                         </view>
                         <view class="right">
@@ -97,12 +113,7 @@
                     <view style="flex-direction: row;display: flex;">
                         <view style="flex:1">
                             <view style="display:flex;height:56rpx;align-items:center">
-                                <view class="bgtags">
-                                    <text>{{item.ZongFen/10}}</text>
-                                    <text style="margin-left:3rpx">分</text>
-                                </view>
-                                <text style="margin-left:10rpx" wx:if="{{item.Hot==1}}">🔥</text>
-                                <text class="bordertag" style="margin-left:10rpx" wx:if="{{item.JianPing}}">{{item.JianPing}}</text>
+                              
                             </view>
                             <view class="bv">
                                 <view>
@@ -114,14 +125,14 @@
                                 </view>
                                 <view>
                                     <image mode="aspectFit" src="/img/tb/{{tubiao}}/jul_time.png" style="width:22rpx;height:20rpx"></image>
-                                    <text class="txt">{{item.ShiChang}}小时</text>
+                                    <text class="txt">{{item.duration}}小时</text>
                                 </view>
-                                <view class="dian" wx:if="{{item.NanDu}}">
+                                <view class="dian" wx:if="{{item.difficulty}}">
                                     <text>·</text>
                                 </view>
-                                <view wx:if="{{item.NanDu}}">
+                                <view wx:if="{{item.difficulty}}">
                                     <image mode="aspectFit" src="/img/tb/{{tubiao}}/jul_tag.png" style="width:22rpx;height:20rpx"></image>
-                                    <text class="txt" style="margin-left:10rpx">{{item.NanDu}}</text>
+                                    <text class="txt" style="margin-left:10rpx">{{item.difficulty}}</text>
                                 </view>
                             </view>
                         </view>

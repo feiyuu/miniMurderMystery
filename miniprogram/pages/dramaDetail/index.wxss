@@ -1,0 +1,388 @@
+.bg {
+    background-color: var(--z_bgbg);
+}
+
+.juben-info {
+    position: relative;
+    display: flex;
+    padding: 34rpx 32rpx 30rpx;
+}
+
+.juben-info .share {
+    position: absolute;
+    right: 32rpx;
+    top: 34rpx;
+    text-align: center;
+}
+
+.juben-info .share image {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.juben-info .share .w {
+    margin-top: 4rpx;
+    font-size: 24rpx;
+    color: var(--z_zt20);
+    line-height: 34rpx;
+}
+
+.juben-info .image-box,.juben-info .image-box image {
+    width: 182rpx;
+    height: 222rpx;
+}
+
+.juben-info .infos {
+    flex: 1;
+    margin-left: 20rpx;
+}
+
+.juben-info .infos .name {
+    font-size: 44rpx;
+    line-height: 60rpx;
+    color: var(--z_zt20);
+}
+
+.juben-info .infos .count,.juben-info .infos .gates {
+    margin-top: 6rpx;
+    font-size: 24rpx;
+    line-height: 34rpx;
+    color: var(--z_zt10);
+}
+
+.juben-info .infos .gates {
+    margin-top: 4rpx;
+}
+
+.juben-info .infos .pinfen {
+    margin: 6rpx 0 0;
+    font-size: 24rpx;
+    line-height: 34rpx;
+    color: var(--z_zt10);
+}
+
+.juben-info .infos .jiage {
+    margin: 6rpx 0 0;
+    line-height: 34rpx;
+    font-size: 28rpx;
+    color: var(--z_zt30);
+}
+
+.juben-content {
+    margin-top: 0rpx;
+}
+
+.jb-kaiju {
+    padding: 10rpx 32rpx 28rpx;
+    background-color: var(--z_bg10);
+    margin: 18rpx 24rpx 0;
+    border-radius: 15rpx;
+}
+
+.jb-kaiju .header {
+    display: flex;
+}
+
+.jb-kaiju .header .left {
+    position: relative;
+    width: 50%;
+    border-right: var(--z_x10);
+    text-align: center;
+}
+
+.jb-kaiju .header .left:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 86rpx;
+    width: 1px;
+    background-color: var(--z_bg10);
+}
+
+.jb-kaiju .header .right {
+    width: 50%;
+    padding-left: 52rpx;
+    text-align: center;
+}
+
+.jb-kaiju .header .tit {
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: var(--z_zt20);
+}
+
+.jb-kaiju .header .time {
+    margin-top: 14rpx;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: var(--z_zt10);
+}
+
+.jb-kaiju .header .blue image,.jb-kaiju .header .red image {
+    margin-right: 6rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.jb-zhuchi {
+    margin: 18rpx 24rpx 0;
+    border-radius: 15rpx;
+    background-color: var(--z_bg10);
+}
+
+.jb-zhuchi .tit {
+    padding: 18rpx 32rpx 0;
+    font-size: 36rpx;
+    color: var(--z_zt20);
+    line-height: 50rpx;
+}
+
+.jb-zhuchi .header {
+    margin-top: 22rpx;
+    position: relative;
+    display: flex;
+    padding: 0 32rpx 22rpx;
+}
+
+.jb-zhuchi .header .image-box,.jb-zhuchi .header .image-box image {
+    width: 166rpx;
+    height: 166rpx;
+}
+
+.jb-zhuchi .header .infos {
+    flex: 1;
+    margin-left: 16rpx;
+}
+
+.jb-zhuchi .header .infos .name {
+    font-size: 32rpx;
+    line-height: 44rpx;
+    color: var(--z_zt20);
+}
+
+.jb-zhuchi .header .infos .ser {
+    margin-top: 2rpx;
+    font-size: 24rpx;
+    color: var(--z_zt10);
+    line-height: 34rpx;
+}
+
+.jb-zhuchi .header .infos .audio {
+    margin-top: 20rpx;
+    position: relative;
+    width: 106rpx;
+    height: 36rpx;
+}
+
+.jb-zhuchi .header .infos .audio image {
+    width: 180rpx;
+    height: 35rpx;
+}
+
+.jb-zhuchi .header .infos .audio text {
+    top: 60%;
+    right: 12rpx;
+    font-size: 20rpx;
+    color: #4b8bef;
+    line-height: 20rpx;
+}
+
+.jb-zhuchi .header .infos .audio-label {
+    margin-top: 8rpx;
+    font-size: 24rpx;
+    color: var(--z_zt10);
+    line-height: 34rpx;
+}
+
+.jb-zhuchi .header .haoping {
+    position: absolute;
+    right: 76rpx;
+    top: 0rpx;
+    text-align: center;
+}
+
+.jb-zhuchi .header .haoping .hp-img image {
+    width: 70rpx;
+    height: 70rpx;
+}
+
+.jb-zhuchi .header .haoping .count {
+    margin-top: 10rpx;
+    font-size: 34rpx;
+    color: var(--z_zt30);
+}
+
+.jb-zhuchi .body {
+    padding: 28rpx 38rpx 32rpx 40rpx;
+    border-top: var(--z_x10);
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: var(--z_zt10);
+}
+
+.jb-members {
+    background-color: var(--z_bg10);
+    margin: 18rpx 24rpx 0rpx;
+    border-radius: 15rpx;
+}
+
+.jb-members .header {
+    padding: 26rpx 32rpx 24rpx;
+}
+
+.jb-members .header .name {
+    font-size: 36rpx;
+    color: var(--z_zt20);
+    line-height: 50rpx;
+}
+
+.jb-members .header .counts {
+    margin-top: 8rpx;
+    width: 336rpx;
+    font-size: 28rpx;
+    line-height: 40rpx;
+}
+
+.jb-members .header .counts .blue image,.jb-members .header .counts .red image {
+    margin-right: 6rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.jb-members .header .counts .blue {
+    color: #2a94de;
+}
+
+.jb-members .header .counts .red {
+    color: #ce449b;
+}
+
+.jb-members .list {
+    border-top: var(--z_x10);
+    padding: 12rpx 0;
+}
+
+.mem-section {
+    padding: 20rpx 36rpx 20rpx 32rpx;
+    align-items: center;
+}
+
+.mem-section .head-img {
+    position: relative;
+}
+
+.mem-section .head-img,.mem-section .head-img image.head {
+    width: 86rpx;
+    height: 86rpx;
+}
+
+.mem-section .head-img image.sex {
+    position: absolute;
+    top: -2rpx;
+    right: -2rpx;
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.mem-section .infos {
+    margin-left: 10rpx;
+}
+
+.mem-section .infos .name {
+    font-size: 28rpx;
+    color: var(--z_zt20);
+    line-height: 40rpx;
+}
+
+.mem-section .infos .dt {
+    margin-top: 4rpx;
+    font-size: 24rpx;
+    color: var(--z_zt10);
+    line-height: 34rpx;
+}
+
+.mem-section .grade {
+    font-size: 28rpx;
+    color: var(--z_zt20);
+    line-height: 40rpx;
+}
+
+.join-in {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    bottom: 48rpx;
+}
+
+.join-in button {
+    height: 98rpx;
+    width: 686rpx;
+    border-radius: 49rpx;
+    line-height: 98rpx;
+    border: none;
+    font-size: 34rpx;
+    background-color: var(--z_bganon);
+    color: var(--z_ztanon);
+}
+
+.btn::after {
+    border: none;
+}
+
+.join-in .jiaruzuju {
+    background-color: var(--z_bgan);
+    color: var(--z_ztan);
+}
+
+.v_money {
+    width: 100%;
+    height: 200rpx;
+    justify-content: center;
+}
+
+.l_item,.v_money {
+    display: flex;
+    align-items: center;
+}
+
+.l_item {
+    height: 100rpx;
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 0 12rpx;
+    margin: 16rpx 6% 0;
+}
+
+.hui1 {
+    color: #333;
+}
+
+.hui2 {
+    color: #666;
+}
+
+.hui3 {
+    color: #999;
+}
+
+.zhif {
+    background-color: #ffb51a;
+    color: #fff;
+    margin: 180rpx 100rpx;
+}
+
+.pay_dialog {
+    background: #eee;
+    width: 600rpx;
+    border-radius: 16rpx;
+}
+
+.btn-chewei {
+    width: 250rpx;
+    border-radius: 59rpx;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    background-color: #feb997;
+    color: #fff;
+}

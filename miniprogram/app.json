@@ -4,6 +4,7 @@
     "pages/home/index",
     "pages/team/index",
     "pages/mine/index",
+    "pages/dramaDetail/index",
     "pages/shop/index"
   ],
   "window": {
@@ -26,7 +27,7 @@
         "selectedIconPath": "static/image/icon-tab-index-act.png"
       },
       {
-        "pagePath": "pages/team/index",
+        "pagePath": "pages/dramaDepot/index",
         "text": "组队",
         "iconPath": "static/image/icon-tab-group.png",
         "selectedIconPath": "static/image/icon-tab-group-act.png"

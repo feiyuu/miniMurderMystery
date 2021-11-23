@@ -1,0 +1,20 @@
+<view id="{{theme}}">
+    <view class="star-box {{extClass}}">
+        <view class="stars">
+            <image src="/assets/images/ic-star.png" wx:if="{{int>0}}"></image>
+            <image src="/assets/images/ic-star.png" wx:if="{{int>1}}"></image>
+            <image src="/assets/images/ic-star.png" wx:if="{{int>2}}"></image>
+            <image src="/assets/images/ic-star.png" wx:if="{{int>3}}"></image>
+            <image src="/assets/images/ic-star.png" wx:if="{{int>4}}"></image>
+            <image src="/assets/images/ic-star-emp.png" wx:if="{{int<5}}"></image>
+            <image src="/assets/images/ic-star-emp.png" wx:if="{{int<4}}"></image>
+            <image src="/assets/images/ic-star-emp.png" wx:if="{{int<3}}"></image>
+            <image src="/assets/images/ic-star-emp.png" wx:if="{{int<2}}"></image>
+            <image src="/assets/images/ic-star-emp.png" wx:if="{{int<1}}"></image>
+        </view>
+        <view class="score flex-ver" wx:if="{{!noscore}}">
+            <text class="val">{{score}}</text>
+            <text class="unit">分</text>
+        </view>
+    </view>
+</view>

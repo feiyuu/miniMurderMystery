@@ -1,0 +1,31 @@
+<cialog maskClosable="{{!force}}" show="{{showModal}}">
+    <view class="auth-dialog">
+        <view style="font-size: 36rpx;">
+          授权提示
+        </view>
+        <view style="margin: 20rpx 0;font-size: 24rpx;">
+          获取头像等信息，为了更好的服务
+        </view>
+        <view class="auth">
+            <button bindtap="closeAuth" style=" background-color: transparent;" wx:if="{{!force}}"> 再逛逛 </button>
+            <button bindtap="getUserProfile" style=" background-color: transparent;" wx:if="{{canIUseGetUserProfile}}"> 授权
+          </button>
+            <button bindgetuserinfo="getUserInfo" lang="zh_CN" openType="getUserInfo" style=" background-color: transparent;" wx:else> 授权a </button>
+        </view>
+    </view>
+</cialog>
+<cialog maskClosable="{{!force}}" show="{{showPhone}}">
+    <view class="auth-dialog">
+        <view style="font-size: 36rpx;">
+          授权提示
+        </view>
+        <view style="margin: 20rpx 0;font-size: 24rpx;">
+          获取手机号，为了更好的服务
+        </view>
+        <view class="auth">
+            <button bindtap="closePhone" style=" background-color: transparent;" wx:if="{{!force}}"> 再逛逛 </button>
+            <button bindgetphonenumber="getPhoneNumber" openType="getPhoneNumber" style=" background-color: transparent;"> 授权
+          </button>
+        </view>
+    </view>
+</cialog>

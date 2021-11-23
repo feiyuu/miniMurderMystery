@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "cialog": "../custom-dialog/dialog",
+        "mp-navigation-bar": "../navigation-bar/navigation-bar"
+    }
+}

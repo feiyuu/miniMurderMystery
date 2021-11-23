@@ -1,0 +1,25 @@
+<cialog maskClosable="{{!force}}" show="{{showModal}}">
+    <view>
+        <view style="margin-left: 36rpx;width: 495rpx;height: 80rpx;margin-top: 137rpx;position: absolute;display: flex;flex-direction: row;">
+            <view style="display: flex; flex-direction: column;flex: 1;align-items: flex-start;padding-left: 32rpx;justify-content: space-around;">
+                <text class="desc-sm">{{yhq.ShuoMing}}</text>
+            </view>
+            <view style="display: flex;flex-direction: column;justify-content: space-around;">
+                <text class="desc-money" wx:if="{{yhq.FangShi==0}}">{{tools.parFloat(yhq.JinE*10)}}<text class="desc-money-tag">折</text>
+                </text>
+                <text class="desc-money" wx:if="{{yhq.FangShi==10}}">{{tools.parFloat(yhq.JinE)}}<text class="desc-money-tag">￥</text>
+                </text>
+            </view>
+        </view>
+        <text class="desc-yxq"> 有效期：{{yhq.YouXiaoQi}}</text>
+        <view class="title">
+            <text>— 恭喜获得 —</text>
+        </view>
+        <view class="desc-btn">
+            <text bindtap="lingqu" class="desc-btn-txt">立即领取</text>
+        </view>
+        <image src="/assets/images/lq_bg.png" style="width: 589rpx;height: 453rpx;"></image>
+    </view>
+</cialog>
+<authdialog autoShow="{{show}}" isPhone="{{true}}"></authdialog>
+<wxs module="tools" src="../../pages/tools.wxs" />

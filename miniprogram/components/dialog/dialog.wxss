@@ -1,0 +1,187 @@
+.weui-mask {
+    z-index: 5002;
+    background: rgba(0,0,0,.6);
+}
+
+.weui-mask,.weui-mask_transparent {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.weui-mask_transparent {
+    z-index: 1000;
+}
+
+.weui-dialog__wrp {
+    position: fixed;
+    z-index: 5003;
+    top: 16px;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    text-align: center;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.weui-dialog__wrp .weui-dialog {
+    max-height: 100%;
+}
+
+.weui-dialog {
+    background-color: #fff;
+    text-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 90%;
+    width: 620rpx;
+}
+
+.weui-dialog__hd {
+    padding: 0 12rpx;
+}
+
+.weui-dialog__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 0 12rpx 0 22rpx;
+    height: 75rpx;
+    font-weight: 700;
+}
+
+.weui-dialog__title text {
+    flex: 1;
+    font-size: 28rpx;
+    color: #545454;
+    line-height: 32rpx;
+    text-align: left;
+}
+
+.weui-dialog__title .close image {
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.weui-dialog__bd {
+    box-sizing: border-box;
+    padding: 30rpx 12rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    min-height: 168rpx;
+    font-size: 24rpx;
+    line-height: 30rpx;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #000;
+}
+
+.weui-dialog__ft {
+    margin: 0 12rpx;
+    padding: 20rpx;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.weui-dialog__ft:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1rpx solid #eee;
+}
+
+.weui-dialog__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    position: relative;
+    border: 2rpx solid #b5b5b5;
+    font-size: 28rpx;
+    padding: 0 10rpx;
+    color: #545454;
+    min-width: 166rpx;
+    height: 60rpx;
+    box-sizing: border-box;
+    margin-left: 18rpx;
+    border-radius: 4rpx;
+}
+
+.weui-dialog__btn.sure {
+    border-color: #ffb51b;
+    background-color: #ffb51b;
+    color: #fff;
+}
+
+.weui-dialog__btn:first-child {
+    margin-left: 0;
+}
+
+.weui-dialog__btn:active {
+    background-color: #ececec;
+}
+
+.weui-dialog__btn:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    bottom: 0;
+    border-left: 1rpx solid rgba(0,0,0,.1);
+    color: rgba(0,0,0,.1);
+}
+
+.weui-dialog__btn:first-child:after {
+    display: none;
+}
+
+.weui-dialog__btn_default {
+    color: rgba(0,0,0,.9);
+}
+
+@media screen and (min-width:352px) {
+    .weui-dialog {
+        margin: 0 auto;
+    }
+}
+
+.weui-dialog.weui-dialog_hidden {
+    opacity: 0;
+    transform: scale3d(1,1,0);
+}
+
+.weui-dialog {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+    transition: all .3s ease-in;
+}
+
+.weui-mask.weui-mask_hidden {
+    opacity: 0;
+    transform: scale3d(1,1,0);
+}
+
+.weui-mask {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+    transition: all .3s ease-in;
+}
