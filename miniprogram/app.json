@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/dramaDepot/index",
+    "pages/home/index",
+    "pages/team/index",
+    "pages/mine/index",
+    "pages/shop/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "剧有趣",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#333333",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "static/image/icon-tab-index.png",
+        "selectedIconPath": "static/image/icon-tab-index-act.png"
+      },
+      {
+        "pagePath": "pages/team/index",
+        "text": "组队",
+        "iconPath": "static/image/icon-tab-group.png",
+        "selectedIconPath": "static/image/icon-tab-group-act.png"
+      },
+      {
+        "pagePath": "pages/shop/index",
+        "text": "小卖铺",
+        "iconPath": "static/image/icon-tab-index.png",
+        "selectedIconPath": "static/image/icon-tab-index-act.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "static/image/icon-tab-mine.png",
+        "selectedIconPath": "static/image/icon-tab-mine-act.png"
+      }
+    ]
+  },
+
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

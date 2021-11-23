@@ -1,0 +1,155 @@
+/**index.wxss**/
+
+page {
+  height: 100%;
+}
+.swiper-top {
+  position: relative;
+}
+
+.swiper {
+  height: 400rpx;
+  width: 100%;
+  z-index: -1;
+}
+
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+
+.shop-infos {
+  position: relative;
+  z-index: 2;
+  margin: -44rpx 32rpx 0;
+  overflow: hidden;
+  height: 88rpx;
+}
+.si-top {
+  background-color: #dfdde8;
+  border-radius: 10rpx;
+  flex: 1;
+  padding-right: 32rpx;
+}
+
+.si-top .nameContainer {
+  margin-left: 24rpx;
+  flex: 1;
+}
+.si-top .name{
+  font-size: 24rpx;
+  color: black;
+}
+.address{
+  font-size: 18rpx;
+  color: black;
+}
+
+.opt {
+  margin-left: 24rpx;
+  background-color: #dfdde8;
+  border-radius: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.ic-nav {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.ic-call {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.shop-rooms .list {
+  margin: 0 13rpx;
+  padding: 0 9rpx;
+  height: 216rpx;
+  overflow: auto;
+}
+
+.shop-rooms .swipers {
+  display: flex;
+}
+
+.shop-rooms .swiper-item {
+  width: 197rpx;
+  margin: 0 10rpx;
+}
+
+.shop-rooms .swiper-item .cover {
+  width: 100%;
+  height: 100%;
+  height: 165rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.shop-rooms .swiper-item .cover image {
+  width: 100%;
+  height: 165rpx;
+ 
+}
+
+.shop-rooms .swiper-item .name {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+
+.shop-hosts,.shop-rooms {
+  padding-bottom: 24rpx;
+  margin: 18rpx 32rpx 0;
+  border-radius: 15rpx;
+  background-color: #dfdde8;
+}
+
+.shop-hosts .sh-header,.shop-rooms .sr-header {
+  padding: 30rpx 32rpx;
+  font-size: 32rpx;
+  color: black;
+  line-height: 34rpx;
+}
+
+.shop-hosts .list {
+  padding: 0 13rpx;
+  height: 300rpx;
+  overflow: auto;
+}
+
+.shop-hosts .swipers .swiper-item {
+  position: relative;
+  width: 203rpx;
+  margin: 0 12rpx;
+}
+
+.shop-hosts .swipers .swiper-item .cover {
+  width: 100%;
+  height: 245rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.shop-hosts .swipers .swiper-item .cover image {
+  width: 100%;
+  height: 245rpx;
+}
+
+.shop-hosts .swipers .swiper-item .name {
+  margin-top: 18rpx;
+  line-height: 24rpx;
+  font-size: 24rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  color: black;
+}
+.hot{
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 4rpx;
+}
+
