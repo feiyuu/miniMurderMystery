@@ -1,7 +1,7 @@
 var t = require("../../@babel/runtime/helpers/interopRequireDefault"),
     a = require("../../@babel/runtime/helpers/objectSpread2"),
     e = t(require("../../api/request.js")),
-    i = t(require("../../utils/util")),
+    utils = require("../../utils/util"),
     o = getApp(),
     s = "";
 
@@ -9,22 +9,106 @@ Page({
     data: {
         showModal: !1,
         FuDongJia: 0,
-        theme: "",
         statusBarHeight: o.globalData.statusBarHeight,
         tubiao: "z_moren",
         playing: "",
-        detailData: {},
+        detailData: {
+            dramaId: 1001,
+            dramaCover: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
+            Xin: 1,
+            dramaName: "三千鸦杀",
+            background: '欢乐',
+            theme: '情感',
+            background: '民国',
+            numbers: 6,
+            dramaScore: 5,
+            profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣,七个密室，没有一个是敷衍写写的，破第一二个的时候其实还好，不是很难时间压得特别紧凑，山厕所都不敢去因为太有趣了实在不敢去实在不想走开！到第四个密室开始就开始很难了，到第七个密室的时候倒吸一口气结合前面每个密室一部分的手法做出来的终极大Boss ！真的妙啊！最后还原了70%左右（大概是最后一个密室核诡盘出，背景故事全复原，破了4个密室手法和找对凶手）花了整整7个小时掉了一大把头发。',
+            NanNvShu: '3男3女',
+            duration: '3-4小时',
+            difficulty: '硬核',
+            type: '本格',
+            YuGao: '1',
+            Nan: 2,
+            Nv: 2,
+            price: 100,
+            KaiJuShiJian: '2021-11-24 22:00',
+            DMName: '小酒',
+            users: [{
+                    avatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
+                    sex: '男',
+                    name: '吴亦凡',
+                    joinTime: '2021-11-24 10:22'
+                },
+                {
+                    avatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
+                    sex: '男',
+                    name: '吴亦凡',
+                    joinTime: '2021-11-24 10:22'
+                },
+                {
+                    avatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
+                    sex: '男',
+                    name: '吴亦凡',
+                    joinTime: '2021-11-24 10:22'
+                },
+                {
+                    avatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
+                    sex: '男',
+                    name: '吴亦凡',
+                    joinTime: '2021-11-24 10:22'
+                },
+            ],
+            roles: [{
+                avatar: 'https://img1.baidu.com/it/u=4025025658,2931130138&fm=26&fmt=auto',
+                name:'染谷将太',
+                sex:'男'
+            }, {
+                avatar: 'https://img2.baidu.com/it/u=4127921897,761507293&fm=26&fmt=auto',
+                name:'染谷将太',
+                sex:'男'
+            }, {
+                avatar: 'https://img0.baidu.com/it/u=3739576280,1915435388&fm=253&fmt=auto&app=120&f=PNG?w=200&h=200',
+                name:'染谷将太',
+                sex:'男'
+            }, {
+                avatar: 'https://img0.baidu.com/it/u=3211627156,1665674786&fm=26&fmt=auto',
+                name:'染谷将太',
+                sex:'男'
+            }, {
+                avatar: 'https://img1.baidu.com/it/u=2386722414,2264491889&fm=26&fmt=auto',
+                name:'染谷将太',
+                sex:'男'
+            }, {
+                avatar: 'https://img2.baidu.com/it/u=2146252702,1388388301&fm=26&fmt=auto',
+                name:'染谷将太',
+                sex:'男'
+            }, 
+        ]
+        },
         zjData: {},
         joined: !1,
+        hasMe: 1,
         payJiaGe: "-",
         isCanPay: !0,
         YuE: "",
         position: 0,
         showPay: !1,
-        TuiGuang: 0,
-        cheweiNan: 0,
-        cheweiNv: 0,
-        cheWeiBeiZhu: ""
+        gushiHide: !0,
+    },
+    gsToggle: function() {
+        this.setData({
+            gushiHide: !this.data.gushiHide
+        });
+    },
+    roleIntro: function(a) {
+        for (var t = a.currentTarget.dataset.index, n = [], roles = this.data.detailData.roles, o = 0; o < roles.length; o++) {
+            var u = roles[o];
+            n.push(utils.imageMogr(u.avatar, "0/w/500"));
+        }
+        wx.previewImage({
+            current: n[t],
+            urls: n
+        });
     },
     joinPay: function () {
         o.globalData.userInfo && o.globalData.userInfo.WeiXinId ? (this.gYue(), this.setData({
@@ -54,7 +138,7 @@ Page({
                         action: "dpyhye",
                         WeiXinId: o.globalData.userInfo.WeiXinId,
                         ZuJuId: s,
-                        jbId: this.data.zjData.JuBenId,
+                        dramaId: this.data.zjData.JuBenId,
                         XingBie: 1 == o.globalData.userInfo.gender ? "男" : "女",
                         dpId: o.globalData.dpid
                     }),
@@ -95,7 +179,7 @@ Page({
                         action: "dianpu",
                         WeiXinId: o.globalData.userInfo.WeiXinId,
                         ZuJuId: s,
-                        jbId: this.data.zjData.JuBenId,
+                        dramaId: this.data.zjData.JuBenId,
                         XingBie: 1 == o.globalData.userInfo.gender ? "男" : "女",
                         dpId: o.globalData.dpid,
                         appid: l.miniProgram.appId
@@ -149,58 +233,6 @@ Page({
                 });
             }
     },
-    bindjinputEventNan: function (t) {
-        console.log(t.detail.value), this.setData({
-            cheweiNan: t.detail.value
-        });
-    },
-    bindjinputEventNv: function (t) {
-        this.setData({
-            cheweiNv: t.detail.value
-        });
-    },
-    bindInput: function (t) {
-        this.setData({
-            cheWeiBeiZhu: t.detail.value
-        });
-    },
-    yuLiuCheWei: function () {
-        var t = this;
-        e.default.requestAction({
-            method: "POST",
-            data: {
-                action: "addzjr",
-                dpId: o.globalData.dpid,
-                zjId: s,
-                BeiZhu: this.data.cheWeiBeiZhu,
-                NanRenShu: this.data.cheweiNan,
-                NvRenShu: this.data.cheweiNv,
-                WeiXinId: o.globalData.userInfo.WeiXinId
-            },
-            success: function (a) {
-                console.log(a), t.setData({
-                    showCheWei: !1
-                });
-                var e = t.option;
-                t.setData({
-                    detailData: e
-                }, function () {
-                    t.getdpzjdetailData();
-                });
-            },
-            fail: function (t) {
-                wx.showToast({
-                    title: t && t.msg,
-                    icon: "none"
-                });
-            }
-        });
-    },
-    showCheWei: function () {
-        this.setData({
-            showCheWei: !0
-        });
-    },
     gYue: function () {
         var t = this;
         e.default.requestAction({
@@ -224,8 +256,6 @@ Page({
         var t = this,
             a = this.option;
         console.log(a), this.setData({
-            TuiGuang: o.globalData.userInfo.TuiGuang
-        }), this.setData({
             detailData: a
         }, function () {
             t.getdpzjdetailData();
@@ -233,31 +263,20 @@ Page({
     },
     onLoad: function (t) {
         var a = this;
-        this.option = t, console.log(this.option), s = t.ZuJuId, this.setData({
-            theme: o.globalData.dpdata.PeiSe,
-            tubiao: o.globalData.dpdata.TuBiao,
-            FuDongJia: o.globalData.dpdata.FuDongJia,
-            TuiGuang: o.globalData.userInfo ? o.globalData.userInfo.TuiGuang : 0
-        }), this.setData({
-            detailData: t
-        }, function () {
+        this.option = t, console.log(this.option), s = t.ZuJuId,
             o.globalData.userInfo && o.globalData.userInfo.WeiXinId ? a.getdpzjdetailData() : a.setData({
-                showModal: !0
+                // showModal: !0
             });
-        });
+
     },
-    goZuju: function () {
-        console.log("哈哈哈哈"), wx.redirectTo({
-            url: "/pages/myzuju/myzuju"
-        });
-    },
+
     jbdetail: function (t) {
         var a = this;
         e.default.requestAction({
             method: "GET",
             data: {
                 action: "jbdetail",
-                jbId: t
+                dramaId: t
             },
             success: function (t) {
                 var e = a.data.detailData,
@@ -278,7 +297,7 @@ Page({
     onShareAppMessage: function (t) {
         var a = this.data.zjData.JuBenName ? this.data.zjData.JuBenName : this.data.zjData.JuBenTiCai,
             e = "";
-        return o.globalData && o.globalData.userInfo && 1 == o.globalData.userInfo.TuiGuang && (e = "&tg=".concat(o.globalData.userInfo.WeiXinId, "&ts=").concat(Date.parse(new Date()))),
+        return o.globalData && o.globalData.userInfo && (e = "&tg=".concat(o.globalData.userInfo.WeiXinId, "&ts=").concat(Date.parse(new Date()))),
             console.log("/pages/index/welcome?path=/pages/zuju01/zuju&dpid=".concat(o.globalData.dpid, "&ZuJuId=").concat(s) + e), {
                 title: "邀请你组局" + a,
                 path: "/pages/index/welcome?path=/pages/zuju01/zuju&dpid=".concat(o.globalData.dpid, "&ZuJuId=").concat(s) + e
@@ -315,29 +334,7 @@ Page({
             }
         });
     },
-    playAudio: function (t) {
-        var a = this;
-        if (console.log(t), "正在播放" == this.data.playing && this.innerAudioContext) return this.innerAudioContext && this.innerAudioContext.pause(),
-            void this.setData({
-                playing: ""
-            });
-        if (this.innerAudioContext) return console.log("播放"), this.innerAudioContext.play(),
-            void this.setData({
-                playing: "正在播放"
-            });
-        var e = t.currentTarget.dataset.shengyin;
-        console.log(e), this.innerAudioContext = wx.createInnerAudioContext(), this.innerAudioContext.obeyMuteSwitch = !1,
-            this.innerAudioContext.autoplay = !0, this.innerAudioContext.src = i.default.transformImageUrl(e),
-            this.innerAudioContext.onPlay(function () {
-                console.log("xxxx"), a.setData({
-                    playing: "正在播放"
-                });
-            }), this.innerAudioContext.onEnded(function () {
-                a.setData({
-                    playing: ""
-                });
-            });
-    },
+
     onHide: function () {
         var t = this;
         this.innerAudioContext && this.innerAudioContext.pause(function () {
@@ -349,18 +346,7 @@ Page({
     onUnload: function () {
         this.innerAudioContext && this.innerAudioContext.destroy();
     },
-    goZhuChi: function (t) {
-        var a = t.currentTarget.dataset.zcid;
-        a > 0 && wx.navigateTo({
-            url: "/pages/zhuchi/zhuchi?zcid=" + a
-        });
-    },
-    goJuben: function (t) {
-        var a = t.currentTarget.dataset.jbid;
-        console.log(a), a && a > 0 && wx.navigateTo({
-            url: "/pages/juben/juben?jbId=".concat(a)
-        });
-    },
+
     select: function (t) {
         this.data.isCanPay ? this.setData({
             position: t.currentTarget.dataset.ep

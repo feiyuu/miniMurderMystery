@@ -1,5 +1,6 @@
 .bg {
     background-color: var(--z_bgbg);
+    padding-bottom: 200rpx;
 }
 
 .juben-info {
@@ -8,28 +9,11 @@
     padding: 34rpx 32rpx 30rpx;
 }
 
-.juben-info .share {
-    position: absolute;
-    right: 32rpx;
-    top: 34rpx;
-    text-align: center;
-}
 
-.juben-info .share image {
-    width: 36rpx;
-    height: 36rpx;
-}
-
-.juben-info .share .w {
-    margin-top: 4rpx;
-    font-size: 24rpx;
-    color: var(--z_zt20);
-    line-height: 34rpx;
-}
-
-.juben-info .image-box,.juben-info .image-box image {
-    width: 182rpx;
-    height: 222rpx;
+.juben-info .image-box,
+.juben-info .image-box image {
+    width: 178rpx;
+    height: 240rpx;
 }
 
 .juben-info .infos {
@@ -38,34 +22,19 @@
 }
 
 .juben-info .infos .name {
-    font-size: 44rpx;
-    line-height: 60rpx;
+    font-size: 40rpx;
+    line-height: 32rpx;
+    margin-top: 2rpx;
+    margin-bottom: 10rpx;
     color: var(--z_zt20);
 }
 
-.juben-info .infos .count,.juben-info .infos .gates {
-    margin-top: 6rpx;
-    font-size: 24rpx;
-    line-height: 34rpx;
-    color: var(--z_zt10);
-}
-
+.juben-info .infos .count,
 .juben-info .infos .gates {
-    margin-top: 4rpx;
-}
-
-.juben-info .infos .pinfen {
-    margin: 6rpx 0 0;
+    margin-top: 2rpx;
     font-size: 24rpx;
     line-height: 34rpx;
     color: var(--z_zt10);
-}
-
-.juben-info .infos .jiage {
-    margin: 6rpx 0 0;
-    line-height: 34rpx;
-    font-size: 28rpx;
-    color: var(--z_zt30);
 }
 
 .juben-content {
@@ -73,43 +42,29 @@
 }
 
 .jb-kaiju {
-    padding: 10rpx 32rpx 28rpx;
+    padding: 5rpx rpx;
     background-color: var(--z_bg10);
     margin: 18rpx 24rpx 0;
     border-radius: 15rpx;
 }
 
-.jb-kaiju .header {
+.header-item {
+    flex: 1;
     display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.jb-kaiju .header .left {
-    position: relative;
-    width: 50%;
-    border-right: var(--z_x10);
-    text-align: center;
-}
-
-.jb-kaiju .header .left:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 86rpx;
-    width: 1px;
-    background-color: var(--z_bg10);
-}
-
-.jb-kaiju .header .right {
-    width: 50%;
-    padding-left: 52rpx;
-    text-align: center;
-}
-
-.jb-kaiju .header .tit {
-    font-size: 28rpx;
-    line-height: 40rpx;
+.jb-kaiju .header-item .tit {
+    font-size: 24rpx;
     color: var(--z_zt20);
+}
+
+.jb-kaiju .header-item .tit-bottom {
+    font-size: 20rpx;
+    margin-top: 20rpx;
+    color: var(--z_zt10);
 }
 
 .jb-kaiju .header .time {
@@ -119,143 +74,104 @@
     color: var(--z_zt10);
 }
 
-.jb-kaiju .header .blue image,.jb-kaiju .header .red image {
+.jb-kaiju .header .blue image,
+.jb-kaiju .header .red image {
     margin-right: 6rpx;
     width: 28rpx;
     height: 28rpx;
 }
 
-.jb-zhuchi {
-    margin: 18rpx 24rpx 0;
-    border-radius: 15rpx;
-    background-color: var(--z_bg10);
+.juben-content .intro {
+    padding: 32rpx 46rpx 44rpx 32rpx;
+    border-bottom: var(--z_x10);
 }
 
-.jb-zhuchi .tit {
-    padding: 18rpx 32rpx 0;
-    font-size: 36rpx;
-    color: var(--z_zt20);
-    line-height: 50rpx;
-}
-
-.jb-zhuchi .header {
-    margin-top: 22rpx;
+.juben-content .words {
+    margin-top: 18rpx;
     position: relative;
-    display: flex;
-    padding: 0 32rpx 22rpx;
-}
-
-.jb-zhuchi .header .image-box,.jb-zhuchi .header .image-box image {
-    width: 166rpx;
-    height: 166rpx;
-}
-
-.jb-zhuchi .header .infos {
-    flex: 1;
-    margin-left: 16rpx;
-}
-
-.jb-zhuchi .header .infos .name {
-    font-size: 32rpx;
-    line-height: 44rpx;
-    color: var(--z_zt20);
-}
-
-.jb-zhuchi .header .infos .ser {
-    margin-top: 2rpx;
-    font-size: 24rpx;
-    color: var(--z_zt10);
-    line-height: 34rpx;
-}
-
-.jb-zhuchi .header .infos .audio {
-    margin-top: 20rpx;
-    position: relative;
-    width: 106rpx;
-    height: 36rpx;
-}
-
-.jb-zhuchi .header .infos .audio image {
-    width: 180rpx;
-    height: 35rpx;
-}
-
-.jb-zhuchi .header .infos .audio text {
-    top: 60%;
-    right: 12rpx;
-    font-size: 20rpx;
-    color: #4b8bef;
-    line-height: 20rpx;
-}
-
-.jb-zhuchi .header .infos .audio-label {
-    margin-top: 8rpx;
-    font-size: 24rpx;
-    color: var(--z_zt10);
-    line-height: 34rpx;
-}
-
-.jb-zhuchi .header .haoping {
-    position: absolute;
-    right: 76rpx;
-    top: 0rpx;
-    text-align: center;
-}
-
-.jb-zhuchi .header .haoping .hp-img image {
-    width: 70rpx;
-    height: 70rpx;
-}
-
-.jb-zhuchi .header .haoping .count {
-    margin-top: 10rpx;
-    font-size: 34rpx;
-    color: var(--z_zt30);
-}
-
-.jb-zhuchi .body {
-    padding: 28rpx 38rpx 32rpx 40rpx;
-    border-top: var(--z_x10);
     font-size: 28rpx;
-    line-height: 40rpx;
     color: var(--z_zt10);
+    line-height: 40rpx;
 }
+
+.juben-content .words.row-ellipsis {
+    line-clamp: 3;
+    height: 120rpx;
+}
+
+.juben-content .words .btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+.juben-content .words .btn image {
+    transition: all .2s ease-out;
+    width: 25rpx;
+    height: 15rpx;
+    transform: rotate(0deg);
+}
+
+.juben-content .words.row-ellipsis image {
+    transform: rotate(180deg);
+}
+
+.juben-content .juese {
+    padding: 22rpx 30rpx 8rpx;
+    border-bottom: var(--z_x10);
+}
+
+.juben-content .juese .js-list {
+    margin-top: 34rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.juben-content .juese .j-section {
+    display: flex;
+    width: 316rpx;
+    margin-bottom: 40rpx;
+}
+
+.juben-content .juese .j-section .img-box,.juben .juese .j-section .img-box image {
+    width: 128rpx;
+    height: 128rpx;
+}
+
+.juben-content .juese .j-section .ins {
+    margin-left: 8rpx;
+    flex: 1;
+}
+
+.juben-content .juese .j-section .ins .name {
+    font-size: 24rpx;
+    color: var(--z_zt20);
+    line-height: 34rpx;
+}
+
+.juben-content .juese .j-section .ins .words {
+    margin-top: 4rpx;
+    font-size: 20rpx;
+    color: var(--z_zt10);
+    line-height: 28rpx;
+    height: 84rpx;
+}
+
 
 .jb-members {
     background-color: var(--z_bg10);
     margin: 18rpx 24rpx 0rpx;
     border-radius: 15rpx;
+    padding-left: 32rpx;
+    padding-right: 32rpx;
 }
 
-.jb-members .header {
-    padding: 26rpx 32rpx 24rpx;
-}
-
-.jb-members .header .name {
+.jb-members .title {
     font-size: 36rpx;
     color: var(--z_zt20);
-    line-height: 50rpx;
-}
-
-.jb-members .header .counts {
-    margin-top: 8rpx;
-    width: 336rpx;
-    font-size: 28rpx;
-    line-height: 40rpx;
-}
-
-.jb-members .header .counts .blue image,.jb-members .header .counts .red image {
-    margin-right: 6rpx;
-    width: 28rpx;
-    height: 28rpx;
-}
-
-.jb-members .header .counts .blue {
-    color: #2a94de;
-}
-
-.jb-members .header .counts .red {
-    color: #ce449b;
+    padding-top: 30rpx;
+    padding-bottom: 30rpx;
 }
 
 .jb-members .list {
@@ -264,15 +180,17 @@
 }
 
 .mem-section {
-    padding: 20rpx 36rpx 20rpx 32rpx;
     align-items: center;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
 }
 
 .mem-section .head-img {
     position: relative;
 }
 
-.mem-section .head-img,.mem-section .head-img image.head {
+.mem-section .head-img,
+.mem-section .head-img image.head {
     width: 86rpx;
     height: 86rpx;
 }
@@ -286,20 +204,23 @@
 }
 
 .mem-section .infos {
-    margin-left: 10rpx;
+    margin-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .mem-section .infos .name {
     font-size: 28rpx;
     color: var(--z_zt20);
-    line-height: 40rpx;
+    line-height: 28rpx;
 }
 
 .mem-section .infos .dt {
-    margin-top: 4rpx;
+    margin-top: 20rpx;
     font-size: 24rpx;
     color: var(--z_zt10);
-    line-height: 34rpx;
+    line-height: 24rpx;
 }
 
 .mem-section .grade {
@@ -316,18 +237,36 @@
 }
 
 .join-in button {
-    height: 98rpx;
-    width: 686rpx;
+    height: 90rpx !important;
+    width: 586rpx !important;
     border-radius: 49rpx;
-    line-height: 98rpx;
     border: none;
-    font-size: 34rpx;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 34rpx !important;
     background-color: var(--z_bganon);
     color: var(--z_ztanon);
 }
 
-.btn::after {
+.btn-share {
+    background-color: transparent;
+    width: 180rpx !important;
+}
+
+.btn-share::after {
     border: none;
+}
+
+.share-tit {
+    font-size: 20rpx;
+    color: var(--z_zt20);
+    margin-top: 10rpx;
+}
+
+.share image {
+    width: 36rpx;
+    height: 36rpx;
 }
 
 .join-in .jiaruzuju {
@@ -341,7 +280,8 @@
     justify-content: center;
 }
 
-.l_item,.v_money {
+.l_item,
+.v_money {
     display: flex;
     align-items: center;
 }
@@ -376,13 +316,4 @@
     background: #eee;
     width: 600rpx;
     border-radius: 16rpx;
-}
-
-.btn-chewei {
-    width: 250rpx;
-    border-radius: 59rpx;
-    margin-top: 30px;
-    margin-bottom: 40px;
-    background-color: #feb997;
-    color: #fff;
 }

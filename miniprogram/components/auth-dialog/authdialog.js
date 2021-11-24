@@ -1,4 +1,5 @@
-var e = require("../../@babel/runtime/helpers/interopRequireDefault")(require("../../api/request.js")), o = getApp();
+var e = require("../../@babel/runtime/helpers/interopRequireDefault")(require("../../api/request.js")),
+    o = getApp();
 
 Component({
     properties: {
@@ -16,7 +17,7 @@ Component({
         }
     },
     observers: {
-        autoShow: function(e) {
+        autoShow: function (e) {
             e && (o.globalData.userInfo || (this.wxCode(), this.setData({
                 showModal: !0
             })));
@@ -27,35 +28,35 @@ Component({
         showPhone: !1,
         canIUseGetUserProfile: !1
     },
-    attached: function() {
+    attached: function () {
         wx.getUserProfile && this.setData({
             canIUseGetUserProfile: !0
         });
     },
-    ready: function() {
+    ready: function () {
         this.data.autoShow && (o.globalData.userInfo || (this.wxCode(), this.setData({
             showModal: !0
         })));
     },
     methods: {
-        closeAuth: function() {
+        closeAuth: function () {
             this.setData({
                 showModal: !1
             });
         },
-        closePhone: function() {
+        closePhone: function () {
             this.setData({
                 showPhone: !1
             });
         },
-        getUserProfile: function(e) {
+        getUserProfile: function (e) {
             var a = this;
             console.log(e);
             wx.getAccountInfoSync();
             wx.getUserProfile({
                 lang: "zh_CN",
                 desc: "用于完善会员资料",
-                success: function(e) {
+                success: function (e) {
                     console.log(e);
                     var t = a;
                     o.globalData.u = {
@@ -71,7 +72,7 @@ Component({
                 }
             });
         },
-        getUserInfo: function(e) {
+        getUserInfo: function (e) {
             wx.getAccountInfoSync();
             var _this = this;
             o.globalData.u = {
@@ -85,9 +86,10 @@ Component({
                 showModal: !1
             });
         },
-        getPhoneNumber: function(a) {
+        getPhoneNumber: function (a) {
             if (!a.detail.encryptedData) return console.log("用户拒绝获取手机号"), void console.log(a.detail.errMsg);
-            var t = wx.getAccountInfoSync(), n = this;
+            var t = wx.getAccountInfoSync(),
+                n = this;
             e.default.savePhone({
                 method: "POST",
                 data: {
@@ -99,24 +101,25 @@ Component({
                     gender: o.globalData.u.gender,
                     nickName: o.globalData.u.nickName
                 },
-                success: function(e) {
+                success: function (e) {
                     n.closePhone(), n.wxCode(), n.getUser(e);
                 },
-                fail: function(e) {
+                fail: function (e) {
                     n.wxCode();
                 }
             });
         },
-        wxCode: function() {
+        wxCode: function () {
             var e = this;
             wx.login({
-                success: function(o) {
+                success: function (o) {
                     console.log("login", o), e.code = o.code;
                 }
             });
         },
-        getUser: function(a) {
-            var t = this, n = wx.getAccountInfoSync();
+        getUser: function (a) {
+            var t = this,
+                n = wx.getAccountInfoSync();
             e.default.requestAction({
                 method: "POST",
                 data: {
@@ -125,10 +128,10 @@ Component({
                     weixinid: a,
                     appid: n.miniProgram.appId
                 },
-                success: function(e) {
+                success: function (e) {
                     console.log(e), o.globalData.userInfo = e, console.log, t.triggerEvent("authEvent", {});
                 },
-                fail: function() {
+                fail: function () {
                     t.wxCode();
                 }
             });

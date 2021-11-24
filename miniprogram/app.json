@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/dramaDepot/index",
     "pages/home/index",
+    "pages/dramaDetail/index",
+    "pages/dramaDepot/index",
     "pages/team/index",
     "pages/mine/index",
-    "pages/dramaDetail/index",
     "pages/shop/index"
   ],
   "window": {

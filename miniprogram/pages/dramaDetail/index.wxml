@@ -1,130 +1,85 @@
 <import src="../authtep/authtep.wxml"></import>
-<view id="{{theme}}">
+<view>
     <view class="container bg">
         <view class="juben-info">
-            <view bindtap="goJuben" class="image-box" data-jbid="{{zjData.JuBenId}}">
-                <image src="{{tools.transformImageUrl(zjData.FengMian?zjData.FengMian:detailData.FengMian)}}" style="border-radius:12rpx"></image>
+            <view class="image-box" data-dramaId="{{detailData.dramaId}}">
+                <image src="{{tools.transformImageUrl(detailData.dramaCover)}}" style="border-radius:12rpx"></image>
             </view>
-            <view class="infos" wx:if="{{zjData&&zjData.FengMian}}">
-                <view class="name">
-                    <text>{{zjData.JuBenName?zjData.JuBenName:zjData.JuBenTiCai}}</text>
-                </view>
-                <view class="name">
-                    <text>{{item.MingCheng}}</text>
-                </view>
-                <view class="gates" wx:if="{{zjData.JuBenId!=0}}">
-                    <text>{{zjData.RenShu}}人 / {{zjData.ShiChang}}/
-                        {{zjData.TiCai}}</text>
-                </view>
-                <view class="pinfen" wx:if="{{zjData.JuBenId!=0}}">
-                    <text>{{zjData.PingLunShu}}人评论</text>
-                </view>
-                <starts score="{{zjData.ZongFen/10}}" wx:if="{{zjData&&zjData.JuBenId!=0}}"></starts>
-                <view class="jiage" wx:if="{{zjData.JuBenId!=0}}">
-                    <text>{{zjData.DanJia}}元/人</text>
-                </view>
+            <view class="infos">
+                <view class="name"> {{detailData.dramaName}}</view>
+                <view class="gates">{{detailData.NanNvShu}} </view>
+                <view class="gates">{{detailData.duration}}</view>
+                <view class="gates">难度： {{detailData.difficulty}}</view>
+                <view class="gates">{{detailData.type}}/{{detailData.background}}/{{detailData.theme}}</view>
+                <view class="gates">{{detailData.price}}元/人</view>
+                <starts class="gates" score="{{detailData.dramaScore}}"></starts>
             </view>
-            <button class=".btn" openType="share" style="width:150rpx;height: 120rpx;background-color: transparent;">
-                <view class="share">
-                    <image mode="aspectFill" src="/img/tb/{{tubiao}}/wx-share.png"></image>
-                    <view class="w">邀请参加</view>
-                </view>
-            </button>
         </view>
         <view class="juben-content">
-            <view class="jb-kaiju">
-                <view class="header">
-                    <view class="left">
-                        <text class="tit">开局时间</text>
-                        <view class="time">
-                            <text>{{zjData.KaiJuShiJian}}</text>
+            <view class="jb-kaiju flex-hor flex-center">
+                <view class="header-item">
+                    <text class="tit">开局时间</text>
+                    <text class="tit-bottom">{{detailData.KaiJuShiJian}}</text>
+                </view>
+                <view class="header-item">
+                    <text class="tit">主持人</text>
+                    <text class="tit-bottom">{{detailData.DMName}}</text>
+                </view>
+                <view class="header-item">
+                    <button class="btn-share" openType="share">
+                        <view class="share">
+                            <image src="/img/tb/{{tubiao}}/wx-share.png"></image>
+                            <view class="share-tit">邀请参加</view>
                         </view>
-                    </view>
-                    <view class="right">
-                        <text class="tit">开局人数</text>
-                        <view class="time">
-                            <text>{{zjData.JuBenId==0?zjData.ZuiXiaoRenShu+'~'+zjData.ZuiDaRenShu:zjData.Nan+zjData.Nv}}人</text>
-                        </view>
+                    </button>
+                </view>
+            </view>
+            <view class="intro" wx:if="{{detailData.profile}}">
+                <view class="tit">剧本简介</view>
+                <view class="words  {{gushiHide?'':'row-ellipsis'}}">
+                    <text bindtap="gsToggle">{{detailData.profile}}</text>
+                    <view bindtap="gsToggle" class="btn">
+                        <image mode="aspectFillg" src="/assets/images/ic-carter-down.png"></image>
                     </view>
                 </view>
             </view>
-            <view class="jb-zhuchi">
-                <view class="tit">主持</view>
-                <view class="header">
-                    <view bindtap="goZhuChi" class="image-box" data-zcid="{{zjData.ZhuChiId}}">
-                        <image mode="aspectFill" src="{{zjData.ZhuChiId>0?tools.transformImageUrl(zjData.TouXiang):'/assets/images/zanwu.png'}}" style="border-radius:12rpx"></image>
-                    </view>
-                    <view class="infos" wx:if="{{zjData.ZhuChiId>0}}">
-                        <view class="name">
-                            <text>{{zjData.NiCheng}}</text>
-                        </view>
-                        <view class="ser">
-                            <text>带本次数：{{zjData.CiShu}}次</text>
-                        </view>
-                        <view bindtap="playAudio" class="audio" data-shengyin="{{zjData.ShengYin}}" wx:if="{{zjData.ShengYin}}">
-                            <image mode="aspectFill" src="{{playing=='正在播放'?'/assets/images/audio_s.gif':'/assets/images/audio_p.gif'}}"></image>
-                        </view>
-                        <view class="audio-label" wx:if="{{zjData.ShengYin}}">听一段主持声音</view>
-                    </view>
-                    <view style="flex:1" wx:else></view>
-                    <view class="haoping">
-                        <view class="hp-img">
-                            <image mode="aspectFill" src="/assets/images/zan.png"></image>
-                        </view>
-                        <view class="count">
-                            <text>{{zjData.ZhuChiId>0?tools.tranBfb(zjData.HaoPing):'暂无'}}</text>
-                        </view>
-                    </view>
-                </view>
-                <view class="body">
-                    <text>{{zjData.BeiZhu}}</text>
+            <view class="juese" wx:if="{{detailData.roles&&detailData.roles.length>0}}">
+                <view class="tit">角色介绍</view>
+                <view class="js-list">
+                    <swiper displayMultipleItems="2" duration="500" interval="5000" nextMargin="10rpx" previousMargin="10rpx" style="width: 100%;height: 450rpx;">
+                        <swiper-item wx:for="{{detailData.roles}}">
+                            <view class="swiper-item" style="font-size: 24rpx;">
+                                <image bindtap="roleIntro" data-index="{{index}}" mode="aspectFill" src="{{tools.imageMogr(item.avatar,'0/w/200')}}" style="border-radius:12rpx;width: 300rpx;height: 380rpx;"></image>
+                                <view class="name" style="margin-top: 12rpx;">{{item.name}} · {{item.sex}}</view>
+                            </view>
+                        </swiper-item>
+                    </swiper>
                 </view>
             </view>
+
             <view class="jb-members">
-                <view class="header">
-                    <view class="name">组局成员</view>
-                    <view class="counts flex-jus">
-                        <text>{{zjData.users.length}}人</text>
-                        <view class="flex-ver blue">
-                            <image mode="aspectFill" src="/assets/images/ic-sex-circle-male.png"></image>
-                            <text wx:if="{{zjData.JuBenId==0}}">{{tools.jisuanNv(zjData.users,'男')}}</text>
-                            <text wx:else>{{tools.jisuanNv(zjData.users,'男')}}/{{zjData.Nan}}</text>
-                        </view>
-                        <view class="flex-ver red">
-                            <image mode="aspectFill" src="/assets/images/ic-sex-circle-female.png"></image>
-                            <text wx:if="{{zjData.JuBenId==0}}">{{tools.jisuanNv(zjData.users,'女')}}</text>
-                            <text wx:else>{{tools.jisuanNv(zjData.users,'女')}}/{{zjData.Nv}}</text>
-                        </view>
-                    </view>
-                </view>
-                <view class="list" wx:for="{{zjData.users}}">
+                <view class="title">组局成员</view>
+                <view class="list" wx:for="{{detailData.users}}">
                     <view class="mem-section flex-jus">
                         <view class="left flex-ver">
                             <view class="head-img">
-                                <image class="head" mode="aspectFill" src="{{tools.transformImageUrl(item.TouXiang)}}" style="border-radius:50%"></image>
-                                <image class="sex" mode="aspectFill" src="{{item.XingBie=='男'?'/assets/images/ic-sex-circle-male.png':'/assets/images/ic-sex-circle-female.png'}}"></image>
+                                <image class="head" mode="aspectFill" src="{{tools.transformImageUrl(item.avatar)}}" style="border-radius:50%"></image>
+                                <image class="sex" mode="aspectFill" src="{{item.sex=='男'?'/assets/images/ic-sex-circle-male.png':'/assets/images/ic-sex-circle-female.png'}}"></image>
                             </view>
                             <view class="infos">
-                                <view class="name">
-                                    <text>{{item.NiCheng}}</text>
-                                    <text style="color: red;" wx:if="{{item.tgZhuangTai==1}}">[我邀请的]</text>
-                                </view>
-                                <view class="dt">
-                                    <text>{{item.ShiJian}}</text>
-                                </view>
+                                <text class="name">{{item.name}}</text>
+                                <text class="dt">{{item.joinTime}}</text>
                             </view>
                         </view>
                         <view class="grade"></view>
                     </view>
                 </view>
             </view>
-            <view style="height:180rpx;width:2rpx"></view>
-            <div class="join-in flex-center" wx:if="{{zjData.users}}">
+            <view class="join-in flex-center" wx:if="{{detailData.users}}">
                 <button class="jiaruzuju" wx:if="{{joined}}">已加入</button>
-                <button bindtap="joinPay" wx:elif="{{zjData.YiMan==0}}">加入并支付￥{{tools.plusFuDongJia(zjData.JiaGe,0)}}元</button>
+                <button bindtap="joinPay" wx:elif="{{hasMe==1}}">加入并支付￥{{tools.plusFuDongJia(detailData.price,0)}}元</button>
                 <button class="jiaruzuju" wx:else>本局人已满</button>
-            </div>
-            <image bindtap="showCheWei" src="/assets/images/yuliuchewei.png" style="position: fixed;bottom: 160rpx;right: 10rpx;width: 100rpx;height: 100rpx;" wx:if="{{TuiGuang==1}}"></image>
+            </view>
         </view>
         <cialog show="{{showPay}}">
             <view class="pay_dialog">
@@ -157,18 +112,4 @@
     </view>
 </view>
 <authdialog autoShow="{{showModal}}" bindauthEvent="bindauthEvent" force="{{true}}" isPhone="{{true}}"></authdialog>
-<cialog show="{{showCheWei}}">
-    <view class="pay_dialog">
-        <view style="display: flex;flex-direction: column;justify-content: space-around;height: 450rpx;margin-top: 20rpx;">
-            <text>预留车位</text>
-            <text style="font-size: 24rpx;color: #666;">添加过预留车位的，跳车需联系本店</text>
-            <jiajiank bindjinputEvent="bindjinputEventNan" custom="true" maxNum="12" minNum="{{0}}" num="{{0}}" title="男"></jiajiank>
-            <jiajiank backgroundColor="#FEB997" bindjinputEvent="bindjinputEventNv" custom="true" maxNum="12" minNum="{{0}}" num="{{0}}" title="女"></jiajiank>
-            <view style="width: 400rpx;height: 80rpx;background-color: #e4e4e4;display: flex;align-self: center;align-items: center;border-radius: 16rpx;">
-                <input bindinput="bindInput" placeholder="给商家备注" style="text-align:left;padding-left: 10rpx;"></input>
-            </view>
-        </view>
-        <button bindtap="yuLiuCheWei" class="btn-chewei">确认</button>
-    </view>
-</cialog>
 <wxs module="tools" src="../tools.wxs" />

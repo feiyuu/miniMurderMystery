@@ -6,5 +6,9 @@
         "authdialog": "/components/auth-dialog/authdialog",
         "jiajiank": "/components/jiajiank/jiajiank",
         "mp-navigation-bar": "../../components/navigation-bar/navigation-bar"
-    }
+    },
+    "navigationBarBackgroundColor": "#212121",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false,
+    "backgroundTextStyle": "dark"
 }
