@@ -9,8 +9,8 @@ page {
   color: #fff;
   --z_bgbg: #212121;
   --z_bg10: #282828;
-  --z_bg20: #1dd2d6;
-  --z_bg21: linear-gradient(-225deg,#9efbd3,#57e9f2 48%,#45d4fb);
+  --z_bg20: #633786;
+  --z_bg21: linear-gradient(-225deg,#7c539f,#a16fac 48%,#c88dbc);
   --z_bg30: #353537;
   --z_bg40: #2d3939;
   --z_bg60: #2d3939;

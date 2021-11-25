@@ -1,6 +1,5 @@
-var t = require("../../@babel/runtime/helpers/interopRequireDefault"),
-    a = require("../../@babel/runtime/helpers/objectSpread2"),
-    e = t(require("../../api/request.js")),
+var  a = require("../../@babel/runtime/helpers/objectSpread2"),
+    e = require("../../api/request.js"),
     utils = require("../../utils/util"),
     o = getApp(),
     s = "";
@@ -111,7 +110,7 @@ Page({
         });
     },
     joinPay: function () {
-        o.globalData.userInfo && o.globalData.userInfo.WeiXinId ? (this.gYue(), this.setData({
+        o.globalData.userInfo && o.globalData.userInfo.wxCode ? (this.gYue(), this.setData({
             showPay: !0
         })) : this.setData({
             showModal: !0
@@ -132,11 +131,11 @@ Page({
                         ts: d
                     });
                 }
-                e.default.pay({
+                e.pay({
                     method: "POST",
                     data: a(a({}, i), {}, {
                         action: "dpyhye",
-                        WeiXinId: o.globalData.userInfo.WeiXinId,
+                        wxCode: o.globalData.userInfo.wxCode,
                         ZuJuId: s,
                         dramaId: this.data.zjData.JuBenId,
                         XingBie: 1 == o.globalData.userInfo.gender ? "男" : "女",
@@ -173,11 +172,11 @@ Page({
                         ts: d
                     });
                 }
-                e.default.pay({
+                e.pay({
                     method: "POST",
                     data: a(a({}, i), {}, {
                         action: "dianpu",
-                        WeiXinId: o.globalData.userInfo.WeiXinId,
+                        wxCode: o.globalData.userInfo.wxCode,
                         ZuJuId: s,
                         dramaId: this.data.zjData.JuBenId,
                         XingBie: 1 == o.globalData.userInfo.gender ? "男" : "女",
@@ -235,12 +234,12 @@ Page({
     },
     gYue: function () {
         var t = this;
-        e.default.requestAction({
+        e.requestAction({
             method: "GET",
             data: {
                 action: "dpyhye",
                 dpId: o.globalData.dpid,
-                WeiXinId: o.globalData.userInfo.WeiXinId
+                wxCode: o.globalData.userInfo.wxCode
             },
             success: function (a) {
                 console.log(a), t.setData({
@@ -264,7 +263,7 @@ Page({
     onLoad: function (t) {
         var a = this;
         this.option = t, console.log(this.option), s = t.ZuJuId,
-            o.globalData.userInfo && o.globalData.userInfo.WeiXinId ? a.getdpzjdetailData() : a.setData({
+            o.globalData.userInfo && o.globalData.userInfo.wxCode ? a.getdpzjdetailData() : a.setData({
                 // showModal: !0
             });
 
@@ -272,7 +271,7 @@ Page({
 
     jbdetail: function (t) {
         var a = this;
-        e.default.requestAction({
+        e.requestAction({
             method: "GET",
             data: {
                 action: "jbdetail",
@@ -297,7 +296,7 @@ Page({
     onShareAppMessage: function (t) {
         var a = this.data.zjData.JuBenName ? this.data.zjData.JuBenName : this.data.zjData.JuBenTiCai,
             e = "";
-        return o.globalData && o.globalData.userInfo && (e = "&tg=".concat(o.globalData.userInfo.WeiXinId, "&ts=").concat(Date.parse(new Date()))),
+        return o.globalData && o.globalData.userInfo && (e = "&tg=".concat(o.globalData.userInfo.wxCode, "&ts=").concat(Date.parse(new Date()))),
             console.log("/pages/index/welcome?path=/pages/zuju01/zuju&dpid=".concat(o.globalData.dpid, "&ZuJuId=").concat(s) + e), {
                 title: "邀请你组局" + a,
                 path: "/pages/index/welcome?path=/pages/zuju01/zuju&dpid=".concat(o.globalData.dpid, "&ZuJuId=").concat(s) + e
@@ -305,12 +304,12 @@ Page({
     },
     getdpzjdetailData: function () {
         var t = this;
-        e.default.requestAction({
+        e.requestAction({
             method: "GET",
             data: {
                 action: "dpzjdetails",
                 ZuJuId: s,
-                WeiXinId: o.globalData.userInfo.WeiXinId
+                wxCode: o.globalData.userInfo.wxCode
             },
             success: function (a) {
                 if (t.setData({

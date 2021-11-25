@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/mine/index",
     "pages/home/index",
     "pages/dramaDetail/index",
     "pages/dramaDepot/index",
     "pages/team/index",
-    "pages/mine/index",
     "pages/shop/index"
   ],
   "window": {
@@ -34,7 +34,7 @@
       },
       {
         "pagePath": "pages/shop/index",
-        "text": "小卖铺",
+        "text": "商店",
         "iconPath": "static/image/icon-tab-index.png",
         "selectedIconPath": "static/image/icon-tab-index-act.png"
       },

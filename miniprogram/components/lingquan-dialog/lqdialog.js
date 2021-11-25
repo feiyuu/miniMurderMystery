@@ -1,4 +1,4 @@
-var t = require("../../@babel/runtime/helpers/interopRequireDefault")(require("../../api/request.js")), a = getApp();
+var t = require("../../api/request.js"), a = getApp();
 
 Component({
     properties: {
@@ -24,7 +24,7 @@ Component({
         getData: function() {
             if (this.data.yhid) {
                 var e = this;
-                t.default.requestAction({
+                t.requestAction({
                     method: "GET",
                     data: {
                         action: "hqyhq",
@@ -50,13 +50,13 @@ Component({
             if (a.globalData.userInfo) {
                 console.log(this.data);
                 var e = this;
-                t.default.requestAction({
+                t.requestAction({
                     method: "POST",
                     data: {
                         action: "lqyhq",
                         dpId: a.globalData.dpid,
                         yhid: this.data.yhid,
-                        WeiXinId: a.globalData.userInfo.WeiXinId
+                        wxCode: a.globalData.userInfo.wxCode
                     },
                     success: function(t) {
                         wx.showToast({

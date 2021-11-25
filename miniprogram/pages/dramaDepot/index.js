@@ -1,6 +1,5 @@
-var a = require("../../@babel/runtime/helpers/interopRequireDefault"),
-    defineProperty = require("../../@babel/runtime/helpers/defineProperty"),
-    request = a(require("../../api/request.js")),
+var  defineProperty = require("../../@babel/runtime/helpers/defineProperty"),
+    request = require("../../api/request.js"),
     app = getApp();
 
 Page({
@@ -301,7 +300,7 @@ Page({
     },
     getList: function () {
         var _this = this;
-        this.data.loadMoreing || (_this.data.loadMoreing = !0, request.default.requestAction({
+        this.data.loadMoreing || (_this.data.loadMoreing = !0, request.requestAction({
             method: "GET",
             data: {
                 action: "dpjbdata",

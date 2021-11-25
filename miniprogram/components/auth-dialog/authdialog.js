@@ -1,5 +1,6 @@
-var e = require("../../@babel/runtime/helpers/interopRequireDefault")(require("../../api/request.js")),
-    o = getApp();
+var request =require("../../api/request.js"),
+    app = getApp();
+import {DoApiRequest, enquene,enqueneUpload} from '../../doframework/network/DoApiManager';
 
 Component({
     properties: {
@@ -18,7 +19,7 @@ Component({
     },
     observers: {
         autoShow: function (e) {
-            e && (o.globalData.userInfo || (this.wxCode(), this.setData({
+            e && (app.globalData.userInfo || (this.wxLogin(), this.setData({
                 showModal: !0
             })));
         }
@@ -34,7 +35,7 @@ Component({
         });
     },
     ready: function () {
-        this.data.autoShow && (o.globalData.userInfo || (this.wxCode(), this.setData({
+        this.data.autoShow && (app.globalData.userInfo || (this.wxLogin(), this.setData({
             showModal: !0
         })));
     },
@@ -50,7 +51,7 @@ Component({
             });
         },
         getUserProfile: function (e) {
-            var a = this;
+            var that = this;
             console.log(e);
             wx.getAccountInfoSync();
             wx.getUserProfile({
@@ -58,14 +59,13 @@ Component({
                 desc: "用于完善会员资料",
                 success: function (e) {
                     console.log(e);
-                    var t = a;
-                    o.globalData.u = {
+                    app.globalData.userInfo = {
                         avatarUrl: e.userInfo.avatarUrl,
                         gender: e.userInfo.gender,
                         nickName: e.userInfo.nickName
                     }
-                    a.getUser(e)
-                    t.setData({
+                    that.closeAuth(), that.wxLogin();
+                    that.setData({
                         // showPhone: !0,
                         showModal: !1
                     });
@@ -75,12 +75,12 @@ Component({
         getUserInfo: function (e) {
             wx.getAccountInfoSync();
             var _this = this;
-            o.globalData.u = {
+            app.globalData.userInfo = {
                 avatarUrl: e.detail.userInfo.avatarUrl,
                 gender: e.detail.userInfo.gender,
                 nickName: e.detail.userInfo.nickName
             }
-            _this.getUser(e)
+            _this.closeAuth(), _this.wxLogin();
             this.setData({
                 // showPhone: !0,
                 showModal: !1
@@ -90,51 +90,51 @@ Component({
             if (!a.detail.encryptedData) return console.log("用户拒绝获取手机号"), void console.log(a.detail.errMsg);
             var t = wx.getAccountInfoSync(),
                 n = this;
-            e.default.savePhone({
+            request.savePhone({
                 method: "POST",
                 data: {
                     code: n.code,
                     encryptedData: a.detail.encryptedData,
                     iv: a.detail.iv,
                     appid: t.miniProgram.appId,
-                    avatarUrl: o.globalData.u.avatarUrl,
-                    gender: o.globalData.u.gender,
-                    nickName: o.globalData.u.nickName
+                    avatarUrl: app.globalData.userInfo.avatarUrl,
+                    gender: app.globalData.userInfo.gender,
+                    nickName: app.globalData.userInfo.nickName
                 },
                 success: function (e) {
-                    n.closePhone(), n.wxCode(), n.getUser(e);
+                    n.closePhone(), n.wxLogin();
                 },
                 fail: function (e) {
-                    n.wxCode();
+                    // n.wxLogin();
                 }
             });
         },
-        wxCode: function () {
-            var e = this;
+        wxLogin: function () {
+            var that = this;
             wx.login({
                 success: function (o) {
-                    console.log("login", o), e.code = o.code;
+                    app.globalData.userInfo.wxCode = o.code,
+                        console.log("login", o), that.code = o.code, that.registerOrLogin(o.code);
                 }
             });
         },
-        getUser: function (a) {
-            var t = this,
-                n = wx.getAccountInfoSync();
-            e.default.requestAction({
-                method: "POST",
-                data: {
-                    action: "dpgxyh",
-                    dpid: o.globalData.dpid,
-                    weixinid: a,
-                    appid: n.miniProgram.appId
-                },
-                success: function (e) {
-                    console.log(e), o.globalData.userInfo = e, console.log, t.triggerEvent("authEvent", {});
-                },
-                fail: function () {
-                    t.wxCode();
-                }
-            });
+        registerOrLogin: function (res) {
+            let loginRequest = new DoApiRequest();
+            loginRequest.apiName = "/player/login/wx/v1";
+            loginRequest.method = 'GET';
+            loginRequest.addParam("wxCode", res.code);
+            loginRequest.addParam("avatarUrl", app.globalData.userInfo.avatarUrl);
+            loginRequest.addParam("gender", app.globalData.userInfo.gender);
+            loginRequest.addParam("nickName", app.globalData.userInfo.nickName);
+            loginRequest.apiCallback = function (success, response) {
+                wx.hideLoading({
+                    success: (res) => {},
+                });
+                console.log("response  ===  " + response);
+                var responseObj = JSON.parse(response);
+                console.log(responseObj), console.log, that.triggerEvent("authEvent", {});
+            }
+            enquene(loginRequest);
         }
-    }
+    },
 });
