@@ -93,19 +93,19 @@ Component({
         login: function (code) {
             let that = this;
             let loginRequest = new ApiRequest();
-            loginRequest.apiName = "/storeMs/checkUserLogin";
+            loginRequest.apiName = "/storeMsMini/checkUserLogin";
             loginRequest.method = 'GET';
             loginRequest.addParam("wxCode", code);
             loginRequest.apiCallback = function (success, response) {
                 wx.hideLoading({
                     success: (res) => {},
                 });
-                if (response.code == 1) {
+                if (success && response.code == 1) {
                     app.globalData.userInfo = {};
                     app.globalData.userInfo.openid = response.openid;
                     console.log(app.globalData.userInfo);
                     console.log(response), that.triggerEvent("authEvent", {});
-                } else if (response.code == 2) {
+                } else if (success && response.code == 2) {
                     app.globalData.userInfo = {};
                     app.globalData.userInfo.openid = response.openid;
                     console.log(app.globalData.userInfo);
@@ -124,14 +124,14 @@ Component({
         completeLogin: function () {
             let that = this;
             let loginRequest = new ApiRequest();
-            loginRequest.apiName = "/storeMs/registerUser";
+            loginRequest.apiName = "/storeMsMini/registerUser";
             loginRequest.method = 'POST';
             loginRequest.addParam("openid", app.globalData.userInfo.openid);
             loginRequest.addParam("avatarUrl", app.globalData.userInfo.avatarUrl);
             loginRequest.addParam("gender", app.globalData.userInfo.gender);
             loginRequest.addParam("nickName", app.globalData.userInfo.nickName);
             loginRequest.apiCallback = function (success, response) {
-                if (response.code == 1) {
+                if (success && response.code == 1) {
                     that.triggerEvent("authEvent", {});
                 } else {
                     app.globalData.userInfo = null;

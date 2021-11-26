@@ -12,14 +12,14 @@ class ApiRequest {
     this.method = "POST";
     this.callback = null;
     this.map = new Map();
+    this.data = {};
     // 记录时间戳
     var dateNow = new Date();
     this.time = dateNow.getTime();
   }
-
   addParam(keyName, keyValue) {
     // 设置参数
-    this.map.set(keyName, keyValue)
+    this.data[keyName]= keyValue;
   }
   _strMapToObj(strMap) {
     let obj = Object.create(null);
@@ -35,8 +35,7 @@ class ApiRequest {
     return JSON.stringify(this._strMapToObj(map));
   }
   getApiRequestParam() {
-    console.log(" getApiRequestParam：this.map====================" +  JSON.stringify(this._strMapToObj(this.map)));
-    return this.map;
+    return this.data;
   }
 }
 

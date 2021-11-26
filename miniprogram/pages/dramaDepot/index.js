@@ -1,6 +1,11 @@
 var defineProperty = require("../../@babel/runtime/helpers/defineProperty"),
     request = require("../../api/request.js"),
+    request = require("../../api/request.js"),
     app = getApp();
+import {
+    ApiRequest,
+    enquene
+} from '../../doframework/network/ApiManager';
 
 Page({
     data: {
@@ -8,13 +13,14 @@ Page({
         tubiao: "z_moren",
         keyWords: "",
         page: 1,
-        loadMoreing: !1,
+        dramaName: '',
+        pageSize: 10,
         statusBarHeight: app.globalData.statusBarHeight,
-        list: [{
+        dramaList: [{
                 dramaId: 1001,
                 dramaCover: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
                 isNew: 1,
-                dramaName: "三千鸦杀",
+                dramaName: "三千鸦杀啊啊",
                 type: '欢乐',
                 theme: '情感',
                 background: '民国',
@@ -257,7 +263,7 @@ Page({
     },
     onLoad: function (data) {
         var t = this;
-        this.getList();
+        this.getFilterList();
     },
 
     filterCheck: function (data) {
@@ -269,8 +275,8 @@ Page({
             r = "filterDatas." + s + ".param";
         console.log(l), this.setData((defineProperty(thise = {
             page: 1
-        }, r, n), defineProperty(thise, l, v), defineProperty(thise, "loadMoreing", !1), thise), function () {
-            return _this.getList();
+        }, r, n), defineProperty(thise, l, v), thise), function () {
+            return _this.getFilterList();
         }), console.log(this.data);
     },
     scroll: function (data) {
@@ -294,10 +300,10 @@ Page({
             "filterDatas.order.cur": 1,
             "filterDatas.order.param": "推荐",
             page: 1
-        }), wx.showNavigationBarLoading(), this.getList();
+        }), wx.showNavigationBarLoading(), this.getFilterList();
     },
     onReachBottom: function () {
-        this.getList(), console.log("xxxxxxxxxxx");
+        this.getFilterList(), console.log("xxxxxxxxxxx");
     },
 
     jubenDetail: function (data) {
@@ -305,51 +311,67 @@ Page({
             url: "/pages/dramaDetail/index?dramaId=" + data.currentTarget.dataset.jbid
         });
     },
-    getList: function () {
+    getFilterList: function () {
         var _this = this;
-        this.data.loadMoreing || (_this.data.loadMoreing = !0, request.requestAction({
-            method: "GET",
-            data: {
-                action: "dpjbdata",
-                dpId: app.globalData.dpid,
-                page: _this.data.page,
-                dramaName: _this.data.keyWords,
-                numbers: _this.data.filterDatas.numbers.param,
-                duration: _this.data.filterDatas.duration.param,
-                background: _this.data.filterDatas.background.param,
-                theme: _this.data.filterDatas.theme.param,
-                type: _this.data.filterDatas.type.param,
-                difficulty: _this.data.filterDatas.difficulty.param,
-                order: _this.data.filterDatas.order.param,
-                nodivision: !0
-            },
-            success: function (t) {
-                console.log(t), _this.setData({
-                    count: t.count
-                });
-                t = t.data;
-                if (_this.data.page > 1) {
-                    var liste = _this.data.list.concat(t);
-                    _this.setData({
-                        list: liste,
-                        loadMoreing: t.length < 10
-                    });
-                } else _this.setData({
-                    list: t,
-                    loadMoreing: !1
-                });
-                _this.data.page = _this.data.page + 1, wx.stopPullDownRefresh(), wx.hideNavigationBarLoading();
-            },
-            fail: function () {
-                _this.data.loadMoreing = !1, wx.stopPullDownRefresh();
-            }
-        }));
-    },
+        let filterRequest = new ApiRequest();
+        filterRequest.apiName = "/storeMsMini/getFilterDramaList";
+        filterRequest.method = 'GET';
+        let filters = {
+            dramaName: _this.data.dramaName,
+            numbers: _this.data.filterDatas.numbers.param,
+            duration: _this.data.filterDatas.duration.param,
+            background: _this.data.filterDatas.background.param,
+            theme: _this.data.filterDatas.theme.param,
+            type: _this.data.filterDatas.type.param,
+            difficulty: _this.data.filterDatas.difficulty.param,
+        }
 
+        filters = _this.removeEmpty(filters);
+        console.log("getFilterList===" + JSON.stringify(filters));
+        filterRequest.addParam("page", _this.data.page);
+        filterRequest.addParam("pageSize", _this.data.pageSize);
+        filterRequest.addParam("order", _this.data.filterDatas.order.param);
+        filterRequest.addParam("filters", filters);
+        filterRequest.apiCallback = function (success, response) {
+            if (success && response.code == 1) {
+                // _this.setData({
+                //     count: response.count
+                // });
+                response = response.data;
+                if (_this.data.page > 1) {
+                    var liste = _this.data.dramaList.concat(response);
+                    _this.setData({
+                        dramaList: liste,
+                    });
+                    // console.log("response=====================page > 1" + JSON.stringify(response));
+                } else {
+                    _this.setData({
+                        dramaList: response,
+                    });
+                    // console.log("response=====================else" + JSON.stringify(response));
+                }
+                if(response.length >= 10){
+                    _this.data.page = _this.data.page + 1;
+                }
+                wx.stopPullDownRefresh();
+                wx.hideNavigationBarLoading();
+            } else {
+                wx.stopPullDownRefresh();
+            }
+        }
+        enquene(filterRequest);
+    },
+    removeEmpty: function (obj) {
+        Object.keys(obj).forEach(function (key) {
+            (obj[key] && typeof obj[key] === 'object') && removeEmpty(obj[key]) || (obj[key] === undefined || obj[key] === null || obj[key] === '') && delete obj[key]
+        });
+        return obj;
+    },
+   
     bindKeyInput: function (input) {
         this.key = input.detail.value;
     },
     search: function () {
-        this.data.page = 1, this.data.keyWords = this.key ? this.key : "", this.getList();
+        this.data.page = 1, this.data.keyWords = this.key ? this.key : "", this.getFilterList();
     },
 });

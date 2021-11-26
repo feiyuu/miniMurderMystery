@@ -47,19 +47,19 @@ Page({
       return;
     }
     let loginRequest = new ApiRequest();
-    loginRequest.apiName = "/storeMs/getMineData";
+    loginRequest.apiName = "/storeMsMini/getMineData";
     loginRequest.method = 'GET';
     loginRequest.addParam("openid", app.globalData.userInfo.openid);
     loginRequest.apiCallback = function (success, response) {
       wx.hideLoading({
         success: (res) => {},
       });
-      if (response.code == 1) {
+      if (success && response.code == 1) {
         console.log(response), that.setData({
           userData: response.data[0]
         });;
       } else {
-
+        
       }
     }
     enquene(loginRequest);

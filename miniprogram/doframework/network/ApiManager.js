@@ -101,17 +101,15 @@ function enquene(request) {
 
     };
     console.log("enquene===================");
-    if (apiMethod == "GET") {
-        var reqGetString = '?';
-        for (let [k, v] of req) {
-            reqGetString += k + "=" + v;
-        }
-        console.log("reqGetString----GET"+apiName+"-------------" + reqGetString);
 
-        let apiUrl = API_SERVER_HOST + apiName + reqGetString;
+    console.log("req----"+apiName+"-----"+apiMethod+"===:" +  JSON.stringify(req));
+
+    if (apiMethod == "GET") {
+        let apiUrl = API_SERVER_HOST + apiName;
         wx.request({
             url: apiUrl,
             method: apiMethod,
+            data: req,
             success: function (res) {
                 wx.hideLoading({
                     success: (res) => {},
@@ -127,11 +125,10 @@ function enquene(request) {
         });
     } else {
         let apiUrl = API_SERVER_HOST + apiName;
-        console.log("request=====  POST  ========"+apiName+"---------"+JSON.stringify(request._strMapToObj(req)));
         wx.request({
             url: apiUrl,
             method: apiMethod,
-            data: request._strMapToObj(req),
+            data: req,
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
