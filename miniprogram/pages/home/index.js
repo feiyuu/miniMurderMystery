@@ -13,39 +13,39 @@ Page({
       '/static/image/bg5.jpg',
     ],
     rooms: [{
-        decorate: '/static/image/bg1.jpg',
-        name: '古风房间',
-        label: 'A02',
+        roomDecorate: '/static/image/bg1.jpg',
+        roomName: '古风房间',
+        roomLabel: 'A02',
       },
       {
-        decorate: '/static/image/bg2.jpg',
-        name: '恐怖房间',
-        label: 'B02',
+        roomDecorate: '/static/image/bg2.jpg',
+        roomName: '恐怖房间',
+        roomLabel: 'B02',
       },
       {
-        decorate: '/static/image/bg3.jpg',
-        name: '全息投影房',
-        label: 'C01',
+        roomDecorate: '/static/image/bg3.jpg',
+        roomName: '全息投影房',
+        roomLabel: 'C01',
       },
       {
-        decorate: '/static/image/bg4.jpg',
-        name: '全息投影房',
-        label: 'C02',
+        roomDecorate: '/static/image/bg4.jpg',
+        roomName: '全息投影房',
+        roomLabel: 'C02',
       },
       {
-        decorate: '/static/image/bg4.jpg',
-        name: '全息投影房',
-        label: 'C03',
+        roomDecorate: '/static/image/bg4.jpg',
+        roomName: '全息投影房',
+        roomLabel: 'C03',
       },
       {
-        decorate: '/static/image/bg4.jpg',
-        name: '恐怖房间',
-        label: 'B03',
+        roomDecorate: '/static/image/bg4.jpg',
+        roomName: '恐怖房间',
+        roomLabel: 'B03',
       },
       {
-        decorate: '/static/image/bg4.jpg',
-        name: '多功能厅',
-        label: 'D01',
+        roomDecorate: '/static/image/bg4.jpg',
+        roomName: '多功能厅',
+        roomLabel: 'D01',
       }
     ],
     ZhuChis: [{
@@ -108,7 +108,7 @@ Page({
       var t = e.split(",");
       console.log(Number(t[0]));
       wx.openLocation({
-        name: "巨有趣",
+        name: "杭州巨有趣下沙店",
         latitude: Number(t[0]),
         longitude: Number(t[1]),
         scale: 18,
@@ -136,7 +136,7 @@ Page({
   },
   roomsIntro: function(a) {
     for (var t = a.currentTarget.dataset.index, n = [], rooms = this.data.rooms, o = 0; o < rooms.length; o++) {
-        var u = rooms[o].decorate;
+        var u = rooms[o].roomDecorate;
         console.log("rooms===="+rooms);
         console.log("rooms[o]===="+rooms[o]);
         n.push(u);

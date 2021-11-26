@@ -106,7 +106,7 @@ function enquene(request) {
         for (let [k, v] of req) {
             reqGetString += k + "=" + v;
         }
-        console.log("reqGetString" + reqGetString);
+        console.log("reqGetString----GET"+apiName+"-------------" + reqGetString);
 
         let apiUrl = API_SERVER_HOST + apiName + reqGetString;
         wx.request({
@@ -127,7 +127,7 @@ function enquene(request) {
         });
     } else {
         let apiUrl = API_SERVER_HOST + apiName;
-        console.log("request============="+request._strMapToObj(req));
+        console.log("request=====  POST  ========"+apiName+"---------"+JSON.stringify(request._strMapToObj(req)));
         wx.request({
             url: apiUrl,
             method: apiMethod,

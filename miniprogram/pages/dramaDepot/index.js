@@ -1,75 +1,82 @@
-var  defineProperty = require("../../@babel/runtime/helpers/defineProperty"),
+var defineProperty = require("../../@babel/runtime/helpers/defineProperty"),
     request = require("../../api/request.js"),
     app = getApp();
 
 Page({
     data: {
-        FuDongJia: 10,
+        FuDongJia: -20,
         tubiao: "z_moren",
         keyWords: "",
         page: 1,
         loadMoreing: !1,
         statusBarHeight: app.globalData.statusBarHeight,
         list: [{
-                jbId: 1001,
-                FengMian: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
-                Xin: 1,
-                MingCheng: "三千鸦杀",
-                BiaoQian: '欢乐',
+                dramaId: 1001,
+                dramaCover: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
+                isNew: 1,
+                dramaName: "三千鸦杀",
+                type: '欢乐',
                 theme: '情感',
                 background: '民国',
-                JianJie: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
+                profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
                 NanNvShu: '3男3女',
+                numbers: 6,
                 duration: '3',
                 difficulty: '硬核',
-                YuGao: '1',
-                DanJia: "100"
+                beforehand: '1',
+                dramaGrade: '9',
+                price: "100"
 
             }, {
-                jbId: 1001,
-                FengMian: "http://t15.baidu.com/it/u=3901498348,2232291937&fm=224&app=112&f=JPEG?w=162&h=230",
-                Xin: 1,
-                MingCheng: "三千鸦杀",
-                BiaoQian: '欢乐',
+                dramaId: 1001,
+                dramaCover: "http://t15.baidu.com/it/u=3901498348,2232291937&fm=224&app=112&f=JPEG?w=162&h=230",
+                isNew: 1,
+                dramaName: "三千鸦杀",
+                type: '欢乐',
                 theme: '情感',
                 background: '民国',
-                JianJie: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
+                profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
                 NanNvShu: '3男3女',
+                numbers: 6,
                 duration: '3',
                 difficulty: '硬核',
-                YuGao: '0',
-                DanJia: "80"
+                beforehand: '0',
+                dramaGrade: '9',
+                price: "80"
 
             }, {
-                jbId: 1001,
-                FengMian: "https://img2.baidu.com/it/u=2411936941,1136968929&fm=253&fmt=auto&app=120&f=PNG?w=128&h=181",
-                Xin: 1,
-                MingCheng: "三千鸦杀",
-                BiaoQian: '欢乐',
+                dramaId: 1001,
+                dramaCover: "https://img2.baidu.com/it/u=2411936941,1136968929&fm=253&fmt=auto&app=120&f=PNG?w=128&h=181",
+                isNew: 1,
+                dramaName: "三千鸦杀",
+                type: '欢乐',
                 theme: '情感',
                 background: '民国',
-                JianJie: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
+                profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
                 NanNvShu: '3男3女',
+                numbers: 6,
                 duration: '3',
                 difficulty: '硬核',
-                YuGao: '0',
-                DanJia: "200"
+                beforehand: '0',
+                dramaGrade: '9',
+                price: "200"
 
             }, {
-                jbId: 1001,
-                FengMian: "https://img0.baidu.com/it/u=3198484303,3700892012&fm=253&fmt=auto&app=120&f=JPEG?w=140&h=249",
-                Xin: 1,
-                MingCheng: "三千鸦杀",
-                BiaoQian: '欢乐',
+                dramaId: 1001,
+                dramaCover: "https://img0.baidu.com/it/u=3198484303,3700892012&fm=253&fmt=auto&app=120&f=JPEG?w=140&h=249",
+                isNew: 1,
+                dramaName: "三千鸦杀",
+                type: '欢乐',
                 theme: '情感',
                 background: '民国',
-                JianJie: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
+                profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
                 NanNvShu: '3男3女',
+                numbers: 6,
                 duration: '3',
                 difficulty: '硬核',
-                YuGao: '0',
-                DanJia: "150"
-
+                beforehand: '0',
+                dramaGrade: '9',
+                price: "150"
             },
 
         ],
@@ -112,16 +119,16 @@ Page({
                 param: "",
                 cur: "",
                 conditions: [{
-                    name: "3-4小时",
+                    name: "3小时",
                     value: 1
                 }, {
-                    name: "4-5小时",
+                    name: "4小时",
                     value: 2
                 }, {
-                    name: "5-6小时",
+                    name: "5小时",
                     value: 3
                 }, {
-                    name: "6+小时",
+                    name: "6小时+",
                     value: 4
                 }]
             },
@@ -295,7 +302,7 @@ Page({
 
     jubenDetail: function (data) {
         console.log(data), wx.navigateTo({
-            url: "/pages/dramaDetail/index?jbId=" + data.currentTarget.dataset.jbid
+            url: "/pages/dramaDetail/index?dramaId=" + data.currentTarget.dataset.jbid
         });
     },
     getList: function () {
@@ -306,7 +313,7 @@ Page({
                 action: "dpjbdata",
                 dpId: app.globalData.dpid,
                 page: _this.data.page,
-                MingCheng: _this.data.keyWords,
+                dramaName: _this.data.keyWords,
                 numbers: _this.data.filterDatas.numbers.param,
                 duration: _this.data.filterDatas.duration.param,
                 background: _this.data.filterDatas.background.param,

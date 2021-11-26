@@ -31,9 +31,9 @@
           <view class="swipers" style="width: {{rooms.length*217}}rpx;">
             <view bindtap="showFangJian" class="swiper-item" data-index="{{index}}" wx:for="{{rooms}}" wx:key="*this">
               <view class="cover" bindtap="roomsIntro" data-index="{{index}}">
-                <image mode="aspectFill" src="{{item.decorate}}"></image>
+                <image mode="aspectFill" src="{{item.roomDecorate}}"></image>
               </view>
-              <view class="name">{{item.name}}·{{item.label}}</view>
+              <view class="name">{{item.roomName}}·{{item.roomLabel}}</view>
             </view>
           </view>
         </view>

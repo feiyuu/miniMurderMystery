@@ -84,8 +84,8 @@
         <view class="movies-list" wx:for="{{list}}">
             <view bindtap="jubenDetail" class="movie" data-jbid="{{item.jbId}}">
                 <view class="img-cover">
-                    <image mode="aspectFill" src="{{tools.imageMogr(item.FengMian,'0/w/200')}}" style="border-radius:12rpx;"></image>
-                    <view style="position: absolute;top:18rpx;left:162rpx;" wx:if="{{item.Xin==1}}">
+                    <image mode="aspectFill" src="{{tools.imageMogr(item.dramaCover,'0/w/200')}}" style="border-radius:12rpx;"></image>
+                    <view style="position: absolute;top:18rpx;left:162rpx;" wx:if="{{item.isNew==1}}">
                         <image src="/assets/images/xin.png" style="width:16px;height:16px"></image>
                     </view>
                 </view>
@@ -93,22 +93,22 @@
                     <view style="display: flex;">
                         <view style="width:84%">
                             <view class="name">
-                                <text>{{item.MingCheng}}</text>
+                                <text>{{item.dramaName}}</text>
                                 <image class="mov" mode="aspectFit" src="/img/tb/{{tubiao}}/ic-ytb.png" wx:if="{{item.VideoUrl}}"></image>
                             </view>
                             <view class="tags">
-                                <text class="bqys">{{tools.trans3(item.BiaoQian)}}</text>
-                                <text style="font-size:18px" wx:if="{{item.BiaoQian}}"> · </text>
+                                <text class="bqys">{{tools.trans3(item.type)}}</text>
+                                <text style="font-size:18px" wx:if="{{item.type}}"> · </text>
                                 <text>{{tools.trans2(item.theme)}}/{{item.background}}</text>
                             </view>
                         </view>
                         <view class="right">
-                            <text style="line-height: 80rpx;font-weight:bold;">{{tools.plusFuDongJia(item.DanJia,FuDongJia)}}</text>
+                            <text style="line-height: 80rpx;font-weight:bold;">{{tools.plusFuDongJia(item.price,FuDongJia)}}</text>
                             <text style="font-size:16rpx;padding-top:30rpx">/人</text>
                         </view>
                     </view>
                     <view class="det">
-                        <text class="tag">{{item.JianJie}}</text>
+                        <text class="tag">{{item.profile}}</text>
                     </view>
                     <view style="flex-direction: row;display: flex;">
                         <view style="flex:1">
@@ -136,7 +136,7 @@
                                 </view>
                             </view>
                         </view>
-                        <image src="/img/tb/{{tubiao}}/jijiangdaodian.png" style="width:100rpx;height:91rpx" wx:if="{{item.YuGao==1}}"></image>
+                        <image src="/img/tb/{{tubiao}}/jijiangdaodian.png" style="width:100rpx;height:91rpx" wx:if="{{item.beforehand==1}}"></image>
                     </view>
                 </view>
             </view>

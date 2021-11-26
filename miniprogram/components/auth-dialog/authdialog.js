@@ -40,6 +40,7 @@ Component({
     ready: function () {},
     methods: {
         closeAuth: function () {
+            app.globalData.userInfo = null;
             this.setData({
                 showModal: !1
             });
@@ -58,8 +59,8 @@ Component({
                     app.globalData.userInfo.avatarUrl = e.userInfo.avatarUrl;
                     app.globalData.userInfo.gender = e.userInfo.gender;
                     app.globalData.userInfo.nickName = e.userInfo.nickName;
-                    
-                    that.closeAuth(), that.completeLogin();
+
+                    that.completeLogin();
                     that.setData({
                         showModal: !1
                     });
@@ -75,7 +76,7 @@ Component({
             app.globalData.userInfo.nickName = e.userInfo.nickName;
 
             console.log("getUserInfo");
-            _this.closeAuth(), _this.completeLogin();
+            _this.completeLogin();
             this.setData({
                 showModal: !1
             });
@@ -113,7 +114,7 @@ Component({
                     });
                 } else {
                     wx.showToast({
-                        title: response.errmsg,
+                        title: response.errmsg + "",
                         icon: "none"
                     })
                 }
@@ -121,6 +122,7 @@ Component({
             enquene(loginRequest);
         },
         completeLogin: function () {
+            let that = this;
             let loginRequest = new ApiRequest();
             loginRequest.apiName = "/storeMs/registerUser";
             loginRequest.method = 'POST';
@@ -130,7 +132,7 @@ Component({
             loginRequest.addParam("nickName", app.globalData.userInfo.nickName);
             loginRequest.apiCallback = function (success, response) {
                 if (response.code == 1) {
-                    console.log(response), that.triggerEvent("authEvent", {});
+                    that.triggerEvent("authEvent", {});
                 } else {
                     app.globalData.userInfo = null;
                 }

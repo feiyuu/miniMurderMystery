@@ -1,4 +1,4 @@
-var  a = require("../../@babel/runtime/helpers/objectSpread2"),
+var a = require("../../@babel/runtime/helpers/objectSpread2"),
     e = require("../../api/request.js"),
     utils = require("../../utils/util"),
     o = getApp(),
@@ -14,75 +14,85 @@ Page({
         detailData: {
             dramaId: 1001,
             dramaCover: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
-            Xin: 1,
+            isNew: 1,
             dramaName: "三千鸦杀",
             background: '欢乐',
             theme: '情感',
             background: '民国',
             numbers: 6,
-            dramaScore: 5,
+            dramaGrade: 5,
             profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣,七个密室，没有一个是敷衍写写的，破第一二个的时候其实还好，不是很难时间压得特别紧凑，山厕所都不敢去因为太有趣了实在不敢去实在不想走开！到第四个密室开始就开始很难了，到第七个密室的时候倒吸一口气结合前面每个密室一部分的手法做出来的终极大Boss ！真的妙啊！最后还原了70%左右（大概是最后一个密室核诡盘出，背景故事全复原，破了4个密室手法和找对凶手）花了整整7个小时掉了一大把头发。',
             NanNvShu: '3男3女',
-            duration: '3-4小时',
+            duration: '3',
             difficulty: '硬核',
             type: '本格',
-            YuGao: '1',
-            Nan: 2,
-            Nv: 2,
+            beforehand: '1',
             price: 100,
-            KaiJuShiJian: '2021-11-24 22:00',
+            organizeTeamId:1001,
+
+
+            startTime: '2021-11-24 22:00',//比对时长和开始时间，决定组局状态
+            DMId: 1101,
             DMName: '小酒',
-            users: [{
-                    avatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
-                    sex: '男',
-                    name: '吴亦凡',
-                    joinTime: '2021-11-24 10:22'
+            roomId: 1003,
+            roomName: '',
+            teamUsersId: 1005,
+            teamDramaId: 1005,
+
+            teamUsers: [{
+                    teamUserAvatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
+                    teamUserSex: '男',
+                    teamUserName: '吴亦凡',
+                    teamUserId: 'asddsadxasd1234asdasd',
+                    teamUserJoinTime: '2021-11-24 10:22'
                 },
                 {
-                    avatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
-                    sex: '男',
-                    name: '吴亦凡',
-                    joinTime: '2021-11-24 10:22'
+                    teamUserAvatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
+                    teamUserSex: '男',
+                    teamUserName: '吴亦凡',
+                    teamUserId: 'asddsadxasd1234asdasd',
+                    teamUserJoinTime: '2021-11-24 10:22'
                 },
                 {
-                    avatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
-                    sex: '男',
-                    name: '吴亦凡',
-                    joinTime: '2021-11-24 10:22'
+                    teamUserAvatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
+                    teamUserSex: '男',
+                    teamUserName: '吴亦凡',
+                    teamUserId: 'asddsadxasd1234asdasd',
+                    teamUserJoinTime: '2021-11-24 10:22'
                 },
                 {
-                    avatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
-                    sex: '男',
-                    name: '吴亦凡',
-                    joinTime: '2021-11-24 10:22'
+                    teamUserAvatar: "https://img1.baidu.com/it/u=1386169436,3305309126&fm=253&fmt=auto&app=120&f=JPEG?w=200&h=200",
+                    teamUserSex: '男',
+                    teamUserName: '吴亦凡',
+                    teamUserId: 'asddsadxasd1234asdasd',
+                    teamUserJoinTime: '2021-11-24 10:22'
                 },
             ],
             roles: [{
-                avatar: 'https://img1.baidu.com/it/u=4025025658,2931130138&fm=26&fmt=auto',
-                name:'染谷将太',
-                sex:'男'
+                roleAvatar: 'https://img1.baidu.com/it/u=4025025658,2931130138&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
             }, {
-                avatar: 'https://img2.baidu.com/it/u=4127921897,761507293&fm=26&fmt=auto',
-                name:'染谷将太',
-                sex:'男'
+                roleAvatar: 'https://img2.baidu.com/it/u=4127921897,761507293&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
             }, {
-                avatar: 'https://img0.baidu.com/it/u=3739576280,1915435388&fm=253&fmt=auto&app=120&f=PNG?w=200&h=200',
-                name:'染谷将太',
-                sex:'男'
+                roleAvatar: 'https://img0.baidu.com/it/u=3739576280,1915435388&fm=253&fmt=auto&app=120&f=PNG?w=200&h=200',
+                roleName: '染谷将太',
+                roleSex: '男'
             }, {
-                avatar: 'https://img0.baidu.com/it/u=3211627156,1665674786&fm=26&fmt=auto',
-                name:'染谷将太',
-                sex:'男'
+                roleAvatar: 'https://img0.baidu.com/it/u=3211627156,1665674786&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
             }, {
-                avatar: 'https://img1.baidu.com/it/u=2386722414,2264491889&fm=26&fmt=auto',
-                name:'染谷将太',
-                sex:'男'
+                roleAvatar: 'https://img1.baidu.com/it/u=2386722414,2264491889&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
             }, {
-                avatar: 'https://img2.baidu.com/it/u=2146252702,1388388301&fm=26&fmt=auto',
-                name:'染谷将太',
-                sex:'男'
-            }, 
-        ]
+                roleAvatar: 'https://img2.baidu.com/it/u=2146252702,1388388301&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
+            }, ]
         },
         zjData: {},
         joined: !1,
@@ -94,12 +104,12 @@ Page({
         showPay: !1,
         gushiHide: !0,
     },
-    gsToggle: function() {
+    gsToggle: function () {
         this.setData({
             gushiHide: !this.data.gushiHide
         });
     },
-    roleIntro: function(a) {
+    roleIntro: function (a) {
         for (var t = a.currentTarget.dataset.index, n = [], roles = this.data.detailData.roles, o = 0; o < roles.length; o++) {
             var u = roles[o];
             n.push(utils.imageMogr(u.avatar, "0/w/500"));
