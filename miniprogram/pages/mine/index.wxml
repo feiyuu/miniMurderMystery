@@ -5,42 +5,37 @@
             <view class="mine-info flex-jus flex-ver">
                 <view class="left flex-ver">
                     <view class="img-box">
-                        <image mode="aspectFill" src="{{tools.transformImageUrl(idata.TouXiang)}}"></image>
+                        <image mode="aspectFill" src="{{tools.transformImageUrl(userData.avatarUrl)}}"></image>
                     </view>
                     <view class="mi-infos">
                         <view class="names" wx:if="{{isAuthed}}">
-                            <text class="l">{{idata.NiCheng}}</text>
-                            <text class="s">场次 {{idata.CiShu}}次</text>
+                            <text class="l">{{userData.nickName}}</text>
                         </view>
                         <view bindtap="auth" class="names" wx:else>
                             <text class="l">获取会员信息</text>
-                        </view>
-                        <view class="huiyuan" wx:if="{{idata.yhMingCheng}}">
-                            <image src="{{tools.transformImageUrl(idata.yhTuBiao)}}" style="height: 30rpx;width: 30rpx;margin: 0 10rpx;"></image>
-                            <text>{{idata.yhMingCheng||''}}</text>
                         </view>
                     </view>
                 </view>
             </view>
             <view class="gongneng">
                 <view class="mine-thr flex-center">
-                    <view bindtap="goConpons" class="mt-menu">
+                    <!-- <view bindtap="goConpons" class="mt-menu">
                         <view class="ic-box flex-center">
                             <image class="ic-youhuiquan" src="/img/tb/{{tubiao}}/ic-mine02.png"></image>
                         </view>
-                        <view class="text">{{userInfo.YouHuiQuan}}张优惠券</view>
-                    </view>
+                        <view class="text">{{userData.YouHuiQuan}}张优惠券</view>
+                    </view> -->
                     <view bindtap="gojifen" class="mt-menu" >
                         <view class="ic-box flex-center">
                             <image class="ic-kefu" src="/img/tb/{{tubiao}}/jifen.png" style="width:49rpx;height:38rpx"></image>
                         </view>
-                        <view class="text">积分:{{userInfo.JiFen}}分</view>
+                        <view class="text">积分:{{userData.integral}}分</view>
                     </view>
                     <view bindtap="goyue" class="mt-menu" >
                         <view class="ic-box flex-center">
                             <image class="ic-kefu" src="/img/tb/{{tubiao}}/yue.png" style="width:44rpx;height:44rpx"></image>
                         </view>
-                        <view class="text">余额:{{userInfo.YuE}}元</view>
+                        <view class="text">余额:{{userData.balance}}元</view>
                     </view>
                 </view>
             </view>
@@ -68,7 +63,6 @@
                         <image class="ic-mm03" src="/img/tb/{{tubiao}}/ic-mine-menu03.png"></image>
                     </view>
                     <text>我玩过的剧本</text>
-                    <mp-badge content="{{userInfo.DaiPingJia}}" style="margin-left:6rpx" wx:if="{{userInfo.DaiPingJia}}"></mp-badge>
                 </view>
             </navigator>
             <navigator bindtap="goPurchaseHistory" class="mn-sec flex-ver flex-jus">
@@ -77,7 +71,6 @@
                         <image class="ic-mm03" src="/img/tb/{{tubiao}}/ic-mine-menu06.png"></image>
                     </view>
                     <text>我的消费记录</text>
-                    <mp-badge content="{{userInfo.DaiPingJia}}" style="margin-left:6rpx" wx:if="{{userInfo.DaiPingJia}}"></mp-badge>
                 </view>
             </navigator>
         </view>

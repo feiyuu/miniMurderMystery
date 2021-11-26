@@ -1,13 +1,16 @@
-
 var request = require("../../api/request.js"),
   app = getApp();
+import {
+  ApiRequest,
+  enquene
+} from '../../doframework/network/ApiManager';
 
 Page({
   data: {
     dlApp: !1,
     theme: "",
     tubiao: "z_moren",
-    showModal: !app.globalData.userInfo,
+    showModal: false,
     YouHuiQuanNum: "-",
     userInfo: {},
     statusBarHeight: app.globalData.statusBarHeight,
@@ -15,7 +18,7 @@ Page({
     dpName: app.globalData.dpName,
     dpNameQC: app.globalData.dpNameQC,
     dpid: 0,
-    idata: {}
+    userData: {}
   },
   onShareAppMessage: function (data) {
     var t = "";
@@ -30,44 +33,47 @@ Page({
       tubiao: app.globalData.dpdata.TuBiao,
       dpName: app.globalData.dpName,
       dpNameQC: app.globalData.dpNameQC,
+      isAuthed: !!app.globalData.userInfo,
       dpid: app.globalData.dpid,
       dlApp: app.globalData.dlAPP
     });
+  },
+  getMineData: function () {
+    var that = this;
+    if (!app.globalData.userInfo || !app.globalData.userInfo.openid) {
+      that.setData({
+        showModal: !0
+      });
+      return;
+    }
+    let loginRequest = new ApiRequest();
+    loginRequest.apiName = "/storeMs/getMineData";
+    loginRequest.method = 'GET';
+    loginRequest.addParam("openid", app.globalData.userInfo.openid);
+    loginRequest.apiCallback = function (success, response) {
+      wx.hideLoading({
+        success: (res) => {},
+      });
+      if (response.code == 1) {
+        console.log(response), that.setData({
+          userData: response.data[0]
+        });;
+      } else {
+
+      }
+    }
+    enquene(loginRequest);
   },
   back: function () {
     wx.navigateBack({
       delta: 1
     });
   },
-  bindauthEvent: function() {
-    this.mines(), this.setData({
-        isAuthed: !0
-    }), this.getIData();
-},
-  getIData: function () {
-    var a = this;
-    !app.globalData.userInfo && app.globalData.userInfo.wxCode ? wx.request({
-      url: "https://www.juapp.cn/jb/data.aspx",
-      method: "POST",
-      data: {
-        action: "dpgxyh",
-        dpid: app.globalData.dpid,
-        wxCode: app.globalData.userInfo.wxCode
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-      },
-      success: function (t) {
-        console.log(t.data.data), app.globalData.userInfo = t.data.data, a.setData({
-          idata: t.data.data
-        });
-      },
-      fail: function (a) {}
-    }) : a.setData({
-      idata: app.globalData.userInfo
+  bindauthEvent: function () {
+    this.getMineData(), this.setData({
+      isAuthed: !0
     });
   },
-
   goConpons: function () {
     app.globalData.userInfo ? wx.navigateTo({
       url: "/pages/my-coupons/coupon"
@@ -77,7 +83,8 @@ Page({
   },
 
   onShow: function () {
-    this.mines(), this.setData({
+    console.log("onShow--------------------------");
+    app.globalData.userInfo ? this.getMineData() : this.setData({
       showModal: !app.globalData.userInfo
     });
   },
@@ -119,21 +126,4 @@ Page({
       showModal: !0
     });
   },
-  mines: function () {
-    var a = this;
-    console.log(app.globalData.userInfo), app.globalData.userInfo && request.requestAction({
-      method: "GET",
-      data: {
-        action: "dpwd",
-        dpid: app.globalData.dpid,
-        wxCode: app.globalData.userInfo.wxCode
-      },
-      success: function (t) {
-        console.log(t), a.setData({
-          userInfo: t
-        });
-      }
-    });
-  },
-
 });

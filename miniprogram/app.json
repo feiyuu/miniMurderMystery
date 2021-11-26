@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/mine/index",
     "pages/home/index",
-    "pages/dramaDetail/index",
+    "pages/mine/index",
     "pages/dramaDepot/index",
+    "pages/dramaDetail/index",
     "pages/team/index",
     "pages/shop/index"
   ],

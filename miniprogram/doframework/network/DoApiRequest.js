@@ -6,7 +6,7 @@ class DoApiRequest{
 
     constructor(){
         this.cid = "100001";
-        this.appversion= "1210";
+        this.appversion= "1125";
         // this.sid = "";
         // 这里要从本地读取sid
         this.sid = wx.getStorageSync('do_fw_api_sid');

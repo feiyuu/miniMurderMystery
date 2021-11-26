@@ -2,7 +2,6 @@
   "navigationStyle": "custom",
   "usingComponents": {
       "cialog": "../../components/custom-dialog/dialog",
-      "badge": "../../components/badge/badge",
       "authdialog": "../../components/auth-dialog/authdialog",
       "mp-navigation-bar": "../../components/navigation-bar/navigation-bar"
   }

@@ -12,14 +12,14 @@
         </swiper>
       </view>
       <view class="shop-infos flex-hor">
-        <view class="si-top flex-hor flex-center" bindtap="openLoc">
+        <view class="si-top flex-hor flex-center" bindtap="openLocationMap">
           <view class="nameContainer flex-ver">
             <text class="name ellipsis ">杭州剧有趣下沙店</text>
             <text class="address">(杭州下沙广建大厦二楼1001室)</text>
           </view>
           <image class="ic-nav" mode="aspectFill" src="/img/tb/{{tubiao}}/ic-nav.png"></image>
         </view>
-        <view bindtap="tel" class="opt flex-center">
+        <view bindtap="showContactSheet" class="opt flex-center">
           <image class="ic-call" mode="aspectFill" src="/img/tb/{{tubiao}}/ic-call.png"></image>
         </view>
       </view>
@@ -28,12 +28,12 @@
           <text>房间</text>
         </view>
         <view class="list">
-          <view class="swipers" style="width: {{FangJians.length*217}}rpx;">
-            <view bindtap="showFangJian" class="swiper-item" data-index="{{index}}" wx:for="{{FangJians}}" wx:key="*this">
-              <view class="cover">
-                <image mode="aspectFill" src="{{item.TuPian}}"></image>
+          <view class="swipers" style="width: {{rooms.length*217}}rpx;">
+            <view bindtap="showFangJian" class="swiper-item" data-index="{{index}}" wx:for="{{rooms}}" wx:key="*this">
+              <view class="cover" bindtap="roomsIntro" data-index="{{index}}">
+                <image mode="aspectFill" src="{{item.decorate}}"></image>
               </view>
-              <view class="name">{{item.BiaoQian}}</view>
+              <view class="name">{{item.name}}·{{item.label}}</view>
             </view>
           </view>
         </view>

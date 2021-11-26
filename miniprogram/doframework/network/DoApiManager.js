@@ -7,7 +7,7 @@ import {ReverseAESDecrypt} from '../util/DoCrypto.js';
 /**
  * api host
  */
-const API_SERVER_HOST = "";
+const API_SERVER_HOST = "http://127.0.0.1:7001";
 
 
 function enquene(request){

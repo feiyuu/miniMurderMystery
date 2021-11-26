@@ -4,7 +4,7 @@
       授权提示
     </view>
     <view style="margin: 30rpx 20rpx;font-size: 24rpx;">
-      为了更好的服务,我们需要获取头像等信息用来注册
+      为了更好为您提供服务,我们需要获取头像等信息用来注册
     </view>
     <view class="auth">
       <button bindtap="closeAuth" style=" background-color: transparent;" wx:if="{{!force}}"> 取消 </button>

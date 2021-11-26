@@ -1,6 +1,9 @@
-var request =require("../../api/request.js"),
+var request = require("../../api/request.js"),
     app = getApp();
-import {DoApiRequest, enquene,enqueneUpload} from '../../doframework/network/DoApiManager';
+import {
+    ApiRequest,
+    enquene
+} from '../../doframework/network/ApiManager';
 
 Component({
     properties: {
@@ -18,15 +21,15 @@ Component({
         }
     },
     observers: {
-        autoShow: function (e) {
-            e && (app.globalData.userInfo || (this.wxLogin(), this.setData({
-                showModal: !0
-            })));
+        autoShow: function (isLogin) {
+            console.log("autoShow--------------------------" + isLogin);
+            if (isLogin) {
+                this.wxLogin();
+            }
         }
     },
     data: {
         showModal: !1,
-        showPhone: !1,
         canIUseGetUserProfile: !1
     },
     attached: function () {
@@ -34,20 +37,11 @@ Component({
             canIUseGetUserProfile: !0
         });
     },
-    ready: function () {
-        this.data.autoShow && (app.globalData.userInfo || (this.wxLogin(), this.setData({
-            showModal: !0
-        })));
-    },
+    ready: function () {},
     methods: {
         closeAuth: function () {
             this.setData({
                 showModal: !1
-            });
-        },
-        closePhone: function () {
-            this.setData({
-                showPhone: !1
             });
         },
         getUserProfile: function (e) {
@@ -59,14 +53,14 @@ Component({
                 desc: "用于完善会员资料",
                 success: function (e) {
                     console.log(e);
-                    app.globalData.userInfo = {
-                        avatarUrl: e.userInfo.avatarUrl,
-                        gender: e.userInfo.gender,
-                        nickName: e.userInfo.nickName
-                    }
-                    that.closeAuth(), that.wxLogin();
+                    console.log("getUserProfile");
+                    console.log(app.globalData.userInfo);
+                    app.globalData.userInfo.avatarUrl = e.userInfo.avatarUrl;
+                    app.globalData.userInfo.gender = e.userInfo.gender;
+                    app.globalData.userInfo.nickName = e.userInfo.nickName;
+                    
+                    that.closeAuth(), that.completeLogin();
                     that.setData({
-                        // showPhone: !0,
                         showModal: !1
                     });
                 }
@@ -75,64 +69,71 @@ Component({
         getUserInfo: function (e) {
             wx.getAccountInfoSync();
             var _this = this;
-            app.globalData.userInfo = {
-                avatarUrl: e.detail.userInfo.avatarUrl,
-                gender: e.detail.userInfo.gender,
-                nickName: e.detail.userInfo.nickName
-            }
-            _this.closeAuth(), _this.wxLogin();
+            console.log(app.globalData.userInfo);
+            app.globalData.userInfo.avatarUrl = e.userInfo.avatarUrl;
+            app.globalData.userInfo.gender = e.userInfo.gender;
+            app.globalData.userInfo.nickName = e.userInfo.nickName;
+
+            console.log("getUserInfo");
+            _this.closeAuth(), _this.completeLogin();
             this.setData({
-                // showPhone: !0,
                 showModal: !1
             });
         },
-        getPhoneNumber: function (a) {
-            if (!a.detail.encryptedData) return console.log("用户拒绝获取手机号"), void console.log(a.detail.errMsg);
-            var t = wx.getAccountInfoSync(),
-                n = this;
-            request.savePhone({
-                method: "POST",
-                data: {
-                    code: n.code,
-                    encryptedData: a.detail.encryptedData,
-                    iv: a.detail.iv,
-                    appid: t.miniProgram.appId,
-                    avatarUrl: app.globalData.userInfo.avatarUrl,
-                    gender: app.globalData.userInfo.gender,
-                    nickName: app.globalData.userInfo.nickName
-                },
-                success: function (e) {
-                    n.closePhone(), n.wxLogin();
-                },
-                fail: function (e) {
-                    // n.wxLogin();
-                }
-            });
-        },
+
         wxLogin: function () {
             var that = this;
             wx.login({
                 success: function (o) {
-                    app.globalData.userInfo.wxCode = o.code,
-                        console.log("login", o), that.code = o.code, that.registerOrLogin(o.code);
+                    console.log("login", o), that.login(o.code);
                 }
             });
         },
-        registerOrLogin: function (res) {
-            let loginRequest = new DoApiRequest();
-            loginRequest.apiName = "/player/login/wx/v1";
+        login: function (code) {
+            let that = this;
+            let loginRequest = new ApiRequest();
+            loginRequest.apiName = "/storeMs/checkUserLogin";
             loginRequest.method = 'GET';
-            loginRequest.addParam("wxCode", res.code);
-            loginRequest.addParam("avatarUrl", app.globalData.userInfo.avatarUrl);
-            loginRequest.addParam("gender", app.globalData.userInfo.gender);
-            loginRequest.addParam("nickName", app.globalData.userInfo.nickName);
+            loginRequest.addParam("wxCode", code);
             loginRequest.apiCallback = function (success, response) {
                 wx.hideLoading({
                     success: (res) => {},
                 });
-                console.log("response  ===  " + response);
-                var responseObj = JSON.parse(response);
-                console.log(responseObj), console.log, that.triggerEvent("authEvent", {});
+                if (response.code == 1) {
+                    app.globalData.userInfo = {};
+                    app.globalData.userInfo.openid = response.openid;
+                    console.log(app.globalData.userInfo);
+                    console.log(response), that.triggerEvent("authEvent", {});
+                } else if (response.code == 2) {
+                    app.globalData.userInfo = {};
+                    app.globalData.userInfo.openid = response.openid;
+                    console.log(app.globalData.userInfo);
+                    that.setData({
+                        showModal: !0
+                    });
+                } else {
+                    wx.showToast({
+                        title: response.errmsg,
+                        icon: "none"
+                    })
+                }
+            }
+            enquene(loginRequest);
+        },
+        completeLogin: function () {
+            let loginRequest = new ApiRequest();
+            loginRequest.apiName = "/storeMs/registerUser";
+            loginRequest.method = 'POST';
+            loginRequest.addParam("openid", app.globalData.userInfo.openid);
+            loginRequest.addParam("avatarUrl", app.globalData.userInfo.avatarUrl);
+            loginRequest.addParam("gender", app.globalData.userInfo.gender);
+            loginRequest.addParam("nickName", app.globalData.userInfo.nickName);
+            loginRequest.apiCallback = function (success, response) {
+                if (response.code == 1) {
+                    console.log(response), that.triggerEvent("authEvent", {});
+                } else {
+                    app.globalData.userInfo = null;
+                }
             }
             enquene(loginRequest);
         }
