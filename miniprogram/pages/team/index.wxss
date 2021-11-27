@@ -29,6 +29,9 @@
   font-size: 28rpx;
   justify-content: flex-end;
 }
+.movies-list .movie .infos .rightTxtGrey {
+  color: var(--z_zt10);
+}
 
 .movies-list .movie .infos .name {
   display: flex;
@@ -114,4 +117,7 @@
   justify-content: center;
   border-radius: 40rpx;
   margin-top: 30rpx;
+}
+.movies-list .btnJoinGrey {
+  background-color: var(--z_zt10);
 }

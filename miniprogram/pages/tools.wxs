@@ -1,4 +1,4 @@
-var plusFuDongJia = (function(danjia, fudong) {
+var plusFuDongJia = (function (danjia, fudong) {
     if (fudong === 0) {
         return (danjia)
     };
@@ -11,7 +11,7 @@ var plusFuDongJia = (function(danjia, fudong) {
     };
     return (j)
 });
-var isChecked = (function(npcs, item) {
+var isChecked = (function (npcs, item) {
     for (var i = 0; i < npcs.length; i++) {
         var element = npcs[((nt_1 = (i), null == nt_1 ? undefined : 'number' === typeof nt_1 ? nt_1 : "" + nt_1))];
         if (element.ZhuChiId === item.ZhuChiId) {
@@ -20,7 +20,7 @@ var isChecked = (function(npcs, item) {
     };
     return (false)
 });
-var transformImageUrl = (function(val) {
+var transformImageUrl = (function (val) {
     if (!val || val == undefined || val.length == 0) {
         return ('')
     } else if (val.indexOf("http") == 0) {
@@ -31,7 +31,7 @@ var transformImageUrl = (function(val) {
         return ("https://www.juapp.cn" + val.replace(reg, '/'))
     }
 });
-var isManle = (function(item) {
+var isManle = (function (item) {
     if (item.JuBenId == 0) {
         if (parseInt(item.Nv2) + parseInt(item.Nan2) >= parseInt(item.ZuiDaRenShu)) {
             return (true)
@@ -41,18 +41,18 @@ var isManle = (function(item) {
     };
     return (false)
 });
-var splitto = (function(val, index) {
+var splitto = (function (val, index) {
     var ss = val.split(' ');
     return (ss[((nt_2 = (index), null == nt_2 ? undefined : 'number' === typeof nt_2 ? nt_2 : "" + nt_2))] ? ss[((nt_3 = (index), null == nt_3 ? undefined : 'number' === typeof nt_3 ? nt_3 : "" + nt_3))] : '')
 });
-var mp4TranJpg = (function(value) {
+var mp4TranJpg = (function (value) {
     if (value) {
         value = value.replace('.mp4', '.jpg')
     };
     console.log(value);
     return (value)
 });
-var transformDate = (function(value) {
+var transformDate = (function (value) {
     var date = getDate(value);
     var hours = date.getHours();
     var minutes = date.getMinutes();
@@ -64,40 +64,40 @@ var transformDate = (function(value) {
     };
     return (hours + ":" + minutes)
 });
-var parFloat = (function(val) {
+var parFloat = (function (val) {
     return (parseFloat(val))
 });
-var trans = (function(val) {
+var trans = (function (val) {
     if (val) {
         return (val.split(',').join(' / '))
     };
     return ('')
 });
-var trans2 = (function(val) {
+var trans2 = (function (val) {
     if (val) {
         return (val.split(',').join('/'))
     };
     return ('')
 });
-var trans3 = (function(val) {
+var trans3 = (function (val) {
     if (val) {
         return (val.split(' ').join(' / '))
     };
     return ('')
 });
-var isVideo = (function(val) {
+var isVideo = (function (val) {
     if (val) {
         return ("mp4" == val.substring(val.length - 3, val.length))
     };
     return (false)
 });
-var tranBfb = (function(val) {
+var tranBfb = (function (val) {
     if (val) {
         return ("%" == val.substring(val.length - 1, val.length) ? val : val + '%')
     };
     return ('')
 });
-var isTimeOut = (function(value) {
+var isTimeOut = (function (value) {
     var date = getDate(value).getTime();
     var now = getDate().getTime();
     if (date - now < 3600000 && date - now > 0) {
@@ -105,7 +105,7 @@ var isTimeOut = (function(value) {
     };
     return (false)
 });
-var isTimeEnd = (function(value, endtime) {
+var isTimeEnd = (function (value, endtime) {
     var startdate = getDate(value).getTime();
     var enddate = getDate(endtime).getTime();
     var now = getDate().getTime();
@@ -114,7 +114,7 @@ var isTimeEnd = (function(value, endtime) {
     };
     return (false)
 });
-var jisuanNv = (function(value, xingbie) {
+var jisuanNv = (function (value, xingbie) {
     var count = 0;
     if (value) {
         for (var i = 0; i < value.length; i++) {
@@ -126,7 +126,7 @@ var jisuanNv = (function(value, xingbie) {
     };
     return (count)
 });
-var imageMogr = (function(value, param) {
+var imageMogr = (function (value, param) {
     if (value) {
         if (value.indexOf('null.jpg') > -1) {
             return (transformImageUrl(value))
@@ -138,7 +138,7 @@ var imageMogr = (function(value, param) {
     };
     return ('')
 });
-var itorZhaoPian = (function(value) {
+var itorZhaoPian = (function (value) {
     var result = '';
     if (value) {
         for (var i = 0; i < value.length; i++) {
@@ -151,16 +151,20 @@ var itorZhaoPian = (function(value) {
     };
     return (result)
 });
-var sum = (function(v1, v2) {
+var teamPeoples = (function (joinedCount, numbers) {
+    return parseInt(joinedCount) < parseInt(numbers) ? joinedCount + '/' + numbers : '已满'
+});
+var sum = (function (v1, v2) {
     return (parseInt(v1) + parseInt(v2))
 });
-var isYue = (function(v) {
+var isYue = (function (v) {
     console.log(parseFloat(v));
     console.log(parseFloat(v) > 0);
     return (parseFloat(v) > 0)
 });
 module.exports.splitto = splitto;
 module.exports.sum = sum;
+module.exports.teamPeoples = teamPeoples;
 module.exports.isYue = isYue;
 module.exports.plusFuDongJia = plusFuDongJia;
 module.exports.isChecked = isChecked;

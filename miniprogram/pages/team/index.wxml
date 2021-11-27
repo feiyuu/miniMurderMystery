@@ -22,7 +22,7 @@
             </view>
           </view>
           <view class="right">
-            <text style="line-height: 80rpx;font-weight:bold;">{{item.joinedCount}}/{{item.numbers}}</text>
+            <text class="{{tools.teamPeoples(item.joinedCount,item.numbers)=='已满'?'rightTxtGrey':''}}" style="line-height: 80rpx;font-weight:bold;">{{tools.teamPeoples(item.joinedCount,item.numbers)}}</text>
           </view>
         </view>
         <view class="det">
@@ -53,7 +53,7 @@
               </view>
             </view>
           </view>
-          <view class="btnJoin">加入</view>
+          <view class="btnJoin {{tools.teamPeoples(item.joinedCount,item.numbers)=='已满'?'btnJoinGrey':''}}">加入</view>
         </view>
       </view>
     </view>

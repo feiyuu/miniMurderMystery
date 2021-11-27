@@ -17,6 +17,7 @@ Page({
         tubiao: "z_moren",
         playing: "",
         DetailId: "",
+        isTeam: false,
         detailData: {
             dramaId: 1001,
             dramaCover: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
@@ -101,10 +102,10 @@ Page({
         },
         zjData: {},
         joined: !1,
-        hasMe: 1,
+        fullPeoples: !1,
         payJiaGe: "-",
         isCanPay: !0,
-        YuE: "",
+        balance: "",
         position: 0,
         showPay: !1,
         gushiHide: !0,
@@ -125,7 +126,7 @@ Page({
         });
     },
     joinPay: function () {
-        app.globalData.userInfo && app.globalData.userInfo.wxCode ? (this.gYue(), this.setData({
+        app.globalData.userInfo && app.globalData.userInfo.openid ? (this.getBalance(), this.setData({
             showPay: !0
         })) : this.setData({
             showModal: !0
@@ -135,136 +136,77 @@ Page({
         wx.navigateBack({});
     },
     pay: function () {
-        var t = this;
-        if (!this.paying)
-            if (this.paying = !0, 0 == this.data.position) {
-                var i = {};
-                if (u = wx.getStorageSync("tg")) {
-                    var n = 864e5;
-                    (d = wx.getStorageSync("ts")) && Date.parse(new Date()) - d < n && (i = {
-                        tg: u,
-                        ts: d
+        var that = this;
+        if (!that.paying) {
+            that.paying = !0
+            let loginRequest = new ApiRequest();
+            loginRequest.apiName = "/storeMsMini/payCharge";
+            loginRequest.method = 'POST';
+            loginRequest.addParam("recordUserId", app.globalData.userInfo.openid);
+            loginRequest.addParam("isBlance", 0 == that.data.position);
+            loginRequest.addParam("thumUrl", that.data.detailData.dramaCover);
+            loginRequest.addParam("charge", that.data.detailData.price);
+            loginRequest.addParam("recordName", "支付剧本杀《" + that.data.detailData.dramaName + "》组局费用");
+            loginRequest.apiCallback = function (success, response) {
+                wx.hideLoading({})
+                if (success && response.code == 1) {
+                    that.paying = !1, wx.showToast({
+                        title: "支付成功",
+                        icon: "success",
+                        success: function () {
+                            that.joinTeam();
+                        }
+                    }), that.setData({
+                        showPay: !1
+                    });
+                } else {
+                    that.paying = !1, wx.showToast({
+                        title: "支付失败",
+                        icon: "none"
                     });
                 }
-                request.pay({
-                    method: "POST",
-                    data: objectSpread2(objectSpread2({}, i), {}, {
-                        action: "dpyhye",
-                        wxCode: app.globalData.userInfo.wxCode,
-                        ZuJuId: zujuID,
-                        dramaId: this.data.zjData.JuBenId,
-                        XingBie: 1 == app.globalData.userInfo.gender ? "男" : "女",
-                        dpId: app.globalData.dpid
-                    }),
-                    success: function (a) {
-                        this.paying = !1, wx.showToast({
-                            title: "加入完成",
-                            icon: "success",
-                            success: function () {
-                                setTimeout(function () {
-                                    t.getdpzjdetailData();
-                                }, 1500);
-                            }
-                        }), t.setData({
-                            showPay: !1
-                        });
-                    },
-                    fail: function (t) {
-                        this.paying = !1, wx.showToast({
-                            title: t.msg ? t.msg : t,
-                            icon: "none"
-                        }), console.log(t);
-                    }
-                });
-            } else {
-                var u, l = wx.getAccountInfoSync();
-                i = {};
-                if (u = wx.getStorageSync("tg")) {
-                    var d;
-                    n = 864e5;
-                    (d = wx.getStorageSync("ts")) && Date.parse(new Date()) - d < n && (i = {
-                        tg: u,
-                        ts: d
-                    });
-                }
-                request.pay({
-                    method: "POST",
-                    data: objectSpread2(objectSpread2({}, i), {}, {
-                        action: "dianpu",
-                        wxCode: app.globalData.userInfo.wxCode,
-                        ZuJuId: zujuID,
-                        dramaId: this.data.zjData.JuBenId,
-                        XingBie: 1 == app.globalData.userInfo.gender ? "男" : "女",
-                        dpId: app.globalData.dpid,
-                        appid: l.miniProgram.appId
-                    }),
-                    success: function (a) {
-                        if (console.log(a), t.paying = !1, null != a.WxPay && null == a.nonceStr) return wx.showToast({
-                            title: "加入完成",
-                            icon: "success",
-                            success: function () {
-                                setTimeout(function () {
-                                    t.getdpzjdetailData();
-                                }, 1500);
-                            }
-                        }), void t.setData({
-                            showPay: !1
-                        });
-                        wx.requestPayment({
-                            timeStamp: a.timeStamp,
-                            nonceStr: a.nonceStr,
-                            package: a.package,
-                            signType: a.signType,
-                            paySign: a.paySign,
-                            success: function (a) {
-                                t.paying = !1, console.log(a), "requestPayment:ok" == a.errMsg && (wx.showToast({
-                                    title: "支付成功",
-                                    icon: "success",
-                                    success: function () {
-                                        setTimeout(function () {
-                                            t.getdpzjdetailData();
-                                        }, 1500);
-                                    }
-                                }), t.setData({
-                                    showPay: !1
-                                }));
-                            },
-                            fail: function (a) {
-                                t.paying = !1, a && "requestPayment:fail cancel" != a.errMsg && wx.showToast({
-                                    title: a.errMsg ? a.errMsg : "发生错误",
-                                    icon: "none"
-                                });
-                            }
-                        });
-                    },
-                    fail: function (a) {
-                        t.paying = !1, wx.showToast({
-                            title: a.msg,
-                            icon: "none",
-                            duration: 1500
-                        });
-                    }
-                });
             }
+            wx.showLoading({
+                title: "支付中..."
+            });
+            setTimeout(function () {
+                enquene(loginRequest);
+            }, 1500);
+        }
     },
-    gYue: function () {
-        var t = this;
-        request.requestAction({
-            method: "GET",
-            data: {
-                action: "dpyhye",
-                dpId: app.globalData.dpid,
-                wxCode: app.globalData.userInfo.wxCode
-            },
-            success: function (a) {
-                console.log(a), t.setData({
-                    YuE: a.YuE
-                }), t.data.zjData.JiaGe > a.YuE && t.setData({
+    joinTeam: function () {
+        var that = this;
+        let joinTeamRequest = new ApiRequest();
+        joinTeamRequest.apiName = "/storeMsMini/joinTeam";
+        joinTeamRequest.method = 'POST';
+        joinTeamRequest.addParam("teamUserId", app.globalData.userInfo.openid);
+        joinTeamRequest.addParam("organizeTeamId", that.data.DetailId);
+        joinTeamRequest.apiCallback = function (success, response) {
+            wx.hideLoading({})
+            if (success && response.code == 1) {
+                that.getDramaDetail();
+            } else {}
+        }
+        enquene(joinTeamRequest);
+    },
+    getBalance: function () {
+        console.log("getBalance")
+        let that = this;
+        let balanceRequest = new ApiRequest();
+        balanceRequest.apiName = "/storeMsMini/getBalanceUser";
+        balanceRequest.method = 'GET';
+        balanceRequest.addParam("openid", app.globalData.userInfo.openid);
+        balanceRequest.apiCallback = function (success, response) {
+            if (success && response.code == 1) {
+                that.setData({
+                    balance: response.data
+                }), that.data.detailData.price > response.data && that.setData({
                     isCanPay: !1,
                     position: 1
                 });
-            }
-        });
+            } else {}
+        }
+        enquene(balanceRequest);
     },
     bindauthEvent: function () {
         var _this = this;
@@ -273,20 +215,37 @@ Page({
     onLoad: function (param) {
         var _this = this;
         this.data.DetailId = param.dramaId || param.teamId;
+        this.data.isTeam = !!param.teamId;
         console.log("this.option=====" + this.data.DetailId);
-        app.globalData.userInfo && app.globalData.userInfo.openid ? (_this.getDramaDetail(!!param.teamId)) : _this.setData({
+        app.globalData.userInfo && app.globalData.userInfo.openid ? (_this.getDramaDetail()) : _this.setData({
             showModal: !0
         });
     },
-    getDramaDetail: function (isTeam) {
+    getDramaDetail: function () {
         console.log("getDramaDetail")
         let that = this;
         let DramaDetailRequest = new ApiRequest();
-        DramaDetailRequest.apiName = isTeam ? "/storeMsMini/getTeamDetail" : "/storeMsMini/getDramaDetail";
+        DramaDetailRequest.apiName = that.data.isTeam ? "/storeMsMini/getTeamDetail" : "/storeMsMini/getDramaDetail";
         DramaDetailRequest.method = 'GET';
         DramaDetailRequest.addParam("Id", this.data.DetailId);
         DramaDetailRequest.apiCallback = function (success, response) {
             if (success && response.code == 1) {
+                console.log("response.data.teamUsers===========" + JSON.stringify(response.data.teamUsers));
+                if (response.data && response.data.teamUsers) {
+                    for (var i = 0; i < response.data.teamUsers.length; i++) {
+                        console.log("getDramaDetail---teamUsers----" + JSON.stringify(response.data.teamUsers[i]));
+                        if (app.globalData.userInfo.openid == response.data.teamUsers[i].openid) {
+                            that.setData({
+                                joined: true
+                            });
+                        }
+                    };
+                }
+                if (parseInt(response.data.numbers) <= parseInt(response.data.teamUsers.length)) {
+                    that.setData({
+                        fullPeoples: true
+                    });
+                }
                 that.setData({
                     detailData: response.data
                 });
@@ -323,7 +282,7 @@ Page({
         let date = "",
             _this = this;
         return app.globalData && app.globalData.userInfo && (date = "&tg=".concat(Date.parse(new Date()))), {
-            title: "邀请你组局《" + this.data.detailData.dramaName + "》",
+            title: "邀请你上车剧本《" + this.data.detailData.dramaName + "》",
             path: "pages/dramaDetail/index?teamId=" + _this.data.DetailId + date
         };
     },
