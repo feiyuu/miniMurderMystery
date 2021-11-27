@@ -307,8 +307,8 @@ Page({
         this.getFilterList(), console.log("xxxxxxxxxxx");
     },
 
-    jubenDetail: function (data) {
-        console.log("jubenDetail===" + data.currentTarget.dataset.dramaid), wx.navigateTo({
+    goDramaDetail: function (data) {
+        console.log("goDramaDetail===" + data.currentTarget.dataset.dramaid), wx.navigateTo({
             url: "/pages/dramaDetail/index?dramaId=" + data.currentTarget.dataset.dramaid
         });
     },

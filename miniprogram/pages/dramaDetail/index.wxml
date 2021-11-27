@@ -23,7 +23,7 @@
                 </view>
                 <view class="header-item">
                     <text class="tit">主持人</text>
-                    <text class="tit-bottom">{{detailData.DMName}}</text>
+                    <text class="tit-bottom">{{detailData.dmNickName}}</text>
                 </view>
                 <view class="header-item">
                     <button class="btn-share" openType="share">
@@ -57,17 +57,17 @@
                 </view>
             </view>
 
-            <view class="jb-members" wx:if="{{detailData.startTime}}">
+            <view class="jb-members" wx:if="{{detailData.teamUsers && detailData.teamUsers.length>0}}">
                 <view class="title">组局成员</view>
                 <view class="list" wx:for="{{detailData.teamUsers}}">
                     <view class="mem-section flex-jus">
                         <view class="left flex-ver">
                             <view class="head-img">
-                                <image class="head" mode="aspectFill" src="{{tools.transformImageUrl(item.teamUserAvatar)}}" style="border-radius:50%"></image>
-                                <image class="sex" mode="aspectFill" src="{{item.teamUserSex=='男'?'/assets/images/ic-sex-circle-male.png':'/assets/images/ic-sex-circle-female.png'}}"></image>
+                                <image class="head" mode="aspectFill" src="{{tools.transformImageUrl(item.avatarUrl)}}" style="border-radius:50%"></image>
+                                <image class="sex" mode="aspectFill" src="{{item.gender==1?'/assets/images/ic-sex-circle-male.png':'/assets/images/ic-sex-circle-female.png'}}"></image>
                             </view>
                             <view class="infos">
-                                <text class="name">{{item.teamUserName}}</text>
+                                <text class="name">{{item.nickName}}</text>
                                 <text class="dt">{{item.teamUserJoinTime}}</text>
                             </view>
                         </view>
@@ -75,7 +75,7 @@
                     </view>
                 </view>
             </view>
-            <view class="join-in flex-center" wx:if="{{detailData.users}}">
+            <view class="join-in flex-center" wx:if="{{detailData.status!==20}}">
                 <button class="jiaruzuju" wx:if="{{joined}}">已加入</button>
                 <button bindtap="joinPay" wx:elif="{{hasMe==1}}">加入并支付￥{{tools.plusFuDongJia(detailData.price,0)}}元</button>
                 <button class="jiaruzuju" wx:else>本局人已满</button>

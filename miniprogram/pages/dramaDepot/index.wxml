@@ -69,20 +69,20 @@
                     </scroll-view>
                 </view>
             </view>
-            <view class="fs-section">
+            <!-- <view class="fs-section">
                 <view class="label">排序</view>
                 <view class="values">
                     <scroll-view bindscroll="scroll" class="checkes" scrollX="true">
                         <text bindtap="filterCheck" class="text {{filterDatas.order.cur===item.value?'cur':''}}" data-name="{{item.name}}" data-target="order" data-value="{{item.value}}" wx:for="{{filterDatas.order.conditions}}" wx:key="index">{{item.name}}</text>
                     </scroll-view>
                 </view>
-            </view>
+            </view> -->
         </view>
         <!-- <view class="zonghang">
             <text style="font-size:22rpx">--共{{count}}个剧本--</text>
         </view> -->
         <view class="movies-list" wx:for="{{dramaList}}">
-            <view bindtap="jubenDetail" class="movie" data-dramaid="{{item.Id}}">
+            <view bindtap="goDramaDetail" class="movie" data-dramaid="{{item.Id}}">
                 <view class="img-cover">
                     <image mode="aspectFill" src="{{tools.imageMogr(item.dramaCover,'0/w/200')}}" style="border-radius:12rpx;"></image>
                     <view style="position: absolute;top:18rpx;left:162rpx;" wx:if="{{item.isNew==1}}">
@@ -112,8 +112,7 @@
                     </view>
                     <view style="flex-direction: row;display: flex;">
                         <view style="flex:1">
-                            <view style="display:flex;height:56rpx;align-items:center">
-                              
+                            <view style="display:flex;height:48rpx;align-items:center">
                             </view>
                             <view class="bv">
                                 <view>

@@ -6,11 +6,10 @@ Page({
   data: {
     tubiao: "z_moren",
     movies: [
-      '/static/image/bg1.jpg',
-      '/static/image/bg2.jpg',
-      '/static/image/bg3.jpg',
-      '/static/image/bg4.jpg',
-      '/static/image/bg5.jpg',
+      'https://img1.baidu.com/it/u=1412665004,3652807320&fm=26&fmt=auto',
+      'https://img1.baidu.com/it/u=3529475728,3428445648&fm=26&fmt=auto',
+      'https://img1.baidu.com/it/u=3769294252,1742996689&fm=26&fmt=auto',
+
     ],
     rooms: [{
         roomDecorate: '/static/image/bg1.jpg',

@@ -3,6 +3,7 @@ var objectSpread2 = require("../../@babel/runtime/helpers/objectSpread2"),
     utils = require("../../utils/util"),
     app = getApp(),
     zujuID = "";
+
 import {
     ApiRequest,
     enquene
@@ -15,6 +16,7 @@ Page({
         statusBarHeight: app.globalData.statusBarHeight,
         tubiao: "z_moren",
         playing: "",
+        DetailId: "",
         detailData: {
             dramaId: 1001,
             dramaCover: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
@@ -265,32 +267,28 @@ Page({
         });
     },
     bindauthEvent: function () {
-        var t = this,
-            a = this.option;
-        console.log(a), this.setData({
-            detailData: a
-        }, function () {
-            t.getdpzjdetailData();
-        });
+        var _this = this;
+        _this.getDramaDetail();
     },
     onLoad: function (param) {
         var _this = this;
-        this.data.dramaId = param.dramaId, console.log("this.option=====" + param.dramaId),
-            app.globalData.userInfo && app.globalData.userInfo.openid ? (_this.getDramaDetail()) : _this.setData({
-                showModal: !0
-            });
+        this.data.DetailId = param.dramaId || param.teamId;
+        console.log("this.option=====" + this.data.DetailId);
+        app.globalData.userInfo && app.globalData.userInfo.openid ? (_this.getDramaDetail(!!param.teamId)) : _this.setData({
+            showModal: !0
+        });
     },
-    getDramaDetail: function () {
+    getDramaDetail: function (isTeam) {
         console.log("getDramaDetail")
         let that = this;
         let DramaDetailRequest = new ApiRequest();
-        DramaDetailRequest.apiName = "/storeMsMini/getDramaDetail";
+        DramaDetailRequest.apiName = isTeam ? "/storeMsMini/getTeamDetail" : "/storeMsMini/getDramaDetail";
         DramaDetailRequest.method = 'GET';
-        DramaDetailRequest.addParam("Id", this.data.dramaId);
+        DramaDetailRequest.addParam("Id", this.data.DetailId);
         DramaDetailRequest.apiCallback = function (success, response) {
             if (success && response.code == 1) {
                 that.setData({
-                    detailData:  response.data
+                    detailData: response.data
                 });
                 console.log("DramaDetailRequest")
             } else {}
@@ -322,44 +320,12 @@ Page({
     },
     onShow: function () {},
     onShareAppMessage: function (t) {
-        var a = this.data.detailData.dramaName ? this.data.detailData.dramaName : "",
-            e = "";
-        return app.globalData && app.globalData.userInfo && (e = "&tg=".concat(app.globalData.userInfo.wxCode, "&ts=").concat(Date.parse(new Date()))),
-            console.log("pages/dramaDetail/index?dpid=".concat(app.globalData.dpid, "&ZuJuId=").concat(zujuID) + e), {
-                title: "邀请你组局《" + a + "》",
-                path: "pages/dramaDetail/index?".concat(app.globalData.dpid, "&ZuJuId=").concat(zujuID) + e
-            };
-    },
-    getdpzjdetailData: function () {
-        var t = this;
-        request.requestAction({
-            method: "GET",
-            data: {
-                action: "dpzjdetails",
-                ZuJuId: zujuID,
-                wxCode: app.globalData.userInfo.wxCode
-            },
-            success: function (a) {
-                if (t.setData({
-                        zjData: a
-                    }), a.users)
-                    for (var e = 0; e < a.users.length; e++) {
-                        if (1 == a.users[e].ZhuangTai) {
-                            t.setData({
-                                joined: !0,
-                                showPay: !1
-                            });
-                            break;
-                        }
-                    }
-            },
-            fail: function (t) {
-                wx.showToast({
-                    title: t.msg ? t.msg : t,
-                    icon: "none"
-                }), console.log(t);
-            }
-        });
+        let date = "",
+            _this = this;
+        return app.globalData && app.globalData.userInfo && (date = "&tg=".concat(Date.parse(new Date()))), {
+            title: "邀请你组局《" + this.data.detailData.dramaName + "》",
+            path: "pages/dramaDetail/index?teamId=" + _this.data.DetailId + date
+        };
     },
 
     onHide: function () {

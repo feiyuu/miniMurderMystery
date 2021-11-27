@@ -1,94 +1,117 @@
 /**index.wxss**/
 
-page {
-  padding-top: 54rpx;
-  background-color: #f6f6f6;
-  padding-bottom: 60rpx;
+.movies-list .movie,.zonghang {
+  display: flex;
 }
 
-.title {
-  font-family: PingFang SC;
-  font-weight: 500;
-  color: #000000;
-  font-size: 44rpx;
-  margin-bottom: 40rpx;
+.movies-list .movie {
+  padding: 15rpx 24rpx;
+  position: relative;
+  background-color: var(--z_bg10);
+  margin: 18rpx 24rpx 0;
+  border-radius: 15rpx;
 }
 
-.top_tip {
+.movies-list .movie .img-cover image {
+  width: 178rpx;
+  height: 240rpx;
+}
+
+.movies-list .movie .infos {
+  flex: 1;
+  margin-left: 16rpx;
+}
+
+.movies-list .movie .infos .right {
+  width: 20%;
+  display: flex;
+  color: var(--z_zt30);
   font-size: 28rpx;
-  font-family: PingFang SC;
-  font-weight: 400;
-  color: #888888;
-  margin-bottom: 28rpx;
+  justify-content: flex-end;
 }
 
-.power {
-  margin-top: 30rpx;
-  border-radius: 5px;
-  background-color: white;
-  width: 93%;
-  padding-bottom: 1rpx;
-}
-
-.power_info {
+.movies-list .movie .infos .name {
   display: flex;
-  padding: 30rpx 25rpx;
   align-items: center;
-  justify-content: space-between;
 }
 
-.power_info_more {
-  width: 30rpx;
-  height: 30rpx;
-  transform: rotate(90deg);
+.movies-list .movie .infos .name text {
+  font-size: 34rpx;
+  color: var(--z_zt20);
+  line-height: 48rpx;
 }
 
-.power_info_less {
-  width: 30rpx;
-  height: 30rpx;
-  transform: rotate(270deg);
+.movies-list .movie .infos .name .mov {
+  margin-left: 16rpx;
+  width: 32rpx;
+  height: 32rpx;
 }
 
-.power_info_text {
+.movies-list .movie .infos .tags {
+  font-size: 22rpx;
+  color: var(--z_zt30);
+  line-height: 40rpx;
+}
+
+.movies-list .movie .infos .bgtags {
+  color: var(--z_zt40);
+  font-size: 22rpx;
+  background-color: var(--z_bg40);
+  border-radius: 6rpx;
+  padding: 5rpx 7rpx;
+}
+
+.movies-list .movie .infos .bordertag {
+  border: var(--z_x20);
+  border-radius: 6rpx;
+  padding: 3rpx 10rpx;
+  font-size: 22rpx;
+  color: var(--z_xbg20);
+}
+
+.movies-list .movie .infos .bv {
+  font-size: 26rpx;
+  color: var(--z_zt10);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  height: 38rpx;
+  align-items: center;
 }
 
-.power_info_text_title {
-  margin-bottom: 10rpx;
-  font-weight: 400;
-  font-size: 35rpx;
+.movies-list .movie .infos .bv .dian {
+  font-size: 28rpx;
+  margin-left: 8rpx;
+  margin-right: 8rpx;
 }
 
-.power_info_text_tip {
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 25rpx;
+.movies-list .movie .infos .bv .txt {
+  margin-left: 6rpx;
 }
 
-.power_item {
-  padding: 30rpx 25rpx;
+
+.movies-list .movie .infos .det {
+  margin-top: 6rpx;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.power_item_title {
-  font-size: 30rpx;
+.movies-list .movie .infos .det .tag {
+  line-height: 30rpx;
+  font-size: 22rpx;
+  color: var(--z_zt10);
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
-
-.power_item_icon {
-  width: 30rpx;
-  height: 30rpx;
-}
-
-.line {
-  width: 95%;
-  margin: 0 auto;
-  height: 2rpx;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.environment {
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 24rpx;
-  margin-top: 25%;
+.movies-list .btnJoin {
+  background-color: var(--z_zt30);
+  font-size: 26rpx;
+  width: 100rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
 }
