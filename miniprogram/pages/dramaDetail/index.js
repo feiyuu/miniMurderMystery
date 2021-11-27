@@ -1,14 +1,18 @@
-var a = require("../../@babel/runtime/helpers/objectSpread2"),
-    e = require("../../api/request.js"),
+var objectSpread2 = require("../../@babel/runtime/helpers/objectSpread2"),
+    request = require("../../api/request.js"),
     utils = require("../../utils/util"),
-    o = getApp(),
-    s = "";
+    app = getApp(),
+    zujuID = "";
+import {
+    ApiRequest,
+    enquene
+} from '../../doframework/network/ApiManager';
 
 Page({
     data: {
         showModal: !1,
         FuDongJia: 0,
-        statusBarHeight: o.globalData.statusBarHeight,
+        statusBarHeight: app.globalData.statusBarHeight,
         tubiao: "z_moren",
         playing: "",
         detailData: {
@@ -28,10 +32,34 @@ Page({
             type: '本格',
             beforehand: '1',
             price: 100,
-            organizeTeamId:1001,
+            organizeTeamId: 1001,
+            roles: [{
+                roleAvatar: 'https://img1.baidu.com/it/u=4025025658,2931130138&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
+            }, {
+                roleAvatar: 'https://img2.baidu.com/it/u=4127921897,761507293&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
+            }, {
+                roleAvatar: 'https://img0.baidu.com/it/u=3739576280,1915435388&fm=253&fmt=auto&app=120&f=PNG?w=200&h=200',
+                roleName: '染谷将太',
+                roleSex: '男'
+            }, {
+                roleAvatar: 'https://img0.baidu.com/it/u=3211627156,1665674786&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
+            }, {
+                roleAvatar: 'https://img1.baidu.com/it/u=2386722414,2264491889&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
+            }, {
+                roleAvatar: 'https://img2.baidu.com/it/u=2146252702,1388388301&fm=26&fmt=auto',
+                roleName: '染谷将太',
+                roleSex: '男'
+            }, ],
 
-
-            startTime: '2021-11-24 22:00',//比对时长和开始时间，决定组局状态
+            startTime: '2021-11-24 22:00', //比对时长和开始时间，决定组局状态
             DMId: 1101,
             DMName: '小酒',
             roomId: 1003,
@@ -68,31 +96,6 @@ Page({
                     teamUserJoinTime: '2021-11-24 10:22'
                 },
             ],
-            roles: [{
-                roleAvatar: 'https://img1.baidu.com/it/u=4025025658,2931130138&fm=26&fmt=auto',
-                roleName: '染谷将太',
-                roleSex: '男'
-            }, {
-                roleAvatar: 'https://img2.baidu.com/it/u=4127921897,761507293&fm=26&fmt=auto',
-                roleName: '染谷将太',
-                roleSex: '男'
-            }, {
-                roleAvatar: 'https://img0.baidu.com/it/u=3739576280,1915435388&fm=253&fmt=auto&app=120&f=PNG?w=200&h=200',
-                roleName: '染谷将太',
-                roleSex: '男'
-            }, {
-                roleAvatar: 'https://img0.baidu.com/it/u=3211627156,1665674786&fm=26&fmt=auto',
-                roleName: '染谷将太',
-                roleSex: '男'
-            }, {
-                roleAvatar: 'https://img1.baidu.com/it/u=2386722414,2264491889&fm=26&fmt=auto',
-                roleName: '染谷将太',
-                roleSex: '男'
-            }, {
-                roleAvatar: 'https://img2.baidu.com/it/u=2146252702,1388388301&fm=26&fmt=auto',
-                roleName: '染谷将太',
-                roleSex: '男'
-            }, ]
         },
         zjData: {},
         joined: !1,
@@ -120,7 +123,7 @@ Page({
         });
     },
     joinPay: function () {
-        o.globalData.userInfo && o.globalData.userInfo.wxCode ? (this.gYue(), this.setData({
+        app.globalData.userInfo && app.globalData.userInfo.wxCode ? (this.gYue(), this.setData({
             showPay: !0
         })) : this.setData({
             showModal: !0
@@ -141,15 +144,15 @@ Page({
                         ts: d
                     });
                 }
-                e.pay({
+                request.pay({
                     method: "POST",
-                    data: a(a({}, i), {}, {
+                    data: objectSpread2(objectSpread2({}, i), {}, {
                         action: "dpyhye",
-                        wxCode: o.globalData.userInfo.wxCode,
-                        ZuJuId: s,
+                        wxCode: app.globalData.userInfo.wxCode,
+                        ZuJuId: zujuID,
                         dramaId: this.data.zjData.JuBenId,
-                        XingBie: 1 == o.globalData.userInfo.gender ? "男" : "女",
-                        dpId: o.globalData.dpid
+                        XingBie: 1 == app.globalData.userInfo.gender ? "男" : "女",
+                        dpId: app.globalData.dpid
                     }),
                     success: function (a) {
                         this.paying = !1, wx.showToast({
@@ -182,15 +185,15 @@ Page({
                         ts: d
                     });
                 }
-                e.pay({
+                request.pay({
                     method: "POST",
-                    data: a(a({}, i), {}, {
+                    data: objectSpread2(objectSpread2({}, i), {}, {
                         action: "dianpu",
-                        wxCode: o.globalData.userInfo.wxCode,
-                        ZuJuId: s,
+                        wxCode: app.globalData.userInfo.wxCode,
+                        ZuJuId: zujuID,
                         dramaId: this.data.zjData.JuBenId,
-                        XingBie: 1 == o.globalData.userInfo.gender ? "男" : "女",
-                        dpId: o.globalData.dpid,
+                        XingBie: 1 == app.globalData.userInfo.gender ? "男" : "女",
+                        dpId: app.globalData.dpid,
                         appid: l.miniProgram.appId
                     }),
                     success: function (a) {
@@ -244,12 +247,12 @@ Page({
     },
     gYue: function () {
         var t = this;
-        e.requestAction({
+        request.requestAction({
             method: "GET",
             data: {
                 action: "dpyhye",
-                dpId: o.globalData.dpid,
-                wxCode: o.globalData.userInfo.wxCode
+                dpId: app.globalData.dpid,
+                wxCode: app.globalData.userInfo.wxCode
             },
             success: function (a) {
                 console.log(a), t.setData({
@@ -270,18 +273,33 @@ Page({
             t.getdpzjdetailData();
         });
     },
-    onLoad: function (t) {
-        var a = this;
-        this.option = t, console.log(this.option), s = t.ZuJuId,
-            o.globalData.userInfo && o.globalData.userInfo.wxCode ? a.getdpzjdetailData() : a.setData({
-                // showModal: !0
+    onLoad: function (param) {
+        var _this = this;
+        this.data.dramaId = param.dramaId, console.log("this.option=====" + param.dramaId),
+            app.globalData.userInfo && app.globalData.userInfo.openid ? (_this.getDramaDetail()) : _this.setData({
+                showModal: !0
             });
-
     },
-
+    getDramaDetail: function () {
+        console.log("getDramaDetail")
+        let that = this;
+        let DramaDetailRequest = new ApiRequest();
+        DramaDetailRequest.apiName = "/storeMsMini/getDramaDetail";
+        DramaDetailRequest.method = 'GET';
+        DramaDetailRequest.addParam("Id", this.data.dramaId);
+        DramaDetailRequest.apiCallback = function (success, response) {
+            if (success && response.code == 1) {
+                that.setData({
+                    detailData:  response.data
+                });
+                console.log("DramaDetailRequest")
+            } else {}
+        }
+        enquene(DramaDetailRequest);
+    },
     jbdetail: function (t) {
         var a = this;
-        e.requestAction({
+        request.requestAction({
             method: "GET",
             data: {
                 action: "jbdetail",
@@ -304,22 +322,22 @@ Page({
     },
     onShow: function () {},
     onShareAppMessage: function (t) {
-        var a = this.data.zjData.JuBenName ? this.data.zjData.JuBenName : this.data.zjData.JuBenTiCai,
+        var a = this.data.detailData.dramaName ? this.data.detailData.dramaName : "",
             e = "";
-        return o.globalData && o.globalData.userInfo && (e = "&tg=".concat(o.globalData.userInfo.wxCode, "&ts=").concat(Date.parse(new Date()))),
-            console.log("/pages/index/welcome?path=/pages/zuju01/zuju&dpid=".concat(o.globalData.dpid, "&ZuJuId=").concat(s) + e), {
-                title: "邀请你组局" + a,
-                path: "/pages/index/welcome?path=/pages/zuju01/zuju&dpid=".concat(o.globalData.dpid, "&ZuJuId=").concat(s) + e
+        return app.globalData && app.globalData.userInfo && (e = "&tg=".concat(app.globalData.userInfo.wxCode, "&ts=").concat(Date.parse(new Date()))),
+            console.log("pages/dramaDetail/index?dpid=".concat(app.globalData.dpid, "&ZuJuId=").concat(zujuID) + e), {
+                title: "邀请你组局《" + a + "》",
+                path: "pages/dramaDetail/index?".concat(app.globalData.dpid, "&ZuJuId=").concat(zujuID) + e
             };
     },
     getdpzjdetailData: function () {
         var t = this;
-        e.requestAction({
+        request.requestAction({
             method: "GET",
             data: {
                 action: "dpzjdetails",
-                ZuJuId: s,
-                wxCode: o.globalData.userInfo.wxCode
+                ZuJuId: zujuID,
+                wxCode: app.globalData.userInfo.wxCode
             },
             success: function (a) {
                 if (t.setData({

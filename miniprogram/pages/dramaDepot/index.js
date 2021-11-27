@@ -276,7 +276,7 @@ Page({
             r = "filterDatas." + s + ".param";
         console.log(l), this.setData((defineProperty(thise = {
             page: 1
-        }, r, n), defineProperty(thise, l, v),defineProperty(thise,"loadMoreing", !1), thise), function () {
+        }, r, n), defineProperty(thise, l, v), defineProperty(thise, "loadMoreing", !1), thise), function () {
             return _this.getFilterList();
         }), console.log(this.data);
     },
@@ -308,8 +308,8 @@ Page({
     },
 
     jubenDetail: function (data) {
-        console.log(data), wx.navigateTo({
-            url: "/pages/dramaDetail/index?dramaId=" + data.currentTarget.dataset.jbid
+        console.log("jubenDetail===" + data.currentTarget.dataset.dramaid), wx.navigateTo({
+            url: "/pages/dramaDetail/index?dramaId=" + data.currentTarget.dataset.dramaid
         });
     },
     getFilterList: function () {
@@ -356,7 +356,7 @@ Page({
                 wx.stopPullDownRefresh();
             }
         }
-        this.data.loadMoreing || (_this.data.loadMoreing = !0),enquene(filterRequest);
+        this.data.loadMoreing || (_this.data.loadMoreing = !0), enquene(filterRequest);
     },
     removeEmpty: function (obj) {
         Object.keys(obj).forEach(function (key) {
@@ -364,7 +364,7 @@ Page({
         });
         return obj;
     },
-   
+
     bindKeyInput: function (input) {
         this.key = input.detail.value;
     },

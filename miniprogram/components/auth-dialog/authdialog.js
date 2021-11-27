@@ -101,7 +101,7 @@ Component({
                     success: (res) => {},
                 });
                 if (success && response.code == 1) {
-                    app.globalData.userInfo = {};
+                    app.globalData.userInfo = response.data;
                     app.globalData.userInfo.openid = response.openid;
                     console.log(app.globalData.userInfo);
                     console.log(response), that.triggerEvent("authEvent", {});

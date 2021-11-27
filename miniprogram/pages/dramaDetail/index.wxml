@@ -16,7 +16,7 @@
             </view>
         </view>
         <view class="juben-content">
-            <view class="jb-kaiju flex-hor flex-center">
+            <view class="jb-kaiju flex-hor flex-center" wx:if="{{detailData.startTime}}">
                 <view class="header-item">
                     <text class="tit">开局时间</text>
                     <text class="tit-bottom">{{detailData.startTime}}</text>
@@ -57,7 +57,7 @@
                 </view>
             </view>
 
-            <view class="jb-members">
+            <view class="jb-members" wx:if="{{detailData.startTime}}">
                 <view class="title">组局成员</view>
                 <view class="list" wx:for="{{detailData.teamUsers}}">
                     <view class="mem-section flex-jus">

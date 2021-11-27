@@ -82,7 +82,7 @@
             <text style="font-size:22rpx">--共{{count}}个剧本--</text>
         </view> -->
         <view class="movies-list" wx:for="{{dramaList}}">
-            <view bindtap="jubenDetail" class="movie" data-jbid="{{item.jbId}}">
+            <view bindtap="jubenDetail" class="movie" data-dramaid="{{item.Id}}">
                 <view class="img-cover">
                     <image mode="aspectFill" src="{{tools.imageMogr(item.dramaCover,'0/w/200')}}" style="border-radius:12rpx;"></image>
                     <view style="position: absolute;top:18rpx;left:162rpx;" wx:if="{{item.isNew==1}}">

@@ -12,8 +12,8 @@
 
 .juben-info .image-box,
 .juben-info .image-box image {
-    width: 178rpx;
-    height: 240rpx;
+    width: 188rpx;
+    height: 250rpx;
 }
 
 .juben-info .infos {
