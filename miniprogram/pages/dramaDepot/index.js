@@ -9,16 +9,17 @@ import {
 
 Page({
     data: {
-        FuDongJia: -20,
+        FuDongJia: 0,
         tubiao: "z_moren",
         keyWords: "",
         page: 1,
         dramaName: '',
         pageSize: 10,
+        loadMoreing: !1,
         statusBarHeight: app.globalData.statusBarHeight,
         dramaList: [{
                 dramaId: 1001,
-                dramaCover: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
+                dramaCover: "https://img0.baidu.com/it/u=1039842579,1206593230&fm=253&fmt=auto&app=138&f=JPEG",
                 isNew: 1,
                 dramaName: "三千鸦杀啊啊",
                 type: '欢乐',
@@ -275,7 +276,7 @@ Page({
             r = "filterDatas." + s + ".param";
         console.log(l), this.setData((defineProperty(thise = {
             page: 1
-        }, r, n), defineProperty(thise, l, v), thise), function () {
+        }, r, n), defineProperty(thise, l, v),defineProperty(thise,"loadMoreing", !1), thise), function () {
             return _this.getFilterList();
         }), console.log(this.data);
     },
@@ -342,24 +343,20 @@ Page({
                     var liste = _this.data.dramaList.concat(response);
                     _this.setData({
                         dramaList: liste,
+                        loadMoreing: _this.length < 10
                     });
-                    // console.log("response=====================page > 1" + JSON.stringify(response));
                 } else {
                     _this.setData({
                         dramaList: response,
+                        loadMoreing: !1
                     });
-                    // console.log("response=====================else" + JSON.stringify(response));
                 }
-                if(response.length >= 10){
-                    _this.data.page = _this.data.page + 1;
-                }
-                wx.stopPullDownRefresh();
-                wx.hideNavigationBarLoading();
+                _this.data.page = _this.data.page + 1, wx.stopPullDownRefresh(), wx.hideNavigationBarLoading();
             } else {
                 wx.stopPullDownRefresh();
             }
         }
-        enquene(filterRequest);
+        this.data.loadMoreing || (_this.data.loadMoreing = !0),enquene(filterRequest);
     },
     removeEmpty: function (obj) {
         Object.keys(obj).forEach(function (key) {

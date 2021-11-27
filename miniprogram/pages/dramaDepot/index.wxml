@@ -78,9 +78,9 @@
                 </view>
             </view>
         </view>
-        <view class="zonghang">
+        <!-- <view class="zonghang">
             <text style="font-size:22rpx">--共{{count}}个剧本--</text>
-        </view>
+        </view> -->
         <view class="movies-list" wx:for="{{dramaList}}">
             <view bindtap="jubenDetail" class="movie" data-jbid="{{item.jbId}}">
                 <view class="img-cover">

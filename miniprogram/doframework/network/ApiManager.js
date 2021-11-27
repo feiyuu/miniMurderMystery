@@ -9,9 +9,9 @@ import ApiRequest from "./ApiRequest.js";
 const API_SERVER_HOST = "http://127.0.0.1:7001";
 
 function enquene(request) {
-    wx.showLoading({
-      title: '',
-    })
+    // wx.showLoading({
+    //   title: '',
+    // })
     // 发出真正的请求
     let req = request.getApiRequestParam();
     let apiName = request.apiName;
