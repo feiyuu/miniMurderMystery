@@ -1,0 +1,32 @@
+/**index.wxss**/
+@import "../../template/templateTeamList.wxss";
+
+page {
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-tab {
+  display: flex;
+  flex-direction: row;
+}
+
+.tab-item {
+  width: 33.3%;
+  text-align: center;
+  font-size: 15px;
+  color: #777;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.swiper {
+  height: calc(100vh - 100rpx);
+  width: 100%;
+  background: var(--z_bg10);
+}
+
+.on {
+  color: var(--z_zt30);
+  border-bottom: 5rpx solid var(--z_zt30);
+}

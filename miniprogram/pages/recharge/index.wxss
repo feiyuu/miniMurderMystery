@@ -1,0 +1,75 @@
+page {
+    background-color: #eee;
+}
+
+.top_view {
+    display: flex;
+    align-items: center;
+    height: 265rpx;
+    padding: 0 32rpx;
+    background-color: #fff;
+    margin: 36rpx;
+    border-radius: 10rpx;
+}
+
+.image {
+    margin-right: 32rpx;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+}
+
+.center_view {
+    margin: 20rpx;
+    background-color: #fff;
+    padding: 36rpx 10rpx;
+}
+
+.content_view {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 32rpx;
+    margin-bottom: 38rpx;
+}
+
+.radio_view {
+    margin: 8rpx;
+    width: 205rpx;
+    height: 166rpx;
+}
+
+.radio {
+    position: absolute;
+    width: 203rpx;
+    height: 160rpx;
+}
+
+.radio_view_txt {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.chongz {
+    background-color: #eee;
+    width: 100%;
+    height: 1rpx;
+    margin-top: 32rpx;
+}
+
+.song {
+    font-size: 22rpx;
+    margin-top: 10rpx;
+    color: #f27f8a;
+    margin-top: 10rpx;
+}
+
+.zhif {
+    background-color: #ffb51a;
+    color: #fff;
+    margin: 180rpx 100rpx;
+}

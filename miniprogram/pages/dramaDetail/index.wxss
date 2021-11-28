@@ -172,6 +172,10 @@
     color: var(--z_zt20);
     padding-top: 30rpx;
     padding-bottom: 30rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
 }
 
 .jb-members .list {
@@ -276,7 +280,7 @@
 
 .v_money {
     width: 100%;
-    height: 200rpx;
+    height: 150rpx;
     justify-content: center;
 }
 
@@ -309,7 +313,7 @@
 .zhif {
     background-color: #ffb51a;
     color: #fff;
-    margin: 180rpx 100rpx;
+    margin: 80rpx 100rpx;
 }
 
 .pay_dialog {

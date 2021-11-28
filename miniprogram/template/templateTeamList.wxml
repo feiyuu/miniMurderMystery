@@ -1,0 +1,70 @@
+<template name="teamListTemplate">
+  <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'>
+    <block wx:for="{{teamList}}" wx:key="index">
+      <view class="movies-list">
+        <view bindtap="goTeamDetail" class="movie" data-teamid="{{item.Id}}">
+          <view class="img-cover">
+            <image mode="aspectFill" src="{{tools.imageMogr(item.dramaCover,'0/w/200')}}" style="border-radius:12rpx;"></image>
+            <view style="position: absolute;top:18rpx;left:162rpx;" wx:if="{{item.isNew==1}}">
+              <image src="/assets/images/xin.png" style="width:16px;height:16px"></image>
+            </view>
+          </view>
+          <view class="infos">
+            <view style="display: flex;">
+              <view style="width:84%">
+                <view class="name">
+                  <text>{{item.dramaName}}</text>
+                  <image class="mov" mode="aspectFit" src="/img/tb/z_moren/ic-ytb.png" wx:if="{{item.VideoUrl}}"></image>
+                </view>
+                <view class="tags">
+                  <text class="bqys">{{tools.trans3(item.type)}}</text>
+                  <text style="font-size:18px" wx:if="{{item.type}}"> · </text>
+                  <text>{{tools.trans2(item.theme)}}/{{item.background}}</text>
+                </view>
+              </view>
+              <view class="right">
+                <text class="{{tools.teamPeoples(item.joinedCount,item.numbers)=='已满' || item.status == 30 || item.status == 50?'rightTxtGrey':''}}" style="line-height: 80rpx;font-weight:bold;">{{item.status == 10?tools.teamPeoples(item.joinedCount,item.numbers):
+                  item.status == 30?'已完成':'已解散'
+                }}</text>
+              </view>
+            </view>
+            <view class="det">
+              <text class="tag">{{item.profile}}</text>
+            </view>
+            <view style="flex-direction: row;display: flex;">
+              <view style="flex:1">
+                <view style="display:flex;height:48rpx;align-items:center">
+                  <view class="tags"> 开局时间：{{item.startTime}}</view>
+                </view>
+                <view class="bv">
+                  <view>
+                    <image mode="aspectFit" src="/img/tb/z_moren/jul_ren.png" style="width:22rpx;height:20rpx"></image>
+                    <text class="txt">{{item.NanNvShu}}</text>
+                  </view>
+                  <view class="dian">
+                    <text>·</text>
+                  </view>
+                  <view>
+                    <image mode="aspectFit" src="/img/tb/z_moren/jul_time.png" style="width:22rpx;height:20rpx"></image>
+                    <text class="txt">{{item.duration}}小时</text>
+                  </view>
+                  <view class="dian" wx:if="{{item.difficulty}}">
+                    <text>·</text>
+                  </view>
+                  <view wx:if="{{item.difficulty}}">
+                    <image mode="aspectFit" src="/img/tb/z_moren/jul_tag.png" style="width:22rpx;height:20rpx"></image>
+                    <text class="txt" style="margin-left:10rpx">{{item.difficulty}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="btnJoin {{tools.teamPeoples(item.joinedCount,item.numbers)=='已满'?'btnJoinGrey':''}}"
+              wx:if="{{item.status == 10}}"
+              >加入</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <wxs module="tools" src="../pages/tools.wxs" />
+</template>

@@ -1,0 +1,130 @@
+
+.movies-list .movie,
+.zonghang {
+  display: flex;
+}
+.scroll-views{
+  height: 100%;
+  width: 100%;
+}
+
+.movies-list .movie {
+  padding: 15rpx 24rpx;
+  position: relative;
+  background-color: var(--z_bg10);
+  margin: 18rpx 24rpx 0;
+  border-radius: 15rpx;
+}
+
+.movies-list .movie .img-cover image {
+  width: 178rpx;
+  height: 240rpx;
+}
+
+.movies-list .movie .infos {
+  flex: 1;
+  margin-left: 16rpx;
+}
+
+.movies-list .movie .infos .right {
+  width: 20%;
+  display: flex;
+  color: var(--z_zt30);
+  font-size: 28rpx;
+  justify-content: flex-end;
+}
+
+.movies-list .movie .infos .rightTxtGrey {
+  color: var(--z_zt10);
+}
+
+.movies-list .movie .infos .name {
+  display: flex;
+  align-items: center;
+}
+
+.movies-list .movie .infos .name text {
+  font-size: 34rpx;
+  color: var(--z_zt20);
+  line-height: 48rpx;
+}
+
+.movies-list .movie .infos .name .mov {
+  margin-left: 16rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.movies-list .movie .infos .tags {
+  font-size: 22rpx;
+  color: var(--z_zt30);
+  line-height: 40rpx;
+}
+
+.movies-list .movie .infos .bgtags {
+  color: var(--z_zt40);
+  font-size: 22rpx;
+  background-color: var(--z_bg40);
+  border-radius: 6rpx;
+  padding: 5rpx 7rpx;
+}
+
+.movies-list .movie .infos .bordertag {
+  border: var(--z_x20);
+  border-radius: 6rpx;
+  padding: 3rpx 10rpx;
+  font-size: 22rpx;
+  color: var(--z_xbg20);
+}
+
+.movies-list .movie .infos .bv {
+  font-size: 26rpx;
+  color: var(--z_zt10);
+  display: flex;
+  flex-direction: row;
+  height: 38rpx;
+  align-items: center;
+}
+
+.movies-list .movie .infos .bv .dian {
+  font-size: 28rpx;
+  margin-left: 8rpx;
+  margin-right: 8rpx;
+}
+
+.movies-list .movie .infos .bv .txt {
+  margin-left: 6rpx;
+}
+
+
+.movies-list .movie .infos .det {
+  margin-top: 6rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movies-list .movie .infos .det .tag {
+  line-height: 30rpx;
+  font-size: 22rpx;
+  color: var(--z_zt10);
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.movies-list .btnJoin {
+  background-color: var(--z_zt30);
+  font-size: 26rpx;
+  width: 100rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+}
+
+.movies-list .btnJoinGrey {
+  background-color: var(--z_zt10);
+}

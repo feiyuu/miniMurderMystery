@@ -1,0 +1,19 @@
+
+<view class="center_view">
+    <text style="margin-left:20rpx;color: black;">余额充值</text>
+    <view class="chongz"></view>
+    <view class="content_view" style="justify-content: space-around;">
+        <view bindtap="tapSelect" class="radio_view" data-index="{{index}}" wx:for="{{czList}}">
+            <image class="radio" src="{{current==index?'/assets/images/re_check_active.png':'/assets/images/re_check_normal.png'}}"></image>
+            <view class="radio_view_txt">
+                <text style="color: black;">充{{item.chong}}元</text>
+                <text class="song">送{{item.song}}元</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view>
+    <button bindtap="pay" class="zhif">支付</button>
+</view>
+<authdialog autoShow="{{true}}" bindauthEvent="bindauthEvent" force="{{true}}" isPhone="{{true}}"></authdialog>
+<wxs module="tools" src="../tools.wxs" />

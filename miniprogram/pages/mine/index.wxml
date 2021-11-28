@@ -46,7 +46,7 @@
                     <view class="ic-box flex-center">
                         <image class="ic-mm01" src="/img/tb/{{tubiao}}/ic-mine-menu01.png"></image>
                     </view>
-                    <text>我的组局记录</text>
+                    <text>我的组局</text>
                 </view>
             </navigator>
             <navigator bindtap="goilike" class="mn-sec flex-ver flex-jus">
@@ -54,7 +54,7 @@
                     <view class="ic-box flex-center">
                         <image class="ic-mm02" src="/img/tb/{{tubiao}}/ic-mine-menu02.png"></image>
                     </view>
-                    <text>我想玩的剧本</text>
+                    <text>我的收藏</text>
                 </view>
             </navigator>
             <navigator bindtap="goiplayed" class="mn-sec flex-ver flex-jus">
@@ -62,15 +62,15 @@
                     <view class="ic-box flex-center">
                         <image class="ic-mm03" src="/img/tb/{{tubiao}}/ic-mine-menu03.png"></image>
                     </view>
-                    <text>我玩过的剧本</text>
+                    <text>我玩过的本</text>
                 </view>
             </navigator>
             <navigator bindtap="goPurchaseHistory" class="mn-sec flex-ver flex-jus">
                 <view class="left flex-ver">
                     <view class="ic-box flex-center">
-                        <image class="ic-mm03" src="/img/tb/{{tubiao}}/ic-mine-menu06.png"></image>
+                        <image class="ic-mm03" src="/img/tb/{{tubiao}}/ic-mine-menu07.png"></image>
                     </view>
-                    <text>我的消费记录</text>
+                    <text>我的资金明细</text>
                 </view>
             </navigator>
         </view>

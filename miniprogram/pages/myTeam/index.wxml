@@ -1,0 +1,24 @@
+<import src="../../template/templateTeamList.wxml"></import>
+<!--index.wxml-->
+<view class="container">
+  <!--顶部导航栏-->
+  <view class="swiper-tab">
+    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">组局中</view>
+    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">已完成</view>
+    <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已解散</view>
+  </view>
+  <!--内容主体-->
+  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange">
+    <swiper-item class="swiper-items">
+      <template is="teamListTemplate" data="{{teamList:teamList10}}"></template>
+    </swiper-item>
+    <swiper-item>
+      <template is="teamListTemplate" data="{{teamList:teamList30}}"></template>
+    </swiper-item>
+    <swiper-item>
+      <template is="teamListTemplate" data="{{teamList:teamList50}}"></template>
+    </swiper-item>
+  </swiper>
+
+</view>
+<wxs module="tools" src="../tools.wxs" />

@@ -31,6 +31,7 @@
         <view style="flex-direction: row;display: flex;">
           <view style="flex:1">
             <view style="display:flex;height:48rpx;align-items:center">
+              <view class="tags"> 开局时间：{{item.startTime}}</view>
             </view>
             <view class="bv">
               <view>

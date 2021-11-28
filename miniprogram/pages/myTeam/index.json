@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "我的组局",
+    "usingComponents": {
+      
+    },
+    "backgroundColor": "#212121",
+    "navigationBarBackgroundColor": "#212121",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false,
+    "backgroundTextStyle": "dark"
+}

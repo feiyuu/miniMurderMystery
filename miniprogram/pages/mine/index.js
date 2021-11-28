@@ -90,7 +90,7 @@ Page({
   },
   gomyzuju: function () {
     app.globalData.userInfo ? wx.navigateTo({
-      url: "/pages/myzuju/myzuju"
+      url: "/pages/myTeam/index"
     }) : this.setData({
       showModal: !0
     });
@@ -118,7 +118,7 @@ Page({
   },
   goyue: function () {
     wx.navigateTo({
-      url: "/pages/yue/yue"
+      url: "/pages/recharge/index"
     });
   },
   auth: function () {
