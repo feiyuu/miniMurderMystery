@@ -105,6 +105,7 @@
     right: 0;
     z-index: 1;
 }
+
 .juben-content .words .btn image {
     transition: all .2s ease-out;
     width: 25rpx;
@@ -134,7 +135,8 @@
     margin-bottom: 40rpx;
 }
 
-.juben-content .juese .j-section .img-box,.juben .juese .j-section .img-box image {
+.juben-content .juese .j-section .img-box,
+.juben .juese .j-section .img-box image {
     width: 128rpx;
     height: 128rpx;
 }
@@ -269,6 +271,25 @@
 }
 
 .share image {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.juben-info .collect {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 6rpx;
+}
+
+.collect-tit {
+    font-size: 20rpx;
+    color: var(--z_zt20);
+    margin-top: 10rpx;
+}
+
+.collect image {
     width: 36rpx;
     height: 36rpx;
 }

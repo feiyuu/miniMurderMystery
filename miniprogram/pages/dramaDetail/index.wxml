@@ -14,9 +14,13 @@
                 <view class="gates">{{detailData.price}}元/人</view>
                 <starts class="gates" score="{{detailData.dramaGrade}}"></starts>
             </view>
+            <view class="collect" bindtap="collectDrama" wx:if="{{!isTeam}}">
+                <image src="{{tools.collectUrl(detailData.isCollect)}}"></image>
+                <view class="collect-tit">{{detailData.isCollect?'已收藏':'收藏'}}</view>
+            </view>
         </view>
         <view class="juben-content">
-            <view class="jb-kaiju flex-hor flex-center" wx:if="{{detailData.startTime}}">
+            <view class="jb-kaiju flex-hor flex-center" wx:if="{{isTeam}}">
                 <view class="header-item">
                     <text class="tit">开局时间</text>
                     <text class="tit-bottom">{{detailData.startTime}}</text>
@@ -57,7 +61,7 @@
                 </view>
             </view>
 
-            <view class="jb-members" wx:if="{{detailData.startTime}}">
+            <view class="jb-members" wx:if="{{isTeam}}">
                 <view class="title"><text>组局成员</text><text style="font-size: 28rpx;">({{detailData.teamUsers.length}}/{{detailData.numbers}})</text></view>
                 <view class="list" wx:for="{{detailData.teamUsers}}">
                     <view class="mem-section flex-jus">
@@ -75,7 +79,7 @@
                     </view>
                 </view>
             </view>
-            <view class="join-in flex-center" wx:if="{{detailData.status!==20}}">
+            <view class="join-in flex-center" wx:if="{{isTeam&&detailData.status!==20}}">
                 <button class="jiaruzuju" wx:if="{{joined}}">已加入</button>
                 <button class="jiaruzuju" wx:elif="{{fullPeoples}}">本局人已满</button>
                 <button bindtap="joinPay" wx:else>加入并支付￥{{tools.plusFuDongJia(detailData.price,0)}}元</button>

@@ -13,7 +13,6 @@ Page({
         tubiao: "z_moren",
         keyWords: "",
         page: 1,
-        dramaName: '',
         pageSize: 10,
         loadMoreing: !1,
         statusBarHeight: app.globalData.statusBarHeight,
@@ -318,7 +317,7 @@ Page({
         filterRequest.apiName = "/storeMsMini/getFilterDramaList";
         filterRequest.method = 'GET';
         let filters = {
-            dramaName: _this.data.dramaName,
+            dramaName: _this.data.keyWords,
             numbers: _this.data.filterDatas.numbers.param,
             duration: _this.data.filterDatas.duration.param,
             background: _this.data.filterDatas.background.param,
@@ -366,9 +365,15 @@ Page({
     },
 
     bindKeyInput: function (input) {
-        this.key = input.detail.value;
+        this.setData({
+            keyWords:input.detail.value
+        })
     },
     search: function () {
-        this.data.page = 1, this.data.keyWords = this.key ? this.key : "", this.getFilterList();
+        this.setData({
+            page:1,
+        },function(){
+            this.getFilterList();
+        });
     },
 });

@@ -154,6 +154,9 @@ var itorZhaoPian = (function (value) {
 var teamPeoples = (function (joinedCount, numbers) {
     return parseInt(joinedCount) < parseInt(numbers) ? joinedCount + '/' + numbers : '已满'
 });
+var collectUrl = (function (isCollect) {
+    return isCollect ? '../../img/tb/z_moren/like-ytb.png' : '../../img/tb/z_moren/nolike-ytb.png'
+});
 var sum = (function (v1, v2) {
     return (parseInt(v1) + parseInt(v2))
 });
@@ -168,6 +171,7 @@ module.exports.teamPeoples = teamPeoples;
 module.exports.isYue = isYue;
 module.exports.plusFuDongJia = plusFuDongJia;
 module.exports.isChecked = isChecked;
+module.exports.collectUrl = collectUrl;
 module.exports.transformImageUrl = transformImageUrl;
 module.exports.parFloat = parFloat;
 module.exports.trans = trans;

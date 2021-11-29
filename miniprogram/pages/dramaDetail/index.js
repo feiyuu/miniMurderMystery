@@ -18,6 +18,7 @@ Page({
         playing: "",
         DetailId: "",
         isTeam: false,
+        
         detailData: {
             dramaId: 1001,
             dramaCover: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
@@ -27,6 +28,7 @@ Page({
             theme: '情感',
             background: '民国',
             numbers: 6,
+            isCollect: false,
             dramaGrade: 5,
             profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣,七个密室，没有一个是敷衍写写的，破第一二个的时候其实还好，不是很难时间压得特别紧凑，山厕所都不敢去因为太有趣了实在不敢去实在不想走开！到第四个密室开始就开始很难了，到第七个密室的时候倒吸一口气结合前面每个密室一部分的手法做出来的终极大Boss ！真的妙啊！最后还原了70%左右（大概是最后一个密室核诡盘出，背景故事全复原，破了4个密室手法和找对凶手）花了整整7个小时掉了一大把头发。',
             NanNvShu: '3男3女',
@@ -146,7 +148,7 @@ Page({
             loginRequest.addParam("isBlance", 0 == that.data.position);
             loginRequest.addParam("thumUrl", that.data.detailData.dramaCover);
             loginRequest.addParam("charge", that.data.detailData.price);
-            loginRequest.addParam("recordName", "支付《" + that.data.detailData.dramaName + "》组局费用：-"+that.data.detailData.price);
+            loginRequest.addParam("recordName", "支付《" + that.data.detailData.dramaName + "》组局费用：-" + that.data.detailData.price);
             loginRequest.apiCallback = function (success, response) {
                 wx.hideLoading({})
                 if (success && response.code == 1) {
@@ -189,6 +191,25 @@ Page({
         }
         enquene(joinTeamRequest);
     },
+    collectDrama: function () {
+        var that = this;
+        let collectDramaRequest = new ApiRequest();
+        collectDramaRequest.apiName =  that.data.detailData.isCollect?"/storeMsMini/unCollectDrama":"/storeMsMini/collectDrama";
+        collectDramaRequest.method = 'POST';
+        collectDramaRequest.addParam("openid", app.globalData.userInfo.openid);
+        collectDramaRequest.addParam("dramaId", that.data.DetailId);
+        collectDramaRequest.apiCallback = function (success, response) {
+            wx.hideLoading({})
+            if (success && response.code == 1) {
+                that.data.detailData.isCollect = !that.data.detailData.isCollect;
+                that.setData({
+                    detailData:that.data.detailData
+                })
+            } else {}
+        }
+        enquene(collectDramaRequest);
+    },
+
     getBalance: function () {
         console.log("getBalance")
         let that = this;
@@ -214,9 +235,10 @@ Page({
     },
     onLoad: function (param) {
         var _this = this;
-        this.data.DetailId = param.dramaId || param.teamId;
-        this.data.isTeam = !!param.teamId;
-        console.log("this.option=====" + this.data.DetailId);
+        this.setData({
+            isTeam: !!param.teamId,
+            DetailId: !!param.teamId ? param.teamId : param.dramaId
+        });
         app.globalData.userInfo && app.globalData.userInfo.openid ? (_this.getDramaDetail()) : _this.setData({
             showModal: !0
         });
@@ -228,12 +250,11 @@ Page({
         DramaDetailRequest.apiName = that.data.isTeam ? "/storeMsMini/getTeamDetail" : "/storeMsMini/getDramaDetail";
         DramaDetailRequest.method = 'GET';
         DramaDetailRequest.addParam("Id", this.data.DetailId);
+        DramaDetailRequest.addParam("openid", app.globalData.userInfo.openid);
         DramaDetailRequest.apiCallback = function (success, response) {
             if (success && response.code == 1) {
-                console.log("response.data.teamUsers===========" + JSON.stringify(response.data.teamUsers));
-                if (response.data && response.data.teamUsers) {
+                if (that.data.isTeam && response.data && response.data.teamUsers) {
                     for (var i = 0; i < response.data.teamUsers.length; i++) {
-                        console.log("getDramaDetail---teamUsers----" + JSON.stringify(response.data.teamUsers[i]));
                         if (app.globalData.userInfo.openid == response.data.teamUsers[i].openid) {
                             that.setData({
                                 joined: true
@@ -241,7 +262,7 @@ Page({
                         }
                     };
                 }
-                if (parseInt(response.data.numbers) <= parseInt(response.data.teamUsers.length)) {
+                if (that.data.isTeam && parseInt(response.data.numbers) <= parseInt(response.data.teamUsers.length)) {
                     that.setData({
                         fullPeoples: true
                     });

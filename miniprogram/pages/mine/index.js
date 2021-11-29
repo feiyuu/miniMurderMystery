@@ -96,7 +96,7 @@ Page({
   },
   goilike: function () {
     app.globalData.userInfo ? wx.navigateTo({
-      url: "/pages/ilikejuben/index"
+      url: "/pages/myCollectDramas/index"
     }) : this.setData({
       showModal: !0
     });

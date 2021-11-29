@@ -1,13 +1,14 @@
 {
   "pages": [
-    "pages/home/index",
     "pages/mine/index",
+    "pages/home/index",
+    "pages/dramaDetail/index",
     "pages/myTeam/index",
     "pages/team/index",
     "pages/recharge/index",
     "pages/dramaDepot/index",
-    "pages/dramaDetail/index",
     "pages/purchaseRecord/index",
+    "pages/myCollectDramas/index",
     "template/templateTeamList",
     "pages/shop/index"
   ],
