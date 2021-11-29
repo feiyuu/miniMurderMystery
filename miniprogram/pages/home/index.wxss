@@ -64,9 +64,6 @@ page {
 }
 
 .shop-rooms .list {
-  margin: 0 13rpx;
-  padding: 0 9rpx;
-  height: 216rpx;
   overflow: auto;
 }
 
@@ -75,48 +72,45 @@ page {
 }
 
 .shop-rooms .swiper-item {
-  width: 197rpx;
-  margin: 0 10rpx;
+  width: 300rpx;
 }
 
 .shop-rooms .swiper-item .cover {
   width: 100%;
   height: 100%;
   height: 165rpx;
-  border-radius: 10rpx;
-  overflow: hidden;
 }
 
 .shop-rooms .swiper-item .cover image {
   width: 100%;
   height: 165rpx;
- 
 }
 
 .shop-rooms .swiper-item .name {
-  margin-top: 20rpx;
+  padding-top: 6rpx;
+  padding-bottom: 6rpx;
   font-size: 24rpx;
   width: 100%;
   color: black;
   text-align: center;
 }
-
-.shop-hosts,.shop-rooms {
-  padding-bottom: 24rpx;
-  margin: 18rpx 32rpx 0;
-  border-radius: 15rpx;
+.shop-rooms {
+  margin: 18rpx 32rpx;
   background-color: #dfdde8;
+  overflow: hidden;
 }
-
-.shop-hosts .sh-header,.shop-rooms .sr-header {
-  padding: 30rpx 32rpx;
+.shop-hosts {
+  margin: 48rpx 32rpx;
+  background-color: var(--z_bgbg);
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+.shop-hosts .sh-header {
+  margin-bottom: 20rpx;
   font-size: 32rpx;
-  color: black;
-  line-height: 34rpx;
+  color: var(--z_zt20);
 }
-
 .shop-hosts .list {
-  padding: 0 13rpx;
   height: 300rpx;
   overflow: auto;
 }
@@ -124,7 +118,7 @@ page {
 .shop-hosts .swipers .swiper-item {
   position: relative;
   width: 203rpx;
-  margin: 0 12rpx;
+  margin-right: 18rpx;
 }
 
 .shop-hosts .swipers .swiper-item .cover {
@@ -145,11 +139,50 @@ page {
   font-size: 24rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  color: black;
+  color: #dfdde8;
 }
 .hot{
   width: 20rpx;
   height: 20rpx;
   margin-left: 4rpx;
 }
+
+.shop-dramas {
+  margin: 48rpx 32rpx;
+  background-color: var(--z_bgbg);
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+
+.shop-dramas .list {
+  overflow: auto;
+}
+.shop-dramas .sh-header {
+  writing-mode: vertical-lr;
+  padding: 20rpx 10rpx;
+  font-size: 32rpx;
+  color: black;
+  text-align: center;
+  background-color: #dfdde8;
+}
+
+.shop-dramas .swipers .swiper-item {
+  position: relative;
+  width: 203rpx;
+  margin-left: -40rpx;
+}
+
+.shop-dramas .swipers .swiper-item .cover {
+  width: 100%;
+  height: 245rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  background-color: chocolate;
+}
+
+.shop-dramas .swipers .swiper-item .cover image {
+  width: 100%;
+  height: 245rpx;
+}
+
 

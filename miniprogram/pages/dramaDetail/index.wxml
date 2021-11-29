@@ -57,7 +57,7 @@
                 </view>
             </view>
 
-            <view class="jb-members" wx:if="{{detailData.teamUsers && detailData.teamUsers.length>0}}">
+            <view class="jb-members" wx:if="{{detailData.startTime}}">
                 <view class="title"><text>组局成员</text><text style="font-size: 28rpx;">({{detailData.teamUsers.length}}/{{detailData.numbers}})</text></view>
                 <view class="list" wx:for="{{detailData.teamUsers}}">
                     <view class="mem-section flex-jus">

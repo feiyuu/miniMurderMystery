@@ -83,7 +83,6 @@ Page({
   },
 
   onShow: function () {
-    console.log("onShow--------------------------");
     app.globalData.userInfo ? this.getMineData() : this.setData({
       showModal: !app.globalData.userInfo
     });
@@ -104,14 +103,14 @@ Page({
   },
   goiplayed: function () {
     app.globalData.userInfo ? wx.navigateTo({
-      url: "/pages/myzuju/myzuju?iplayed=true"
+      url: "/pages/myTeam/index?currentTab=1"
     }) : this.setData({
       showModal: !0
     });
   },
   goPurchaseHistory: function () {
     app.globalData.userInfo ? wx.navigateTo({
-      url: "/pages/myzuju/myzuju?iplayed=true"
+      url: "/pages/purchaseRecord/index?"
     }) : this.setData({
       showModal: !0
     });

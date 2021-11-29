@@ -146,7 +146,7 @@ Page({
             loginRequest.addParam("isBlance", 0 == that.data.position);
             loginRequest.addParam("thumUrl", that.data.detailData.dramaCover);
             loginRequest.addParam("charge", that.data.detailData.price);
-            loginRequest.addParam("recordName", "支付剧本杀《" + that.data.detailData.dramaName + "》组局费用");
+            loginRequest.addParam("recordName", "支付《" + that.data.detailData.dramaName + "》组局费用：-"+that.data.detailData.price);
             loginRequest.apiCallback = function (success, response) {
                 wx.hideLoading({})
                 if (success && response.code == 1) {

@@ -98,7 +98,7 @@
   flex-wrap: wrap;
 }
 
-.movies-list .movie .infos .det .tag {
+.movies-list .movie .infos .tag {
   line-height: 30rpx;
   font-size: 22rpx;
   color: var(--z_zt10);

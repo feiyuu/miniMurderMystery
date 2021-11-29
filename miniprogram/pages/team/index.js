@@ -17,6 +17,7 @@ Page({
     let teamListRequest = new ApiRequest();
     teamListRequest.apiName = "/storeMsMini/getTeamList";
     teamListRequest.method = 'GET';
+    teamListRequest.addParam("openid",app.globalData.userInfo.openid);
     teamListRequest.apiCallback = function (success, response) {
       wx.stopPullDownRefresh();
       if (success && response.code == 1) {
@@ -28,8 +29,13 @@ Page({
     }
     enquene(teamListRequest);
   },
-
+  
   onShow: function () {
+    app.globalData.userInfo ? this.getTeamList() : this.setData({
+      showModal: !app.globalData.userInfo
+    });
+  },
+  bindauthEvent: function () {
     this.getTeamList();
   },
   onPullDownRefresh: function () {

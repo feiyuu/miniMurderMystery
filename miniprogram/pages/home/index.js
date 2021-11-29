@@ -1,6 +1,11 @@
 // index.js
 // const app = getApp()
-var app = getApp(),utils = require("../../utils/util");
+var app = getApp(),
+  utils = require("../../utils/util");
+import {
+  ApiRequest,
+  enquene
+} from '../../doframework/network/ApiManager';
 
 Page({
   data: {
@@ -9,97 +14,69 @@ Page({
       'https://img1.baidu.com/it/u=1412665004,3652807320&fm=26&fmt=auto',
       'https://img1.baidu.com/it/u=3529475728,3428445648&fm=26&fmt=auto',
       'https://img1.baidu.com/it/u=3769294252,1742996689&fm=26&fmt=auto',
-
     ],
-    rooms: [{
-        roomDecorate: '/static/image/bg1.jpg',
-        roomName: '古风房间',
-        roomLabel: 'A02',
-      },
-      {
-        roomDecorate: '/static/image/bg2.jpg',
-        roomName: '恐怖房间',
-        roomLabel: 'B02',
-      },
-      {
-        roomDecorate: '/static/image/bg3.jpg',
-        roomName: '全息投影房',
-        roomLabel: 'C01',
-      },
-      {
-        roomDecorate: '/static/image/bg4.jpg',
-        roomName: '全息投影房',
-        roomLabel: 'C02',
-      },
-      {
-        roomDecorate: '/static/image/bg4.jpg',
-        roomName: '全息投影房',
-        roomLabel: 'C03',
-      },
-      {
-        roomDecorate: '/static/image/bg4.jpg',
-        roomName: '恐怖房间',
-        roomLabel: 'B03',
-      },
-      {
-        roomDecorate: '/static/image/bg4.jpg',
-        roomName: '多功能厅',
-        roomLabel: 'D01',
-      }
-    ],
-    ZhuChis: [{
-        TouXiang: 'https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215',
-        NiCheng: '小酒',
-        hot: '50'
-      },
-      {
-        TouXiang: '/static/image/bg4.jpg',
-        NiCheng: '小酒',
-        hot: '50'
-      },
-      {
-        TouXiang: '/static/image/bg4.jpg',
-        NiCheng: '小酒',
-        hot: '50'
-      },
-      {
-        TouXiang: '/static/image/bg4.jpg',
-        NiCheng: '小酒',
-        hot: '50'
-      },
-      {
-        TouXiang: '/static/image/bg4.jpg',
-        NiCheng: '小酒',
-        hot: '50'
-      },
-      {
-        TouXiang: '/static/image/bg4.jpg',
-        NiCheng: '小酒',
-        hot: '50'
-      },
-      {
-        TouXiang: '/static/image/bg4.jpg',
-        NiCheng: '小酒',
-        hot: '50'
-      },
-      {
-        TouXiang: '/static/image/bg4.jpg',
-        NiCheng: '小酒',
-        hot: '50'
-      },
-    ],
+    rooms: [],
+    dms: [],
+    dramas: [],
     zuobiao: '	30.267212111052405,120.18522941925167'
   },
-  onLoad: function (a) {
-    this.setData({
-      tubiao: app.globalData.dpdata.TuBiao,
-    });
-  },
-
-  jumpPage(e) {
+  goDramaDepot: function (a) {
     wx.navigateTo({
-      url: `/pages/${e.currentTarget.dataset.page}/index?envId=${this.data.selectedEnv.envId}`,
-    });
+      url: "/pages/dramaDepot/index"
+    })
+  },
+  onShow: function (a) {
+    this.getRooms();
+    this.getDms();
+    this.getDramas();
+  },
+  getRooms: function () {
+    console.log("getRooms")
+    let that = this;
+    let roomsRequest = new ApiRequest();
+    roomsRequest.apiName = "/storeMsMini/getRooms";
+    roomsRequest.method = 'GET';
+    roomsRequest.apiCallback = function (success, response) {
+      wx.stopPullDownRefresh();
+      if (success && response.code == 1) {
+        that.setData({
+          rooms: response.data,
+        });
+      } else {}
+    }
+    enquene(roomsRequest);
+  },
+  getDramas: function () {
+    console.log("getDramas")
+    let that = this;
+    let dramasRequest = new ApiRequest();
+    dramasRequest.apiName = "/storeMsMini/getHomeDramas";
+    dramasRequest.method = 'GET';
+    dramasRequest.apiCallback = function (success, response) {
+      wx.stopPullDownRefresh();
+      if (success && response.code == 1) {
+        that.setData({
+          dramas: response.data,
+        });
+      } else {}
+    }
+    enquene(dramasRequest);
+  },
+  getDms: function () {
+    console.log("getDms")
+    let that = this;
+    let dmsRequest = new ApiRequest();
+    dmsRequest.apiName = "/storeMsMini/getDms";
+    dmsRequest.method = 'GET';
+    dmsRequest.apiCallback = function (success, response) {
+      wx.stopPullDownRefresh();
+      if (success && response.code == 1) {
+        that.setData({
+          dms: response.data,
+        });
+      } else {}
+    }
+    enquene(dmsRequest);
   },
   openLocationMap: function (a) {
     var e = this.data.zuobiao;
@@ -107,7 +84,7 @@ Page({
       var t = e.split(",");
       console.log(Number(t[0]));
       wx.openLocation({
-        name: "杭州巨有趣下沙店",
+        name: "杭州剧有趣西湖店",
         latitude: Number(t[0]),
         longitude: Number(t[1]),
         scale: 18,
@@ -133,17 +110,15 @@ Page({
       }
     });
   },
-  roomsIntro: function(a) {
+  roomsPreview: function (a) {
     for (var t = a.currentTarget.dataset.index, n = [], rooms = this.data.rooms, o = 0; o < rooms.length; o++) {
-        var u = rooms[o].roomDecorate;
-        console.log("rooms===="+rooms);
-        console.log("rooms[o]===="+rooms[o]);
-        n.push(u);
+      var u = rooms[o].roomDecorate;
+      n.push(u);
     }
     console.log(n);
     wx.previewImage({
-        current: n[t],
-        urls: n
+      current: n[t],
+      urls: n
     });
-},
+  },
 });

@@ -49,8 +49,9 @@ Page({
         const list = response.data;
 
         for (var i = 0; i < list.length; i++) {
-          console.log("list[i].status=============="+list[i].status);
+          console.log("list[i].status==============" + list[i].status);
           if (list[i].status == 10) {
+            list[i].joinedMy = 1;
             list10.push(list[i]);
           } else if (list[i].status == 30) {
             list30.push(list[i]);
@@ -80,5 +81,9 @@ Page({
       url: "/pages/dramaDetail/index?teamId=" + data.currentTarget.dataset.teamid
     });
   },
-
+  onLoad: function (param) {
+    this.setData({
+      currentTab: param.currentTab ? param.currentTab : 0
+    });
+  },
 });

@@ -1,9 +1,6 @@
 <view>
     <view class="container mt">
         <view class="loc-search">
-            <view class="nav_title">
-                <text>剧本库</text>
-            </view>
             <view class="seach-box">
                 <view class="flex-hor">
                     <view bindtap="search" style="padding:0 22rpx;line-height: 65rpx;">

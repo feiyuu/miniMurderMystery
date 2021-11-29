@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="movies-list" wx:for="{{teamList}}">
+  <view class="movies-list" wx:for="{{teamList}}" wx:key="index">
     <view bindtap="goTeamDetail" class="movie" data-teamid="{{item.Id}}">
       <view class="img-cover">
         <image mode="aspectFill" src="{{tools.imageMogr(item.dramaCover,'0/w/200')}}" style="border-radius:12rpx;"></image>
@@ -15,7 +15,7 @@
               <text>{{item.dramaName}}</text>
               <image class="mov" mode="aspectFit" src="/img/tb/{{tubiao}}/ic-ytb.png" wx:if="{{item.VideoUrl}}"></image>
             </view>
-            <view class="tags">
+            <view class="tag">
               <text class="bqys">{{tools.trans3(item.type)}}</text>
               <text style="font-size:18px" wx:if="{{item.type}}"> · </text>
               <text>{{tools.trans2(item.theme)}}/{{item.background}}</text>
@@ -54,10 +54,11 @@
               </view>
             </view>
           </view>
-          <view class="btnJoin {{tools.teamPeoples(item.joinedCount,item.numbers)=='已满'?'btnJoinGrey':''}}">加入</view>
+          <view class="btnJoin {{tools.teamPeoples(item.joinedCount,item.numbers)=='已满'||item.joinedMy>0?'btnJoinGrey':''}}">{{item.joinedMy>0?'已加入':'加入'}}</view>
         </view>
       </view>
     </view>
   </view>
 </view>
+<authdialog autoShow="{{showModal}}" bindauthEvent="bindauthEvent" force="{{false}}" isPhone="{{true}}"></authdialog>
 <wxs module="tools" src="../tools.wxs" />

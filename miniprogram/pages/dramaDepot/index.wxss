@@ -1,38 +1,11 @@
 .mt {
-    padding-top: 38rpx;
     padding-bottom: 60PX;
     background-color: var(--z_bgbg);
 }
 
 .loc-search {
     position: relative;
-}
-
-.nav_title {
-    height: 99rpx;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.loc-search .loc-box,.nav_title {
-    display: flex;
-}
-
-.loc-search .loc-box {
-    position: absolute;
-    top: 50%;
-    left: 32rpx;
-    transform: translateY(-50%);
-    align-items: center;
-}
-
-.loc-search .loc-box .ic {
-    width: 32rpx;
-    height: 32rpx;
-}
-
-.loc-search .loc-box .txt {
-    font-size: 30rpx;
+    margin-bottom: 10rpx;
 }
 
 .loc-search .seach-box {
@@ -40,7 +13,7 @@
     background-color: var(--z_bg10);
     border-radius: 15rpx;
     overflow: hidden;
-    margin: 35rpx 24rpx 0;
+    margin: 0rpx 24rpx 0;
 }
 
 .filter-search {

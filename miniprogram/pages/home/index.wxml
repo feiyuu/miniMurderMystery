@@ -14,8 +14,8 @@
       <view class="shop-infos flex-hor">
         <view class="si-top flex-hor flex-center" bindtap="openLocationMap">
           <view class="nameContainer flex-ver">
-            <text class="name ellipsis ">杭州剧有趣下沙店</text>
-            <text class="address">(杭州下沙广建大厦二楼1001室)</text>
+            <text class="name ellipsis ">杭州剧有趣西湖店</text>
+            <text class="address">(杭州西湖区广建大厦二楼1001室)</text>
           </view>
           <image class="ic-nav" mode="aspectFill" src="/img/tb/{{tubiao}}/ic-nav.png"></image>
         </view>
@@ -24,13 +24,10 @@
         </view>
       </view>
       <view class="shop-rooms">
-        <view class="sr-header">
-          <text>房间</text>
-        </view>
         <view class="list">
-          <view class="swipers" style="width: {{rooms.length*217}}rpx;">
+          <view class="swipers" style="width: {{rooms.length*300}}rpx;">
             <view bindtap="showFangJian" class="swiper-item" data-index="{{index}}" wx:for="{{rooms}}" wx:key="*this">
-              <view class="cover" bindtap="roomsIntro" data-index="{{index}}">
+              <view class="cover" bindtap="roomsPreview" data-index="{{index}}">
                 <image mode="aspectFill" src="{{item.roomDecorate}}"></image>
               </view>
               <view class="name">{{item.roomName}}·{{item.roomLabel}}</view>
@@ -38,20 +35,32 @@
           </view>
         </view>
       </view>
+      <view class="shop-dramas flex-hor">
+        <view class="list">
+          <view class="swipers flex-hor" style="width: {{dramas.length*222}}rpx;">
+            <view bindtap="goDramaDepot" class="swiper-item" wx:for="{{dramas}}" wx:key="index">
+              <view class="cover">
+                <image mode="aspectFill" src="{{item.dramaCover}}"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view bindtap="goDramaDepot" class="sh-header">剧本库</view>
+      </view>
       <view class="shop-hosts">
         <view class="sh-header">
           <text>DM团队</text>
         </view>
         <view class="list">
-          <view class="swipers flex-ver" style="width: {{ZhuChis.length*242}}rpx;">
-            <view bindtap="goZhuChi" class="swiper-item" data-zcid="{{item.zcId}}" wx:for="{{ZhuChis}}" wx:key="*this">
+          <view class="swipers flex-ver" style="width: {{dms.length*221}}rpx;">
+            <view bindtap="goZhuChi" class="swiper-item" data-zcid="{{item.zcId}}" wx:for="{{dms}}" wx:key="*this">
               <view class="cover">
-                <image mode="aspectFill" src="{{item.TouXiang}}"></image>
+                <image mode="aspectFill" src="{{item.dmAvatarUrl}}"></image>
               </view>
               <view class="name flex-hor flex-jus">
-                <text>{{item.NiCheng}}</text>
+                <text>{{item.dmNickName}}</text>
                 <view>
-                  <text>{{item.hot}}</text>
+                  <text>{{item.dmHot}}</text>
                   <image class="hot" src="/static/image/hot.png"></image>
                 </view>
               </view>
@@ -59,9 +68,6 @@
           </view>
         </view>
       </view>
-
-
-      
 
     </view>
   </scroll-view>

@@ -23,6 +23,7 @@ page {
     margin: 20rpx;
     background-color: #fff;
     padding: 36rpx 10rpx;
+    border-radius: 10rpx;
 }
 
 .content_view {
