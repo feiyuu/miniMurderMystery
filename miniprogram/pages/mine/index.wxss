@@ -151,8 +151,8 @@ page {
 }
 
 .mine-navs .mn-sec .ic-box {
-  width: 36rpx;
-  height: 36rpx;
+  width: 46rpx;
+  height: 46rpx;
 }
 
 .mine-navs .mn-sec text {
@@ -166,24 +166,9 @@ page {
   height: 27rpx;
 }
 
-.ic-mm01 {
-  width: 34rpx;
-  height: 33rpx;
-}
-
-.ic-mm02 {
-  width: 33rpx;
-  height: 27rpx;
-}
-
-.ic-mm03 {
-  width: 32rpx;
-  height: 34rpx;
-}
-
-.ic-mm04 {
-  width: 36rpx;
-  height: 35rpx;
+.ic-mm {
+  width: 100%;
+  height: 100%;
 }
 
 .logov {

@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/home/index",
+    "pages/team/index",
     "pages/shop/index",
+    "pages/home/index",
     "pages/mine/index",
     "pages/dramaDetail/index",
     "pages/myTeam/index",
-    "pages/team/index",
     "pages/recharge/index",
     "pages/dramaDepot/index",
     "pages/purchaseRecord/index",
@@ -20,34 +20,34 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#999999",
-    "selectedColor": "#333333",
+    "color": "#555",
+    "selectedColor": "#f6f7f9",
     "borderStyle": "white",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#212121",
     "list": [
       {
         "pagePath": "pages/home/index",
         "text": "首页",
-        "iconPath": "static/image/icon-tab-index.png",
-        "selectedIconPath": "static/image/icon-tab-index-act.png"
+        "iconPath": "static/image/tab-home-nor.png",
+        "selectedIconPath": "static/image/tab-home-sec.png"
       },
       {
         "pagePath": "pages/team/index",
         "text": "组队",
-        "iconPath": "static/image/icon-tab-group.png",
-        "selectedIconPath": "static/image/icon-tab-group-act.png"
+        "iconPath": "static/image/tab-team-nor.png",
+        "selectedIconPath": "static/image/tab-team-sec.png"
       },
       {
         "pagePath": "pages/shop/index",
         "text": "商店",
-        "iconPath": "static/image/icon-tab-index.png",
-        "selectedIconPath": "static/image/icon-tab-index-act.png"
+        "iconPath": "static/image/tab-shop-nor.png",
+        "selectedIconPath": "static/image/tab-shop-sec.png"
       },
       {
         "pagePath": "pages/mine/index",
         "text": "我的",
-        "iconPath": "static/image/icon-tab-mine.png",
-        "selectedIconPath": "static/image/icon-tab-mine-act.png"
+        "iconPath": "static/image/tab-mine-nor.png",
+        "selectedIconPath": "static/image/tab-mine-sec.png"
       }
     ]
   },

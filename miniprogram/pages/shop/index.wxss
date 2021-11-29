@@ -35,12 +35,13 @@
 
 .price {
   font-size: 20rpx;
+  margin-top: 20rpx;
   color: var(--z_zt30);
 }
 
 .cover {
   height: 100rpx;
-  width: 100rpx;
+  width: 130rpx;
   border-radius: 10rpx;
 }
 

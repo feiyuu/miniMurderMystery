@@ -265,14 +265,14 @@
 }
 
 .share-tit {
-    font-size: 20rpx;
+    font-size: 18rpx;
     color: var(--z_zt20);
-    margin-top: 10rpx;
+    margin-top: 8rpx;
 }
 
 .share image {
-    width: 36rpx;
-    height: 36rpx;
+    width: 30rpx;
+    height: 30rpx;
 }
 
 .juben-info .collect {
