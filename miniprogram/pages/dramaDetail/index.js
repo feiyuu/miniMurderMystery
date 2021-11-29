@@ -128,9 +128,7 @@ Page({
         });
     },
     joinPay: function () {
-        app.globalData.userInfo && app.globalData.userInfo.openid ? (this.getBalance(), this.setData({
-            showPay: !0
-        })) : this.setData({
+        app.globalData.userInfo && app.globalData.userInfo.openid ? this.getBalance() : this.setData({
             showModal: !0
         });
     },
@@ -221,6 +219,10 @@ Page({
             if (success && response.code == 1) {
                 that.setData({
                     balance: response.data
+                },() => {
+                    that.setData({
+                        showPay: !0
+                    })
                 }), that.data.detailData.price > response.data && that.setData({
                     isCanPay: !1,
                     position: 1
@@ -230,8 +232,7 @@ Page({
         enquene(balanceRequest);
     },
     bindauthEvent: function () {
-        var _this = this;
-        _this.getDramaDetail();
+        this.getDramaDetail();
     },
     onLoad: function (param) {
         var _this = this;

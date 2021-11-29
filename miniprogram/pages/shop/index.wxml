@@ -1,5 +1,61 @@
-<!--index.wxml-->
-<view class="container">
-  小卖铺
-
+<!--pages/purchaseRecord/index.wxml-->
+<view>
+  <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'>
+    <block wx:for="{{goodsList}}" wx:key="index">
+      <view class="goods-list">
+        <image mode="aspectFill" src="{{item.goodsCoverUrl}}" class="cover"></image>
+        <view class="content">
+          <text class="name">{{item.goodsName}}</text>
+          <text class="stock">库存：{{item.stock}}</text>
+          <view class="but-operate">
+            <text class="price">￥{{item.price}}</text>
+            <view class="flex-hor flex-center">
+              <image data-index="{{index}}" wx:if="{{item.count>0}}" mode="aspectFill" src="/static/image/reduce.png" bindtap="reduce" class="buy-btn"></image>
+              <view wx:if="{{item.count>0}}" class="buy-count">{{item.count}}</view>
+              <image data-index="{{index}}" mode="aspectFill" src="/static/image/plus.png" bindtap="plus" class="buy-btn"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view class="shopping-card" wx:if="{{totalPrice>0}}">
+    <view class="flex-hor flex-center" style="width: 100%;">
+      <image mode="aspectFill" src="/static/image/shopping-cart.png" class="shopping-img"></image>
+      <view class="shopping-counts">
+        <text class="totalPrice">￥{{totalPrice}}</text>
+        <text class="totalCount">共{{totalCount}}件商品</text>
+      </view>
+      <view class="shopping-pay" bindtap="settleAccounts">结 算</view>
+    </view>
+  </view>
+  <cialog show="{{showPay}}">
+    <view class="pay_dialog">
+      <view class="v_money">
+        <text>需支付{{tools.plusFuDongJia(detailData.price,0)}}元</text>
+      </view>
+      <view>
+        <view bindtap="select" class="l_item {{isCanPay?'hui2':'hui3'}}" data-ep="0">
+          <image src="" style="width:20rpx;height:20rpx"></image>
+          <text>余额支付</text>
+          <text style="flex:1;margin-left:26rpx">剩余：{{balance}}</text>
+          <view style="width:50rpx">
+            <icon size="20" style="margin-right:12rpx;" type="success" wx:if="{{position==0}}"></icon>
+          </view>
+        </view>
+      </view>
+      <view>
+        <view bindtap="select" class="l_item hui1" data-ep="1">
+          <image src="" style="width:20rpx;height:20rpx"></image>
+          <text>微信支付</text>
+          <text style="flex:1;margin-left:26rpx"></text>
+          <view style="width:50rpx">
+            <icon size="20" style="margin-right:12rpx;" type="success" wx:if="{{position==1}}"></icon>
+          </view>
+        </view>
+      </view>
+      <button bindtap="pay" class="zhif">支付</button>
+    </view>
+  </cialog>
 </view>
+<authdialog autoShow="{{showModal}}" bindauthEvent="bindauthEvent" force="{{true}}" isPhone="{{true}}"></authdialog>

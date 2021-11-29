@@ -1,5 +1,12 @@
 {
-  "usingComponents": {
-  
-  }
+  "navigationBarTitleText": "小卖铺",
+    "usingComponents": {
+      "cialog": "../../components/custom-dialog/dialog",
+      "authdialog": "../../components/auth-dialog/authdialog"
+    },
+    "backgroundColor": "#212121",
+    "navigationBarBackgroundColor": "#212121",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false,
+    "backgroundTextStyle": "dark"
 }
