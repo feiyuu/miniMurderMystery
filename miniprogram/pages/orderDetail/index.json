@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "订单详情",
+  "usingComponents": {
+    "cialog": "../../components/custom-dialog/dialog"
+  },
+  "navigationBarBackgroundColor": "#212121",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "dark"
+}

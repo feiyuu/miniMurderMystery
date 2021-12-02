@@ -108,6 +108,13 @@ Page({
       showModal: !0
     });
   },
+  goOrders: function () {
+    app.globalData.userInfo ? wx.navigateTo({
+      url: "/pages/myOrders/index"
+    }) : this.setData({
+      showModal: !0
+    });
+  },
   goPurchaseHistory: function () {
     app.globalData.userInfo ? wx.navigateTo({
       url: "/pages/purchaseRecord/index?"

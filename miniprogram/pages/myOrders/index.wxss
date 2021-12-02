@@ -1,5 +1,5 @@
 /**index.wxss**/
-@import "../../template/templateTeamList.wxss";
+@import "../../template/templateOrderItem.wxss";
 
 page {
   height: 100%;

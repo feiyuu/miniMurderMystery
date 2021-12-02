@@ -1,16 +1,19 @@
 {
   "pages": [
-    "pages/team/index",
-    "pages/shop/index",
     "pages/home/index",
+    "pages/myOrders/index",
     "pages/mine/index",
+    "pages/shop/index", 
+    "pages/orderDetail/index",
+    "pages/team/index",
     "pages/dramaDetail/index",
     "pages/myTeam/index",
     "pages/recharge/index",
     "pages/dramaDepot/index",
     "pages/purchaseRecord/index",
     "pages/myCollectDramas/index",
-    "template/templateTeamList"
+    "template/templateTeamList",
+    "template/templateOrderItem"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

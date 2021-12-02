@@ -1,0 +1,28 @@
+<import src="../../template/templateOrderItem.wxml"></import>
+<!--index.wxml-->
+<view class="container">
+  <!--顶部导航栏-->
+  <view class="swiper-tab">
+    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">全部</view>
+    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">待付款</view>
+    <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已付款</view>
+    <view class="tab-item {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已取消</view>
+  </view>
+  <!--内容主体-->
+  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange">
+    <swiper-item class="swiper-items">
+      <template is="templateOrderItem" data="{{orderList:orderList}}"></template>
+    </swiper-item>
+    <swiper-item>
+      <template is="templateOrderItem" data="{{orderList:orderList10}}"></template>
+    </swiper-item>
+    <swiper-item>
+      <template is="templateOrderItem" data="{{orderList:orderList30}}"></template>
+    </swiper-item>
+    <swiper-item>
+      <template is="templateOrderItem" data="{{orderList:orderList50}}"></template>
+    </swiper-item>
+  </swiper>
+
+</view>
+<wxs module="tools" src="../tools.wxs" />

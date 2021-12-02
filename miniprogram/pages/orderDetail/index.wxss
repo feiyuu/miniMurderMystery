@@ -1,0 +1,157 @@
+/* pages/orderDetail/index.wxss */
+.scroll-views {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 250rpx;
+}
+.container-item{
+  border-radius: 15rpx;
+  margin-top: 24rpx;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  background-color: var(--z_bg10);
+  padding-bottom: 24rpx;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+}
+.status-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24rpx;
+  font-size: 24rpx;
+}
+.status-txt{
+  color: var(--z_zt10);
+}
+.goods-list{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 24rpx;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  width: 100%;
+}
+
+.name {
+  font-size: 24rpx;
+  color: var(--z_zt20);
+}
+
+.price-count {
+  font-size: 20rpx;
+  margin-top: 15rpx;
+  color: var(--z_zt10);
+}
+
+.cover {
+  height: 80rpx;
+  width: 100rpx;
+  border-radius: 10rpx;
+}
+
+.but-operate {
+  width: 100%;
+  display: flex;
+  margin-top: 15rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buy-btn {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.buy-count {
+  padding: 2rpx 20rpx;
+  font-size: 20rpx;
+  margin-left: 8rpx;
+  margin-right: 8rpx;
+  background-color: var(--z_bgbg);
+}
+
+.bottomContainer {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    bottom: 48rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.bottomContainer view{
+  height: 60rpx !important;
+  flex: 1;
+  border-radius: 30rpx;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 24rpx !important;
+  background-color: var(--z_bganon);
+  color: var(--z_ztanon);
+  margin-left: 60rpx;
+}
+.bottomContainer .right{
+  height: 60rpx !important;
+  flex: 1;
+  border-radius: 30rpx;
+  border: var(--z_x20);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 24rpx !important;
+  background-color: var(--z_bgbg);
+  color: var(--z_ztanon);
+  margin-right: 60rpx;
+}
+.pay_dialog {
+  background: #eee;
+  width: 600rpx;
+  border-radius: 16rpx;
+}
+.v_money {
+  width: 100%;
+  height: 150rpx;
+  justify-content: center;
+}
+
+.l_item,
+.v_money {
+    display: flex;
+    align-items: center;
+}
+
+.l_item {
+    height: 100rpx;
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 0 12rpx;
+    margin: 16rpx 6% 0;
+}
+
+.hui1 {
+    color: #333;
+}
+
+.hui2 {
+    color: #666;
+}
+
+.hui3 {
+    color: #999;
+}
+
+.zhif {
+    background-color: #ffb51a;
+    color: #fff;
+    margin: 80rpx 100rpx;
+}

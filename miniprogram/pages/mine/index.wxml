@@ -57,6 +57,14 @@
                     <text>我的收藏</text>
                 </view>
             </navigator>
+            <navigator bindtap="goOrders" class="mn-sec flex-ver flex-jus">
+                <view class="left flex-ver">
+                    <view class="ic-box flex-center">
+                        <image class="ic-mm" src="/img/tb/{{tubiao}}/ic-mine-menu09.png"></image>
+                    </view>
+                    <text>我的订单</text>
+                </view>
+            </navigator>
             <navigator bindtap="goiplayed" class="mn-sec flex-ver flex-jus">
                 <view class="left flex-ver">
                     <view class="ic-box flex-center">

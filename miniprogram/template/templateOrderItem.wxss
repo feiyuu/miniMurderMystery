@@ -1,0 +1,115 @@
+.scroll-views {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 250rpx;
+  background-color: var(--z_bgbg);
+}
+.container-item{
+  border-radius: 15rpx;
+  margin-top: 24rpx;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  background-color: var(--z_bg10);
+  padding-bottom: 18rpx;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+}
+.status-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 24rpx;
+}
+.status-txt{
+  color: var(--z_zt10);
+}
+.statusRight{
+  color: var(--z_zt30);
+  font-size: 28rpx;
+}
+.goods-list{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 24rpx;
+}
+.list-container{
+  margin-bottom: 24rpx;
+  max-height: 380rpx;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  width: 100%;
+}
+
+.name {
+  font-size: 24rpx;
+  color: var(--z_zt20);
+}
+
+.price-count {
+  font-size: 20rpx;
+  margin-top: 15rpx;
+  color: var(--z_zt10);
+}
+
+.cover {
+  height: 80rpx;
+  width: 100rpx;
+  border-radius: 10rpx;
+}
+
+.but-operate {
+  width: 100%;
+  display: flex;
+  margin-top: 15rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buy-btn {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.buy-count {
+  padding: 2rpx 20rpx;
+  font-size: 20rpx;
+  margin-left: 8rpx;
+  margin-right: 8rpx;
+  background-color: var(--z_bgbg);
+}
+.container-header{
+  border-bottom: var(--z_x10);
+  padding-bottom: 24rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24rpx;
+}
+.godetailContainer{
+  width: 100%;
+  display: flex;
+  padding-top: 18rpx;
+  margin-top: 18rpx;
+  border-top: var(--z_x10);
+  justify-content: flex-end;
+}
+.btn-godetail{
+  height: 44rpx !important;
+  width: 140rpx;
+  border-radius: 44rpx;
+  border: var(--z_x10);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 24rpx !important;
+  background-color: var(--z_bg10);
+  color: var(--z_ztanon);
+}

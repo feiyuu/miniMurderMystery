@@ -6,6 +6,7 @@
 .scroll-views{
   height: 100%;
   width: 100%;
+  background-color: var(--z_bgbg);
 }
 
 .movies-list .movie {

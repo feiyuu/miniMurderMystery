@@ -1,0 +1,54 @@
+<!--pages/orderDetail/index.wxml-->
+<scroll-view scroll-x="false" scroll-y="true" class='scroll-views'>
+  <block>
+    <view class="container-item">
+      <view class="goods-list" wx:for="{{orderDetail.goods}}" wx:key="index">
+        <image mode="aspectFill" src="{{item.goodsCoverUrl}}" class="cover"></image>
+        <view class="content">
+          <text class="name">{{item.goodsName}}</text>
+          <view class="but-operate">
+            <text class="price-count">￥{{item.price}} x {{item.count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="container-item">
+      <view class="status-item"><text>商品总价：</text><text class="status-txt">￥{{orderDetail.total_price}}</text></view>
+      <view class="status-item"><text>订单状态</text><text class="status-txt">{{tools.orderState(orderDetail.state)}}</text></view>
+      <view class="status-item"><text>下单时间：</text><text class="status-txt">{{orderDetail.order_time}}</text></view>
+    </view>
+  </block>
+</scroll-view>
+<view class="bottomContainer" wx:if="{{orderDetail.state == 10}}">
+  <view class="left" bindtap="getBalance">支付</view>
+  <view class="right" bindtap="cancelOrder">取消订单</view>
+</view>
+<cialog show="{{showPay}}">
+  <view class="pay_dialog">
+    <view class="v_money">
+      <text>需支付{{tools.plusFuDongJia(detailData.price,0)}}元</text>
+    </view>
+    <view>
+      <view bindtap="select" class="l_item {{isCanPay?'hui2':'hui3'}}" data-ep="0">
+        <image src="" style="width:20rpx;height:20rpx"></image>
+        <text>余额支付</text>
+        <text style="flex:1;margin-left:26rpx">剩余：{{balance}}</text>
+        <view style="width:50rpx">
+          <icon size="20" style="margin-right:12rpx;" type="success" wx:if="{{position==0}}"></icon>
+        </view>
+      </view>
+    </view>
+    <view>
+      <view bindtap="select" class="l_item hui1" data-ep="1">
+        <image src="" style="width:20rpx;height:20rpx"></image>
+        <text>微信支付</text>
+        <text style="flex:1;margin-left:26rpx"></text>
+        <view style="width:50rpx">
+          <icon size="20" style="margin-right:12rpx;" type="success" wx:if="{{position==1}}"></icon>
+        </view>
+      </view>
+    </view>
+    <button bindtap="pay" class="zhif">支付</button>
+  </view>
+</cialog>
+<wxs module="tools" src="../tools.wxs" />

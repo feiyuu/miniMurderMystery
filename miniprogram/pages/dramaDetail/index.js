@@ -18,7 +18,7 @@ Page({
         playing: "",
         DetailId: "",
         isTeam: false,
-        
+
         detailData: {
             dramaId: 1001,
             dramaCover: "https://img0.baidu.com/it/u=2380516898,174121639&fm=253&fmt=auto&app=120&f=JPEG?w=186&h=215",
@@ -192,7 +192,7 @@ Page({
     collectDrama: function () {
         var that = this;
         let collectDramaRequest = new ApiRequest();
-        collectDramaRequest.apiName =  that.data.detailData.isCollect?"/storeMsMini/unCollectDrama":"/storeMsMini/collectDrama";
+        collectDramaRequest.apiName = that.data.detailData.isCollect ? "/storeMsMini/unCollectDrama" : "/storeMsMini/collectDrama";
         collectDramaRequest.method = 'POST';
         collectDramaRequest.addParam("openid", app.globalData.userInfo.openid);
         collectDramaRequest.addParam("dramaId", that.data.DetailId);
@@ -201,7 +201,7 @@ Page({
             if (success && response.code == 1) {
                 that.data.detailData.isCollect = !that.data.detailData.isCollect;
                 that.setData({
-                    detailData:that.data.detailData
+                    detailData: that.data.detailData
                 })
             } else {}
         }
@@ -219,7 +219,7 @@ Page({
             if (success && response.code == 1) {
                 that.setData({
                     balance: response.data
-                },() => {
+                }, () => {
                     that.setData({
                         showPay: !0
                     })
@@ -304,7 +304,7 @@ Page({
         let date = "",
             _this = this;
         return app.globalData && app.globalData.userInfo && (date = "&tg=".concat(Date.parse(new Date()))), {
-            title: "邀请你上车剧本《" + this.data.detailData.dramaName + "》",
+            title: app.globalData.userInfo.nickName + "邀请你上车剧本《" + this.data.detailData.dramaName + "》",
             path: "pages/dramaDetail/index?teamId=" + _this.data.DetailId + date
         };
     },

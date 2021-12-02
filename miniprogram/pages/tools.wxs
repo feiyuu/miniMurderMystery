@@ -165,6 +165,18 @@ var isYue = (function (v) {
     console.log(parseFloat(v) > 0);
     return (parseFloat(v) > 0)
 });
+var orderState = (function (status) {
+    var state = '';
+    if(status==10){
+        state='待付款'
+    }else if(status==30){
+        state='已付款'
+    }else if(status==50){
+        state='已取消'
+    }
+    return state
+});
+module.exports.orderState = orderState;
 module.exports.splitto = splitto;
 module.exports.sum = sum;
 module.exports.teamPeoples = teamPeoples;

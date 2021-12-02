@@ -29,33 +29,5 @@
       <view class="shopping-pay" bindtap="settleAccounts">结 算</view>
     </view>
   </view>
-  <cialog show="{{showPay}}">
-    <view class="pay_dialog">
-      <view class="v_money">
-        <text>需支付{{tools.plusFuDongJia(detailData.price,0)}}元</text>
-      </view>
-      <view>
-        <view bindtap="select" class="l_item {{isCanPay?'hui2':'hui3'}}" data-ep="0">
-          <image src="" style="width:20rpx;height:20rpx"></image>
-          <text>余额支付</text>
-          <text style="flex:1;margin-left:26rpx">剩余：{{balance}}</text>
-          <view style="width:50rpx">
-            <icon size="20" style="margin-right:12rpx;" type="success" wx:if="{{position==0}}"></icon>
-          </view>
-        </view>
-      </view>
-      <view>
-        <view bindtap="select" class="l_item hui1" data-ep="1">
-          <image src="" style="width:20rpx;height:20rpx"></image>
-          <text>微信支付</text>
-          <text style="flex:1;margin-left:26rpx"></text>
-          <view style="width:50rpx">
-            <icon size="20" style="margin-right:12rpx;" type="success" wx:if="{{position==1}}"></icon>
-          </view>
-        </view>
-      </view>
-      <button bindtap="pay" class="zhif">支付</button>
-    </view>
-  </cialog>
 </view>
 <authdialog autoShow="{{showModal}}" bindauthEvent="bindauthEvent" force="{{true}}" isPhone="{{true}}"></authdialog>

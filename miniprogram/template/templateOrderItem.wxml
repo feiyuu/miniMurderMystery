@@ -1,0 +1,29 @@
+<!--template/templateOrderItem.wxml-->
+<template name="templateOrderItem">
+  <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'>
+    <block wx:for="{{orderList}}" wx:key="index">
+      <view class="container-item" bindtap="goTeamDetail" data-orderid="{{item.Id}}">
+        <view class="container-header">
+          <view class="status-item"><text>下单时间：</text><text class="status-txt">{{item.order_time}}</text></view>
+          <text class="statusRight">{{tools.orderState(item.state)}}</text>
+        </view>
+        <view class="list-container">
+          <view class="goods-list" wx:for="{{item.goods}}" wx:key="index">
+            <image mode="aspectFill" src="{{item.goodsCoverUrl}}" class="cover"></image>
+            <view class="content">
+              <text class="name">{{item.goodsName}}</text>
+              <view class="but-operate">
+                <text class="price-count">￥{{item.price}} x {{item.count}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="status-item"><text>商品总价：</text><text class="status-txt">￥{{item.total_price}}</text></view>
+        <view class="godetailContainer">
+          <view class="btn-godetail">查看订单</view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <wxs module="tools" src="../pages/tools.wxs" />
+</template>

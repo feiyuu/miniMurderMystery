@@ -1,9 +1,8 @@
 {
-  "navigationBarTitleText": "小卖铺",
+  "navigationBarTitleText": "我的订单",
     "usingComponents": {
-      "authdialog": "../../components/auth-dialog/authdialog"
+      
     },
-    "backgroundColor": "#212121",
     "navigationBarBackgroundColor": "#212121",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": false,
