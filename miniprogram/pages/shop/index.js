@@ -93,6 +93,7 @@ Page({
     placeOrderRequest.apiName = "/storeMsMini/placeOrder";
     placeOrderRequest.method = 'POST';
     placeOrderRequest.addParam("userId", app.globalData.userInfo.openid);
+    placeOrderRequest.addParam("userName", app.globalData.userInfo.nickName);
     placeOrderRequest.addParam("total_price", that.data.totalPrice);
     placeOrderRequest.addParam("goods", goods);
     placeOrderRequest.apiCallback = function (success, response) {

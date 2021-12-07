@@ -117,7 +117,7 @@ Page({
                     name: "9人",
                     value: 8
                 }, {
-                    name: "10人+",
+                    name: "10人",
                     value: 9
                 }]
             },
@@ -134,8 +134,14 @@ Page({
                     name: "5小时",
                     value: 3
                 }, {
-                    name: "6小时+",
+                    name: "6小时",
                     value: 4
+                }, {
+                    name: "7小时",
+                    value: 5
+                }, {
+                    name: "8小时",
+                    value: 6
                 }]
             },
             background: {
