@@ -21,7 +21,7 @@ Page({
                 dramaCover: "https://img0.baidu.com/it/u=1039842579,1206593230&fm=253&fmt=auto&app=138&f=JPEG",
                 isNew: 1,
                 dramaName: "三千鸦杀啊啊",
-                type: '欢乐',
+                genre: '欢乐',
                 theme: '情感',
                 background: '民国',
                 profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
@@ -38,7 +38,7 @@ Page({
                 dramaCover: "http://t15.baidu.com/it/u=3901498348,2232291937&fm=224&app=112&f=JPEG?w=162&h=230",
                 isNew: 1,
                 dramaName: "三千鸦杀",
-                type: '欢乐',
+                genre: '欢乐',
                 theme: '情感',
                 background: '民国',
                 profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
@@ -55,7 +55,7 @@ Page({
                 dramaCover: "https://img2.baidu.com/it/u=2411936941,1136968929&fm=253&fmt=auto&app=120&f=PNG?w=128&h=181",
                 isNew: 1,
                 dramaName: "三千鸦杀",
-                type: '欢乐',
+                genre: '欢乐',
                 theme: '情感',
                 background: '民国',
                 profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
@@ -72,7 +72,7 @@ Page({
                 dramaCover: "https://img0.baidu.com/it/u=3198484303,3700892012&fm=253&fmt=auto&app=120&f=JPEG?w=140&h=249",
                 isNew: 1,
                 dramaName: "三千鸦杀",
-                type: '欢乐',
+                genre: '欢乐',
                 theme: '情感',
                 background: '民国',
                 profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
@@ -211,7 +211,7 @@ Page({
                     value: 11
                 }]
             },
-            type: {
+            genre: {
                 param: "",
                 cur: "",
                 conditions: [{
@@ -299,8 +299,8 @@ Page({
             "filterDatas.background.param": "",
             "filterDatas.theme.cur": "",
             "filterDatas.theme.param": "",
-            "filterDatas.type.cur": "",
-            "filterDatas.type.param": "",
+            "filterDatas.genre.cur": "",
+            "filterDatas.genre.param": "",
             "filterDatas.difficulty.cur": "",
             "filterDatas.difficulty.param": "",
             "filterDatas.order.cur": 1,
@@ -328,7 +328,7 @@ Page({
             duration: _this.data.filterDatas.duration.param,
             background: _this.data.filterDatas.background.param,
             theme: _this.data.filterDatas.theme.param,
-            type: _this.data.filterDatas.type.param,
+            genre: _this.data.filterDatas.genre.param,
             difficulty: _this.data.filterDatas.difficulty.param,
         }
 

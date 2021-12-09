@@ -34,7 +34,7 @@ Page({
             NanNvShu: '3男3女',
             duration: '3',
             difficulty: '硬核',
-            type: '本格',
+            genre: '本格',
             beforehand: '1',
             price: 100,
             organizeTeamId: 1001,

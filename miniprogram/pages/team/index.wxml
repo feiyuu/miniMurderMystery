@@ -16,8 +16,8 @@
               <image class="mov" mode="aspectFit" src="/img/tb/{{tubiao}}/ic-ytb.png" wx:if="{{item.VideoUrl}}"></image>
             </view>
             <view class="tag">
-              <text class="bqys">{{tools.trans3(item.type)}}</text>
-              <text style="font-size:18px" wx:if="{{item.type}}"> · </text>
+              <text class="bqys">{{tools.trans3(item.genre)}}</text>
+              <text style="font-size:18px" wx:if="{{item.genre}}"> · </text>
               <text>{{tools.trans2(item.theme)}}/{{item.background}}</text>
             </view>
           </view>
@@ -31,7 +31,7 @@
         <view style="flex-direction: row;display: flex;">
           <view style="flex:1">
             <view style="display:flex;height:48rpx;align-items:center">
-              <view class="tags"> 开局时间：{{item.startTime}}</view>
+              <view class="tags"> 开局时间：{{item.startDate+" "+item.startSession}}</view>
             </view>
             <view class="bv">
               <view>

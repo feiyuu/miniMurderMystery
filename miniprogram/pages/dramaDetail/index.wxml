@@ -10,7 +10,7 @@
                 <view class="gates">{{detailData.NanNvShu}} </view>
                 <view class="gates">{{detailData.duration}}小时</view>
                 <view class="gates">难度： {{detailData.difficulty}}</view>
-                <view class="gates">{{detailData.type}}/{{detailData.background}}/{{detailData.theme}}</view>
+                <view class="gates">{{detailData.genre}}/{{detailData.background}}/{{detailData.theme}}</view>
                 <view class="gates">{{detailData.price}}元/人</view>
                 <starts class="gates" score="{{detailData.dramaGrade}}"></starts>
             </view>
@@ -23,7 +23,7 @@
             <view class="jb-kaiju flex-hor flex-center" wx:if="{{isTeam}}">
                 <view class="header-item">
                     <text class="tit">开局时间</text>
-                    <text class="tit-bottom">{{detailData.startTime}}</text>
+                    <text class="tit-bottom">{{detailData.startDate+" "+detailData.startSession}}</text>
                 </view>
                 <view class="header-item">
                     <text class="tit">主持人</text>

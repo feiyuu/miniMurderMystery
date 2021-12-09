@@ -51,9 +51,9 @@
             <view class="fs-section">
                 <view class="label">类型</view>
                 <view class="values">
-                    <text bindtap="filterCheck" class="all {{filterDatas.type.cur===''?'cur':''}}" data-target="type" data-value="">全部</text>
+                    <text bindtap="filterCheck" class="all {{filterDatas.genre.cur===''?'cur':''}}" data-target="genre" data-value="">全部</text>
                     <scroll-view bindscroll="scroll" class="checkes" scrollX="true">
-                        <text bindtap="filterCheck" class="text {{filterDatas.type.cur===item.value?'cur':''}}" data-name="{{item.name}}" data-target="type" data-value="{{item.value}}" wx:for="{{filterDatas.type.conditions}}" wx:key="index">{{item.name}}</text>
+                        <text bindtap="filterCheck" class="text {{filterDatas.genre.cur===item.value?'cur':''}}" data-name="{{item.name}}" data-target="genre" data-value="{{item.value}}" wx:for="{{filterDatas.genre.conditions}}" wx:key="index">{{item.name}}</text>
                     </scroll-view>
                 </view>
             </view>
@@ -94,8 +94,8 @@
                                 <image class="mov" mode="aspectFit" src="/img/tb/{{tubiao}}/ic-ytb.png" wx:if="{{item.VideoUrl}}"></image>
                             </view>
                             <view class="tags">
-                                <text class="bqys">{{tools.trans3(item.type)}}</text>
-                                <text style="font-size:18px" wx:if="{{item.type}}"> · </text>
+                                <text class="bqys">{{tools.trans3(item.genre)}}</text>
+                                <text style="font-size:18px" wx:if="{{item.genre}}"> · </text>
                                 <text>{{tools.trans2(item.theme)}}/{{item.background}}</text>
                             </view>
                         </view>
