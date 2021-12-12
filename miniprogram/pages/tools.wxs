@@ -171,6 +171,8 @@ var orderState = (function (status) {
         state='待付款'
     }else if(status==30){
         state='已付款'
+    }else if(status==40){
+        state='已完成'
     }else if(status==50){
         state='已取消'
     }

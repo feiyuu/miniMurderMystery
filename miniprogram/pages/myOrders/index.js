@@ -11,6 +11,7 @@ Page({
     orderList: [],
     orderList10: [],
     orderList30: [],
+    orderList40: [],
     orderList50: [],
     currentTab: 1,
   },
@@ -44,6 +45,7 @@ Page({
       if (success && response.code == 1) {
         let list10 = [];
         let list30 = [];
+        let list40 = [];
         let list50 = [];
         for (var i = 0; i < response.data.length; i++) {
           if (response.data[i].goods) {
@@ -56,6 +58,8 @@ Page({
             list10.push(list[i]);
           } else if (list[i].state == 30) {
             list30.push(list[i]);
+          } else if (list[i].state == 40) {
+            list40.push(list[i]);
           } else if (list[i].state == 50) {
             list50.push(list[i]);
           }
@@ -64,6 +68,7 @@ Page({
           orderList: response.data,
           orderList10: list10,
           orderList30: list30,
+          orderList40: list40,
           orderList50: list50,
         });
       } else {}

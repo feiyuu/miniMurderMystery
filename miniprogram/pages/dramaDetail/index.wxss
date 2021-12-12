@@ -22,7 +22,7 @@
 }
 
 .juben-info .infos .name {
-    font-size: 40rpx;
+    font-size: 34rpx;
     line-height: 32rpx;
     margin-top: 2rpx;
     margin-bottom: 10rpx;

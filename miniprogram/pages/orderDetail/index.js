@@ -11,14 +11,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderDetail: {},
+    orderDetail: {state:50},
     orderId: '',
     showPay: !1,
     balance: "",
     position: 0,
     isCanPay: !0,
+    rooms: [],
+    pickerDate: [],
+    pickerIndex: 0,
+    roomSelected: '',
   },
-
+  pickerClick: function (event) {
+    console.log(event.detail);
+    this.setData({
+      pickerIndex: event.detail.value,
+      roomSelected: this.data.pickerData[event.detail.value],
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -31,6 +41,27 @@ Page({
     });
 
   },
+  getRooms: function () {
+    console.log("getRooms")
+    let that = this;
+    let roomsRequest = new ApiRequest();
+    roomsRequest.apiName = "/storeMsMini/getRooms";
+    roomsRequest.method = 'GET';
+    roomsRequest.apiCallback = function (success, response) {
+      wx.stopPullDownRefresh();
+      if (success && response.code == 1) {
+        var list = [];
+        for (var i = 0; i < response.data.length; i++) {
+          list[i] = response.data[i].roomName + '·' + response.data[i].roomLabel;
+        }
+        that.setData({
+          rooms: response.data,
+          pickerData: list
+        });
+      } else {}
+    }
+    enquene(roomsRequest);
+  },
   getOrderDetail: function () {
     console.log("getOrderDetail")
     let that = this;
@@ -42,6 +73,13 @@ Page({
       wx.stopPullDownRefresh();
       if (success && response.code == 1) {
         response.data.goods = JSON.parse(response.data.goods);
+        if (response.data.state == 30 || response.data.state == 40) {
+          that.setData({
+            roomSelected: response.data.room,
+          });
+        } else {
+          that.getRooms();
+        }
         that.setData({
           orderDetail: response.data,
         });
@@ -60,6 +98,7 @@ Page({
     cancelRequest.method = 'POST';
     cancelRequest.addParam("orderId", that.data.orderId);
     cancelRequest.addParam("state", state);
+    cancelRequest.addParam("room", that.data.roomSelected);
     cancelRequest.apiCallback = function (success, response) {
       wx.stopPullDownRefresh();
       if (success && response.code == 1) {
@@ -77,6 +116,13 @@ Page({
     enquene(cancelRequest);
   },
   getBalance: function () {
+    if (!this.data.roomSelected) {
+      wx.showToast({
+        title: '请选择房间',
+        icon: "none"
+      })
+      return;
+    }
     console.log("getBalance")
     let that = this;
     let balanceRequest = new ApiRequest();

@@ -17,6 +17,12 @@
       <view class="status-item"><text>订单状态</text><text class="status-txt">{{tools.orderState(orderDetail.state)}}</text></view>
       <view class="status-item"><text>下单时间：</text><text class="status-txt">{{orderDetail.order_time}}</text></view>
     </view>
+    <view class="container-item" wx:if="{{orderDetail.state != 50}}">
+      <view class="status-item">
+        <text>配送房间：</text>
+        <picker class="{{orderDetail.state != 10?'status-txt':''}}" disabled="{{orderDetail.state != 10}}" bindchange="pickerClick" value='{{pickerIndex}}' range='{{pickerData}}'>{{roomSelected||'请选择房间'}}</picker>
+      </view>
+    </view>
   </block>
 </scroll-view>
 <view class="bottomContainer" wx:if="{{orderDetail.state == 10}}">
@@ -51,4 +57,5 @@
     <button bindtap="pay" class="zhif">支付</button>
   </view>
 </cialog>
+
 <wxs module="tools" src="../tools.wxs" />

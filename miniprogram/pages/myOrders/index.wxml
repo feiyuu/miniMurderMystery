@@ -6,7 +6,8 @@
     <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">全部</view>
     <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">待付款</view>
     <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已付款</view>
-    <view class="tab-item {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已取消</view>
+    <view class="tab-item {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已完成</view>
+    <view class="tab-item {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">已取消</view>
   </view>
   <!--内容主体-->
   <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange">
@@ -18,6 +19,9 @@
     </swiper-item>
     <swiper-item>
       <template is="templateOrderItem" data="{{orderList:orderList30}}"></template>
+    </swiper-item>
+    <swiper-item>
+      <template is="templateOrderItem" data="{{orderList:orderList40}}"></template>
     </swiper-item>
     <swiper-item>
       <template is="templateOrderItem" data="{{orderList:orderList50}}"></template>
