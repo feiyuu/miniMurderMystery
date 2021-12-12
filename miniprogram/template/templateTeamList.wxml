@@ -39,7 +39,7 @@
                 <view class="bv">
                   <view>
                     <image mode="aspectFit" src="/img/tb/z_moren/jul_ren.png" style="width:22rpx;height:20rpx"></image>
-                    <text class="txt">{{item.NanNvShu}}</text>
+                    <text class="txt">{{tools.replaceNanNvshu(item.NanNvShu)}}</text>
                   </view>
                   <view class="dian">
                     <text>·</text>

@@ -10,15 +10,15 @@
 }
 
 
-.juben-info .image-box,
 .juben-info .image-box image {
-    width: 188rpx;
-    height: 250rpx;
+    width: 178rpx;
+    height: 240rpx;
 }
 
 .juben-info .infos {
     flex: 1;
     margin-left: 20rpx;
+    align-self: center;
 }
 
 .juben-info .infos .name {
@@ -122,17 +122,18 @@
     border-bottom: var(--z_x10);
 }
 
-.juben-content .juese .js-list {
+.juben-content .juese .list {
     margin-top: 34rpx;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    margin-bottom: 34rpx;
+    overflow: auto;
 }
 
-.juben-content .juese .j-section {
+.juben-content .juese .swipers {
     display: flex;
-    width: 316rpx;
-    margin-bottom: 40rpx;
+}
+
+.juben-content .juese .swiper-item {
+    margin-left: -16rpx;
 }
 
 .juben-content .juese .j-section .img-box,

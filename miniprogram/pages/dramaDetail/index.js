@@ -120,7 +120,7 @@ Page({
     roleIntro: function (a) {
         for (var t = a.currentTarget.dataset.index, n = [], roles = this.data.detailData.roles, o = 0; o < roles.length; o++) {
             var u = roles[o];
-            n.push(utils.imageMogr(u.avatar, "0/w/500"));
+            n.push(u.roleAvatar);
         }
         wx.previewImage({
             current: n[t],

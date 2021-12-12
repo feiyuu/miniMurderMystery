@@ -176,6 +176,10 @@ var orderState = (function (status) {
     }
     return state
 });
+var replaceNanNvshu = (function (nanNvshu) {
+    return nanNvshu.replace("(可反串)","")
+});
+module.exports.replaceNanNvshu = replaceNanNvshu;
 module.exports.orderState = orderState;
 module.exports.splitto = splitto;
 module.exports.sum = sum;

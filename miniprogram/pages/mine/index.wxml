@@ -29,13 +29,13 @@
                         <view class="ic-box flex-center">
                             <image class="ic-kefu" src="/img/tb/{{tubiao}}/jifen.png" style="width:49rpx;height:38rpx"></image>
                         </view>
-                        <view class="text">积分:{{userData.integral}}分</view>
+                        <view class="text">积分：{{userData.integral}}分</view>
                     </view>
                     <view bindtap="goyue" class="mt-menu" >
                         <view class="ic-box flex-center">
                             <image class="ic-kefu" src="/img/tb/{{tubiao}}/yue.png" style="width:44rpx;height:44rpx"></image>
                         </view>
-                        <view class="text">余额:{{userData.balance}}元</view>
+                        <view class="text">余额：{{userData.balance}}元</view>
                     </view>
                 </view>
             </view>
