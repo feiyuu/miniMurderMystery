@@ -1,6 +1,6 @@
 <!--pages/purchaseRecord/index.wxml-->
 <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'>
-  <block wx:for="{{dramaList}}" wx:key="index">
+  <block wx:if="{{dramaList.length>0}}" wx:for="{{dramaList}}" wx:key="index">
     <view class="movies-list">
       <view bindtap="goDramaDetail" class="movie" data-dramaid="{{item.Id}}">
         <view class="img-cover">
@@ -61,5 +61,6 @@
       </view>
     </view>
   </block>
+  <block wx:if="{{dramaList.length<=0}}"><view style="text-align: center;width: 100%;margin-top: 80rpx;">没有收藏剧本</view></block>
 </scroll-view>
 <wxs module="tools" src="../tools.wxs" />

@@ -221,7 +221,7 @@ Page({
                     name: "本格",
                     value: 2
                 }, {
-                    name: "变革",
+                    name: "变格",
                     value: 3
                 }, {
                     name: "还原",

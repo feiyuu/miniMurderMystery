@@ -40,7 +40,7 @@ Page({
   },
   getMineData: function () {
     var that = this;
-    if (!app.globalData.userInfo || !app.globalData.userInfo.openid) {
+    if (!app.globalData.userInfo || !app.globalData.userInfo.token) {
       that.setData({
         showModal: !0
       });
@@ -49,7 +49,6 @@ Page({
     let loginRequest = new ApiRequest();
     loginRequest.apiName = "/storeMsMini/getMineData";
     loginRequest.method = 'GET';
-    loginRequest.addParam("openid", app.globalData.userInfo.openid);
     loginRequest.apiCallback = function (success, response) {
       wx.hideLoading({
         success: (res) => {},
@@ -58,9 +57,11 @@ Page({
         console.log(response), that.setData({
           userData: response.data[0]
         });;
-      } else {
-        
-      }
+      } else if(success && response.code == 101){
+        tthathis.setData({
+            showModal: !0
+        });
+    }
     }
     enquene(loginRequest);
   },
@@ -127,9 +128,5 @@ Page({
       url: "/pages/recharge/index"
     });
   },
-  auth: function () {
-    this.setData({
-      showModal: !0
-    });
-  },
+
 });

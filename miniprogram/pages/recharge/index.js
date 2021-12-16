@@ -49,7 +49,6 @@ Page({
             let loginRequest = new ApiRequest();
             loginRequest.apiName = "/storeMsMini/reCharge";
             loginRequest.method = 'POST';
-            loginRequest.addParam("recordUserId", app.globalData.userInfo.openid);
             loginRequest.addParam("charge", that.data.czList[that.data.current].chong);
             loginRequest.addParam("recordName", "余额充值：+" + rechargeSum + "元");
             loginRequest.apiCallback = function (success, response) {

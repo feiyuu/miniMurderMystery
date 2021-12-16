@@ -39,7 +39,6 @@ Page({
     let orderListRequest = new ApiRequest();
     orderListRequest.apiName = "/storeMsMini/getMyOrderList";
     orderListRequest.method = 'GET';
-    orderListRequest.addParam("openid", "oxhEH5Vi2QiqpS30QhUpWdPlQbW0");
     orderListRequest.apiCallback = function (success, response) {
       wx.stopPullDownRefresh();
       if (success && response.code == 1) {

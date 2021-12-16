@@ -103,7 +103,6 @@ Page({
             ],
         },
         zjData: {},
-        joined: !1,
         fullPeoples: !1,
         payJiaGe: "-",
         isCanPay: !0,
@@ -128,7 +127,7 @@ Page({
         });
     },
     joinPay: function () {
-        app.globalData.userInfo && app.globalData.userInfo.openid ? this.getBalance() : this.setData({
+        app.globalData.userInfo && app.globalData.userInfo.token ? this.getBalance() : this.setData({
             showModal: !0
         });
     },
@@ -142,7 +141,6 @@ Page({
             let loginRequest = new ApiRequest();
             loginRequest.apiName = "/storeMsMini/payCharge";
             loginRequest.method = 'POST';
-            loginRequest.addParam("recordUserId", app.globalData.userInfo.openid);
             loginRequest.addParam("isBlance", 0 == that.data.position);
             loginRequest.addParam("thumUrl", that.data.detailData.dramaCover);
             loginRequest.addParam("charge", that.data.detailData.price);
@@ -179,7 +177,6 @@ Page({
         let joinTeamRequest = new ApiRequest();
         joinTeamRequest.apiName = "/storeMsMini/joinTeam";
         joinTeamRequest.method = 'POST';
-        joinTeamRequest.addParam("teamUserId", app.globalData.userInfo.openid);
         joinTeamRequest.addParam("organizeTeamId", that.data.DetailId);
         joinTeamRequest.apiCallback = function (success, response) {
             wx.hideLoading({})
@@ -194,7 +191,6 @@ Page({
         let collectDramaRequest = new ApiRequest();
         collectDramaRequest.apiName = that.data.detailData.isCollect ? "/storeMsMini/unCollectDrama" : "/storeMsMini/collectDrama";
         collectDramaRequest.method = 'POST';
-        collectDramaRequest.addParam("openid", app.globalData.userInfo.openid);
         collectDramaRequest.addParam("dramaId", that.data.DetailId);
         collectDramaRequest.apiCallback = function (success, response) {
             wx.hideLoading({})
@@ -214,7 +210,6 @@ Page({
         let balanceRequest = new ApiRequest();
         balanceRequest.apiName = "/storeMsMini/getBalanceUser";
         balanceRequest.method = 'GET';
-        balanceRequest.addParam("openid", app.globalData.userInfo.openid);
         balanceRequest.apiCallback = function (success, response) {
             if (success && response.code == 1) {
                 that.setData({
@@ -227,7 +222,11 @@ Page({
                     isCanPay: !1,
                     position: 1
                 });
-            } else {}
+            } else if (success && response.code == 101) {
+                tthathis.setData({
+                    showModal: !0
+                });
+            }
         }
         enquene(balanceRequest);
     },
@@ -240,7 +239,7 @@ Page({
             isTeam: !!param.teamId,
             DetailId: !!param.teamId ? param.teamId : param.dramaId
         });
-        app.globalData.userInfo && app.globalData.userInfo.openid ? (_this.getDramaDetail()) : _this.setData({
+        app.globalData.userInfo && app.globalData.userInfo.token ? (_this.getDramaDetail()) : _this.setData({
             showModal: !0
         });
     },
@@ -251,18 +250,8 @@ Page({
         DramaDetailRequest.apiName = that.data.isTeam ? "/storeMsMini/getTeamDetail" : "/storeMsMini/getDramaDetail";
         DramaDetailRequest.method = 'GET';
         DramaDetailRequest.addParam("Id", this.data.DetailId);
-        DramaDetailRequest.addParam("openid", app.globalData.userInfo.openid);
         DramaDetailRequest.apiCallback = function (success, response) {
             if (success && response.code == 1) {
-                if (that.data.isTeam && response.data && response.data.teamUsers) {
-                    for (var i = 0; i < response.data.teamUsers.length; i++) {
-                        if (app.globalData.userInfo.openid == response.data.teamUsers[i].openid) {
-                            that.setData({
-                                joined: true
-                            });
-                        }
-                    };
-                }
                 if (that.data.isTeam && parseInt(response.data.numbers) <= parseInt(response.data.teamUsers.length)) {
                     that.setData({
                         fullPeoples: true
@@ -272,7 +261,11 @@ Page({
                     detailData: response.data
                 });
                 console.log("DramaDetailRequest")
-            } else {}
+            } else if (success && response.code == 101) {
+                tthathis.setData({
+                    showModal: !0
+                });
+            }
         }
         enquene(DramaDetailRequest);
     },

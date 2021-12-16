@@ -1,6 +1,6 @@
 <template name="teamListTemplate">
   <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'>
-    <block wx:for="{{teamList}}" wx:key="index">
+    <block wx:if="{{teamList.length>0}}" wx:for="{{teamList}}" wx:key="index">
       <view class="movies-list">
         <view bindtap="goTeamDetail" class="movie" data-teamid="{{item.Id}}">
           <view class="img-cover">
@@ -25,7 +25,7 @@
               <view class="right">
                 <text class="{{tools.teamPeoples(item.joinedCount,item.numbers)=='已满' || item.status == 30 || item.status == 50?'rightTxtGrey':''}}" style="line-height: 80rpx;font-weight:bold;">{{item.status == 10?tools.teamPeoples(item.joinedCount,item.numbers):
                   item.status == 30?'已完成':'已解散'
-                }}</text>
+                  }}</text>
               </view>
             </view>
             <view class="det">
@@ -57,13 +57,14 @@
                   </view>
                 </view>
               </view>
-              <view class="btnJoin {{tools.teamPeoples(item.joinedCount,item.numbers)=='已满'||item.joinedMy>0?'btnJoinGrey':''}}"
-              wx:if="{{item.status == 10}}"
-              >{{item.joinedMy>0?'已加入':'加入'}}</view>
+              <view class="btnJoin {{tools.teamPeoples(item.joinedCount,item.numbers)=='已满'||item.joinedMy>0?'btnJoinGrey':''}}" wx:if="{{item.status == 10}}">{{item.joinedMy>0?'已加入':'加入'}}</view>
             </view>
           </view>
         </view>
       </view>
+    </block>
+    <block wx:if="{{teamList.length<=0}}">
+      <view style="text-align: center;width: 100%;margin-top: 80rpx;">没有组局</view>
     </block>
   </scroll-view>
   <wxs module="tools" src="../pages/tools.wxs" />

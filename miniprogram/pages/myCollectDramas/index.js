@@ -29,7 +29,6 @@ Page({
     let collectDramaListRequest = new ApiRequest();
     collectDramaListRequest.apiName = "/storeMsMini/getMyCollectDramaList";
     collectDramaListRequest.method = 'GET';
-    collectDramaListRequest.addParam("openid", app.globalData.userInfo.openid);
     collectDramaListRequest.apiCallback = function (success, response) {
       wx.stopPullDownRefresh();
       if (success && response.code == 1) {

@@ -27,7 +27,6 @@ Page({
     let recordBuyListRequest = new ApiRequest();
     recordBuyListRequest.apiName = "/storeMsMini/getMyPurchaseRecordList";
     recordBuyListRequest.method = 'GET';
-    recordBuyListRequest.addParam("openid", app.globalData.userInfo.openid);
     recordBuyListRequest.apiCallback = function (success, response) {
       wx.stopPullDownRefresh();
       if (success && response.code == 1) {

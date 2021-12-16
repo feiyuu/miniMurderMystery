@@ -11,7 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderDetail: {state:50},
+    orderDetail: {
+      state: 50
+    },
     orderId: '',
     showPay: !1,
     balance: "",
@@ -77,7 +79,8 @@ Page({
           that.setData({
             roomSelected: response.data.room,
           });
-        } else {
+        }
+        if (response.data.state == 10) {
           that.getRooms();
         }
         that.setData({
@@ -128,7 +131,6 @@ Page({
     let balanceRequest = new ApiRequest();
     balanceRequest.apiName = "/storeMsMini/getBalanceUser";
     balanceRequest.method = 'GET';
-    balanceRequest.addParam("openid", app.globalData.userInfo.openid);
     balanceRequest.apiCallback = function (success, response) {
       if (success && response.code == 1) {
         that.setData({
@@ -153,7 +155,6 @@ Page({
       let payRequest = new ApiRequest();
       payRequest.apiName = "/storeMsMini/payCharge";
       payRequest.method = 'POST';
-      payRequest.addParam("recordUserId", app.globalData.userInfo.openid);
       payRequest.addParam("isBlance", 0 == that.data.position);
       payRequest.addParam("charge", that.data.orderDetail.total_price);
       payRequest.addParam("recordName", "在小卖铺消费：-" + that.data.orderDetail.total_price);

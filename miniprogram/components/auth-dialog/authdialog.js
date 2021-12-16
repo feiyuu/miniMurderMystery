@@ -102,12 +102,12 @@ Component({
                 });
                 if (success && response.code == 1) {
                     app.globalData.userInfo = response.data;
-                    app.globalData.userInfo.openid = response.openid;
+                    app.globalData.userInfo.token = response.data.token;
                     console.log(app.globalData.userInfo);
                     console.log(response), that.triggerEvent("authEvent", {});
                 } else if (success && response.code == 2) {
                     app.globalData.userInfo = {};
-                    app.globalData.userInfo.openid = response.openid;
+                    app.globalData.userInfo.token = response.data.token;
                     console.log(app.globalData.userInfo);
                     that.setData({
                         showModal: !0
@@ -126,7 +126,6 @@ Component({
             let loginRequest = new ApiRequest();
             loginRequest.apiName = "/storeMsMini/registerUser";
             loginRequest.method = 'POST';
-            loginRequest.addParam("openid", app.globalData.userInfo.openid);
             loginRequest.addParam("avatarUrl", app.globalData.userInfo.avatarUrl);
             loginRequest.addParam("gender", app.globalData.userInfo.gender);
             loginRequest.addParam("nickName", app.globalData.userInfo.nickName);

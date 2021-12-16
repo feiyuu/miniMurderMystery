@@ -34,7 +34,7 @@ Page({
       })
       return;
     }
-    app.globalData.userInfo && app.globalData.userInfo.openid ? this.placeOrder() : this.setData({
+    app.globalData.userInfo && app.globalData.userInfo.token ? this.placeOrder() : this.setData({
       showModal: !0
     });
   },
@@ -92,7 +92,6 @@ Page({
     let placeOrderRequest = new ApiRequest();
     placeOrderRequest.apiName = "/storeMsMini/placeOrder";
     placeOrderRequest.method = 'POST';
-    placeOrderRequest.addParam("userId", app.globalData.userInfo.openid);
     placeOrderRequest.addParam("userName", app.globalData.userInfo.nickName);
     placeOrderRequest.addParam("total_price", that.data.totalPrice);
     placeOrderRequest.addParam("goods", goods);
@@ -107,12 +106,13 @@ Page({
           totalPrice: 0,
           goodsList: goodsListTemp,
         });
-        console.log("response.data.orderId=="+response.data.orderId);
         wx.navigateTo({
-          url: "/pages/orderDetail/index?orderId="+response.data.orderId,
+          url: "/pages/orderDetail/index?orderId=" + response.data.orderId,
         });
-      } else {
-
+      } else if (success && response.code == 101) {
+        tthathis.setData({
+          showModal: !0
+        });
       }
     }
     enquene(placeOrderRequest);

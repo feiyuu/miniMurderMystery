@@ -1,7 +1,7 @@
 <!--template/templateOrderItem.wxml-->
 <template name="templateOrderItem">
   <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'>
-    <block wx:for="{{orderList}}" wx:key="index">
+    <block wx:if="{{orderList.length>0}}" wx:for="{{orderList}}" wx:key="index">
       <view class="container-item" bindtap="goTeamDetail" data-orderid="{{item.Id}}">
         <view class="container-header">
           <view class="status-item"><text>下单时间：</text><text class="status-txt">{{item.order_time}}</text></view>
@@ -23,6 +23,9 @@
           <view class="btn-godetail">查看订单</view>
         </view>
       </view>
+    </block>
+    <block wx:if="{{orderList.length<=0}}">
+      <view style="text-align: center;width: 100%;margin-top: 80rpx;">没有订单</view>
     </block>
   </scroll-view>
   <wxs module="tools" src="../pages/tools.wxs" />

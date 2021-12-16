@@ -1,9 +1,12 @@
 <!--pages/purchaseRecord/index.wxml-->
 <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'>
-  <block wx:for="{{recordList}}" wx:key="index">
+  <block wx:if="{{recordList.length>0}}" wx:for="{{recordList}}" wx:key="index">
     <view class="record-list">
       <text class="name">{{item.recordName}}</text>
       <text class="time">{{item.recordTime}}</text>
     </view>
+  </block>
+  <block wx:if="{{recordList.length<=0}}">
+    <view style="text-align: center;width: 100%;margin-top: 80rpx;">没有订单</view>
   </block>
 </scroll-view>

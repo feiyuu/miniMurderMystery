@@ -2,7 +2,7 @@
  * api 管理器
  */
 import ApiRequest from "./ApiRequest.js";
-
+const app = getApp();
 /**
  * api host
  */
@@ -16,7 +16,7 @@ function enquene(request) {
     let req = request.getApiRequestParam();
     let apiName = request.apiName;
     let apiMethod = request.method;
-    
+
     var callback = function (res) {
         console.log("callback=====================" + JSON.stringify(res));
         request.apiCallback(true, res)
@@ -102,7 +102,7 @@ function enquene(request) {
     };
     console.log("enquene===================");
 
-    console.log("req----"+apiName+"-----"+apiMethod+"===:" +  JSON.stringify(req));
+    console.log("req----" + apiName + "-----" + apiMethod + "===:" + JSON.stringify(req));
 
     if (apiMethod == "GET") {
         let apiUrl = API_SERVER_HOST + apiName;
@@ -110,6 +110,9 @@ function enquene(request) {
             url: apiUrl,
             method: apiMethod,
             data: req,
+            header: {
+                Authorization: app.globalData.userInfo ? app.globalData.userInfo.token : ''
+            },
             success: function (res) {
                 wx.hideLoading({
                     success: (res) => {},
@@ -130,7 +133,8 @@ function enquene(request) {
             method: apiMethod,
             data: req,
             header: {
-                'content-type': 'application/x-www-form-urlencoded'
+                'content-type': 'application/x-www-form-urlencoded',
+                Authorization: app.globalData.userInfo ? app.globalData.userInfo.token : ''
             },
             success: function (res) {
                 wx.hideLoading({

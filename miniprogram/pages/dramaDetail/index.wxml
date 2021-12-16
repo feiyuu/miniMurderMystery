@@ -80,7 +80,7 @@
                 </view>
             </view>
             <view class="join-in flex-center" wx:if="{{isTeam&&detailData.status!==20}}">
-                <button class="jiaruzuju" wx:if="{{joined}}">已加入</button>
+                <button class="jiaruzuju" wx:if="{{detailData.joined}}">已加入</button>
                 <button class="jiaruzuju" wx:elif="{{fullPeoples}}">本局人已满</button>
                 <button bindtap="joinPay" wx:else>加入并支付￥{{tools.plusFuDongJia(detailData.price,0)}}元</button>
             </view>
