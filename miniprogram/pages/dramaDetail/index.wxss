@@ -278,12 +278,16 @@
 
 .juben-info .collect {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
     margin-bottom: 6rpx;
 }
-
+.btn-share-drama{
+    background-color: transparent;
+    width: 80rpx !important;
+    height: 50rpx !important;
+}
 .collect-tit {
     font-size: 20rpx;
     color: var(--z_zt20);

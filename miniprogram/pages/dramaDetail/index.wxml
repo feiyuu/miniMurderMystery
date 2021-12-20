@@ -17,8 +17,11 @@
                 <view class="gates">{{detailData.price}}元/人</view>
                 <starts class="gates" score="{{detailData.dramaGrade}}"></starts>
             </view>
-            <view class="collect" bindtap="collectDrama" wx:if="{{!isTeam}}">
-                <image style="height: 50rpx;width: 50rpx;margin-right: 8rpx;" src="{{tools.collectUrl(detailData.isCollect)}}"></image>
+            <view class="collect" wx:if="{{!isTeam}}">
+                <button class="btn-share-drama" openType="share">
+                    <image src="/img/tb/{{tubiao}}/wx-share.png"></image>
+                </button>
+                <image bindtap="collectDrama" style="height: 50rpx;width: 50rpx;margin-bottom: -10rpx;margin-right: 14rpx;margin-left: 20rpx;" src="{{tools.collectUrl(detailData.isCollect)}}"></image>
             </view>
         </view>
         <view class="juben-content">
@@ -80,9 +83,9 @@
                 </view>
             </view>
             <view class="join-in flex-center" wx:if="{{isTeam&&detailData.status!==20}}">
-                <button class="jiaruzuju" wx:if="{{detailData.joined}}">已加入</button>
+                <button bindtap="quitTeam" wx:if="{{detailData.joined}}">退出组局</button>
+                <button bindtap="joinPay" wx:elif="{{!fullPeoples && !detailData.joined}}">加入并支付￥{{tools.plusFuDongJia(detailData.price,0)}}元</button>
                 <button class="jiaruzuju" wx:elif="{{fullPeoples}}">本局人已满</button>
-                <button bindtap="joinPay" wx:else>加入并支付￥{{tools.plusFuDongJia(detailData.price,0)}}元</button>
             </view>
         </view>
         <cialog show="{{showPay}}">

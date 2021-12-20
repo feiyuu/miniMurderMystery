@@ -131,6 +131,33 @@ Page({
             showModal: !0
         });
     },
+    quitTeam: function () {
+        var that = this;
+
+        wx.showModal({
+            title: '提示',
+            content: '确认要退出本次组局吗？',
+            success: function (res) {
+                if (res.confirm) {
+                    let quitTeamRequest = new ApiRequest();
+                    quitTeamRequest.apiName = "/storeMsMini/quitTeam";
+                    quitTeamRequest.method = 'POST';
+                    quitTeamRequest.addParam("organizeTeamId", that.data.DetailId);
+                    quitTeamRequest.addParam("charge", that.data.detailData.price);
+                    quitTeamRequest.addParam("recordName", "退出《" + that.data.detailData.dramaName + "》组局费用：+" + that.data.detailData.price);
+                    quitTeamRequest.apiCallback = function (success, response) {
+                        wx.hideLoading({})
+                        if (success && response.code == 1) {
+                            that.getDramaDetail();
+                        } else {}
+                    }
+                    enquene(quitTeamRequest);
+                } else if (res.cancel) {
+
+                }
+            }
+        })
+    },
     back: function () {
         wx.navigateBack({});
     },
@@ -138,14 +165,14 @@ Page({
         var that = this;
         if (!that.paying) {
             that.paying = !0
-            let loginRequest = new ApiRequest();
-            loginRequest.apiName = "/storeMsMini/payCharge";
-            loginRequest.method = 'POST';
-            loginRequest.addParam("isBlance", 0 == that.data.position);
-            loginRequest.addParam("thumUrl", that.data.detailData.dramaCover);
-            loginRequest.addParam("charge", that.data.detailData.price);
-            loginRequest.addParam("recordName", "支付《" + that.data.detailData.dramaName + "》组局费用：-" + that.data.detailData.price);
-            loginRequest.apiCallback = function (success, response) {
+            let payRequest = new ApiRequest();
+            payRequest.apiName = "/storeMsMini/payCharge";
+            payRequest.method = 'POST';
+            payRequest.addParam("isBlance", 0 == that.data.position);
+            payRequest.addParam("thumUrl", that.data.detailData.dramaCover);
+            payRequest.addParam("charge", that.data.detailData.price);
+            payRequest.addParam("recordName", "支付《" + that.data.detailData.dramaName + "》组局费用：-" + that.data.detailData.price);
+            payRequest.apiCallback = function (success, response) {
                 wx.hideLoading({})
                 if (success && response.code == 1) {
                     that.paying = !1, wx.showToast({
@@ -168,7 +195,7 @@ Page({
                 title: "支付中..."
             });
             setTimeout(function () {
-                enquene(loginRequest);
+                enquene(payRequest);
             }, 1500);
         }
     },
@@ -297,7 +324,7 @@ Page({
         let date = "",
             _this = this;
         return app.globalData && app.globalData.userInfo && (date = "&tg=".concat(Date.parse(new Date()))), {
-            title: app.globalData.userInfo.nickName + "邀请你上车剧本《" + this.data.detailData.dramaName + "》",
+            title: _this.data.isTeam ? app.globalData.userInfo.nickName + "邀请您组局剧本《" + this.data.detailData.dramaName + "》" : app.globalData.userInfo.nickName + "向您分享剧本《" + this.data.detailData.dramaName + "》",
             path: "pages/dramaDetail/index?teamId=" + _this.data.DetailId + date
         };
     },

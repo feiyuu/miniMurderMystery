@@ -12,7 +12,7 @@
                             <text class="l">{{userData.nickName}}</text>
                         </view>
                         <view bindtap="auth" class="names" wx:else>
-                            <text class="l">获取会员信息</text>
+                            <text class="l">授权微信登录/注册</text>
                         </view>
                     </view>
                 </view>

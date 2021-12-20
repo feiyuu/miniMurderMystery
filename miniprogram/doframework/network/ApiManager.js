@@ -19,6 +19,10 @@ function enquene(request) {
 
     var callback = function (res) {
         console.log("callback=====================" + JSON.stringify(res));
+
+        if(res.code == 101){
+            app.globalData.userInfo.token = '';
+        }
         request.apiCallback(true, res)
         return;
 
