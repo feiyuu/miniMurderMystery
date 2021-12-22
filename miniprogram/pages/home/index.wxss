@@ -168,8 +168,8 @@ page {
 
 .shop-dramas .swipers .swiper-item {
   position: relative;
-  width: 203rpx;
-  margin-left: -40rpx;
+  width: 186rpx;
+  margin-left: -14rpx;
 }
 
 .shop-dramas .swipers .swiper-item .cover {

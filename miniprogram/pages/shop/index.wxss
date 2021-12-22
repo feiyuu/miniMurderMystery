@@ -23,7 +23,7 @@
 }
 
 .name {
-  font-size: 24rpx;
+  font-size: 26rpx;
   color: var(--z_zt20);
 }
 
@@ -34,7 +34,7 @@
 }
 
 .price {
-  font-size: 20rpx;
+  font-size: 22rpx;
   margin-top: 20rpx;
   color: var(--z_zt30);
 }
@@ -55,13 +55,13 @@
 }
 
 .buy-btn {
-  width: 28rpx;
-  height: 28rpx;
+  width: 32rpx;
+  height: 32rpx;
 }
 
 .buy-count {
   padding: 2rpx 20rpx;
-  font-size: 20rpx;
+  font-size: 22rpx;
   margin-left: 8rpx;
   margin-right: 8rpx;
   background-color: var(--z_bgbg);

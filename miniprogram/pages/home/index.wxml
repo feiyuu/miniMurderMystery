@@ -37,7 +37,7 @@
       </view>
       <view class="shop-dramas flex-hor">
         <view class="list">
-          <view class="swipers flex-hor" style="width: {{dramas.length*222}}rpx;">
+          <view class="swipers flex-hor" style="width: {{dramas.length*200}}rpx;">
             <view bindtap="goDramaDepot" class="swiper-item" wx:for="{{dramas}}" wx:key="index">
               <view class="cover">
                 <image mode="aspectFill" src="{{item.dramaCover}}"></image>

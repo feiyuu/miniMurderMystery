@@ -42,7 +42,7 @@
 }
 
 .jb-kaiju {
-    padding: 5rpx rpx;
+    padding: 10rpx 10rpx;
     background-color: var(--z_bg10);
     margin: 18rpx 24rpx 0;
     border-radius: 15rpx;
@@ -57,12 +57,12 @@
 }
 
 .jb-kaiju .header-item .tit {
-    font-size: 24rpx;
+    font-size: 26rpx;
     color: var(--z_zt20);
 }
 
 .jb-kaiju .header-item .tit-bottom {
-    font-size: 20rpx;
+    font-size: 22rpx;
     margin-top: 20rpx;
     color: var(--z_zt10);
 }
@@ -266,7 +266,7 @@
 }
 
 .share-tit {
-    font-size: 18rpx;
+    font-size: 22rpx;
     color: var(--z_zt20);
     margin-top: 8rpx;
 }

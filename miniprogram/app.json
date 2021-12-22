@@ -16,11 +16,12 @@
     "template/templateOrderItem"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "剧有趣",
-    "navigationBarTextStyle": "black"
+    "backgroundColor": "#212121",
+    "navigationBarBackgroundColor": "#212121",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false,
+    "backgroundTextStyle": "dark"
   },
   "tabBar": {
     "color": "#555",
@@ -36,7 +37,7 @@
       },
       {
         "pagePath": "pages/team/index",
-        "text": "组队",
+        "text": "组局",
         "iconPath": "static/image/tab-team-nor.png",
         "selectedIconPath": "static/image/tab-team-sec.png"
       },
