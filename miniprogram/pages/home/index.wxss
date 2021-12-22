@@ -62,7 +62,6 @@ page {
   width: 40rpx;
   height: 40rpx;
 }
-
 .shop-rooms .list {
   overflow: auto;
 }
@@ -93,10 +92,11 @@ page {
   width: 100%;
   color: black;
   text-align: center;
+  background-color: #dfdde8;
 }
 .shop-rooms {
   margin: 18rpx 32rpx;
-  background-color: #dfdde8;
+  background-color: var(--z_bgbg);
   overflow: hidden;
 }
 .shop-hosts {
@@ -177,7 +177,6 @@ page {
   height: 245rpx;
   border-radius: 10rpx;
   overflow: hidden;
-  background-color: chocolate;
 }
 
 .shop-dramas .swipers .swiper-item .cover image {

@@ -13,7 +13,7 @@
       </view>
       <view class="shop-infos flex-hor">
         <view class="si-top flex-hor flex-center" bindtap="openLocationMap">
-          <view class="nameContainer flex-ver">
+          <view class="nameContainer">
             <text class="name ellipsis ">杭州剧有趣西湖店</text>
             <text class="address">(杭州西湖区广建大厦二楼1001室)</text>
           </view>

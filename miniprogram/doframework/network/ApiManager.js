@@ -6,7 +6,8 @@ const app = getApp();
 /**
  * api host
  */
-const API_SERVER_HOST = "http://127.0.0.1:7001";
+// const API_SERVER_HOST = "http://127.0.0.1:7001";
+const API_SERVER_HOST = "https://api.xiaoxizhentan.com";
 
 function enquene(request) {
     // wx.showLoading({

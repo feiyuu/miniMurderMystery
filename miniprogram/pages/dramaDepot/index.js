@@ -16,76 +16,7 @@ Page({
         pageSize: 10,
         loadMoreing: !1,
         statusBarHeight: app.globalData.statusBarHeight,
-        dramaList: [{
-                dramaId: 1001,
-                dramaCover: "https://img0.baidu.com/it/u=1039842579,1206593230&fm=253&fmt=auto&app=138&f=JPEG",
-                isNew: 1,
-                dramaName: "三千鸦杀啊啊",
-                genre: '欢乐',
-                theme: '情感',
-                background: '民国',
-                profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
-                NanNvShu: '3男3女',
-                numbers: 6,
-                duration: '3',
-                difficulty: '硬核',
-                beforehand: '1',
-                dramaGrade: '9',
-                price: "100"
-
-            }, {
-                dramaId: 1001,
-                dramaCover: "http://t15.baidu.com/it/u=3901498348,2232291937&fm=224&app=112&f=JPEG?w=162&h=230",
-                isNew: 1,
-                dramaName: "三千鸦杀",
-                genre: '欢乐',
-                theme: '情感',
-                background: '民国',
-                profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
-                NanNvShu: '3男3女',
-                numbers: 6,
-                duration: '3',
-                difficulty: '硬核',
-                beforehand: '0',
-                dramaGrade: '9',
-                price: "80"
-
-            }, {
-                dramaId: 1001,
-                dramaCover: "https://img2.baidu.com/it/u=2411936941,1136968929&fm=253&fmt=auto&app=120&f=PNG?w=128&h=181",
-                isNew: 1,
-                dramaName: "三千鸦杀",
-                genre: '欢乐',
-                theme: '情感',
-                background: '民国',
-                profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
-                NanNvShu: '3男3女',
-                numbers: 6,
-                duration: '3',
-                difficulty: '硬核',
-                beforehand: '0',
-                dramaGrade: '9',
-                price: "200"
-
-            }, {
-                dramaId: 1001,
-                dramaCover: "https://img0.baidu.com/it/u=3198484303,3700892012&fm=253&fmt=auto&app=120&f=JPEG?w=140&h=249",
-                isNew: 1,
-                dramaName: "三千鸦杀",
-                genre: '欢乐',
-                theme: '情感',
-                background: '民国',
-                profile: '剧本简介：这是一个欢乐情感的本，适合新手，一定要拉上你喜欢的人一起，会很有趣',
-                NanNvShu: '3男3女',
-                numbers: 6,
-                duration: '3',
-                difficulty: '硬核',
-                beforehand: '0',
-                dramaGrade: '9',
-                price: "150"
-            },
-
-        ],
+        dramaList: [],
         count: 0,
         filterDatas: {
             numbers: {

@@ -18,7 +18,7 @@ Page({
     rooms: [],
     dms: [],
     dramas: [],
-    zuobiao: '	30.267212111052405,120.18522941925167'
+    zuobiao: '30.267212111052405,120.18522941925167'
   },
   goDramaDepot: function (a) {
     wx.navigateTo({
