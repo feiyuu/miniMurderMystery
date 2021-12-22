@@ -171,7 +171,6 @@
 }
 
 .jb-members .title {
-    font-size: 36rpx;
     color: var(--z_zt20);
     padding-top: 30rpx;
     padding-bottom: 30rpx;
