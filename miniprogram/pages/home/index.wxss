@@ -29,19 +29,23 @@ page {
   background-color: #dfdde8;
   border-radius: 10rpx;
   flex: 1;
-  padding-right: 32rpx;
+  padding-right: 20rpx;
 }
 
 .si-top .nameContainer {
   margin-left: 24rpx;
   flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .si-top .name{
-  font-size: 24rpx;
+  font-size: 26rpx;
   color: black;
 }
 .address{
-  font-size: 18rpx;
+  font-size: 20rpx;
   color: black;
 }
 
@@ -54,6 +58,7 @@ page {
 }
 
 .ic-nav {
+  margin-left: 8rpx;
   width: 40rpx;
   height: 40rpx;
 }

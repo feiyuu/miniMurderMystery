@@ -19,6 +19,7 @@
 .star-box .score {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-left: 12rpx;
     color: var(--z_zt30);
 }
@@ -28,7 +29,6 @@
 }
 
 .star-box .score .unit {
-    margin-top: 5rpx;
     margin-left: 4rpx;
     font-size: 22rpx;
 }

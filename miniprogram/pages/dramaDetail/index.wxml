@@ -4,8 +4,8 @@
         <view class="juben-info">
             <view class="image-box" data-dramaId="{{detailData.dramaId}}">
                 <image mode="aspectFill" src="{{tools.imageMogr(detailData.dramaCover,'0/w/200')}}" style="border-radius:12rpx;"></image>
-                <view style="position: absolute;top:40rpx;left:180rpx;" wx:if="{{detailData.isNew==1 || detailData.beforehand==1}}">
-                    <image src="/assets/images/xin.png" style="width:16px;height:16px"></image>
+                <view style="position: absolute;top:38rpx;left:164rpx;" wx:if="{{detailData.isNew==1 || detailData.beforehand==1}}">
+                    <image src="/assets/images/xin.png" style="width:40rpx;height:40rpx"></image>
                 </view>
             </view>
             <view class="infos">

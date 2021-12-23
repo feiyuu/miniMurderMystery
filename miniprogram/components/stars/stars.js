@@ -16,11 +16,17 @@ Component({
     data: {
         int: 0
     },
-    ready: function() {
-        console.log(this.data.score);
-        var e = parseInt(this.data.score / 2);
-        this.setData({
-            int: e > 5 ? 5 : e
-        });
+    observers: {
+        'score': function (val) {
+            if (val == null) return;
+            console.log(val);
+            var e = parseInt(val / 2);
+            this.setData({
+                int: e > 5 ? 5 : e
+            });
+        }
+    },
+    ready: function () {
+       
     }
 });
