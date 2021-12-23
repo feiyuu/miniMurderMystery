@@ -38,7 +38,7 @@
                     <button class="btn-share" openType="share">
                         <view class="share">
                             <image src="/img/tb/{{tubiao}}/wx-share.png"></image>
-                            <view class="share-tit">邀请参加</view>
+                            <view class="share-tit">分享组局</view>
                         </view>
                     </button>
                 </view>
@@ -82,7 +82,7 @@
                     </view>
                 </view>
             </view>
-            <view class="join-in flex-center" wx:if="{{isTeam&&detailData.status!==20}}">
+            <view class="join-in flex-center" wx:if="{{isTeam&&detailData.status==10}}">
                 <button bindtap="quitTeam" wx:if="{{detailData.joined}}">退出组局</button>
                 <button bindtap="joinPay" wx:elif="{{!fullPeoples && !detailData.joined}}">加入并支付￥{{tools.plusFuDongJia(detailData.price,0)}}元</button>
                 <button class="jiaruzuju" wx:elif="{{fullPeoples}}">本局人已满</button>
